@@ -30,5 +30,10 @@ namespace Ex03.GarageLogic
                 m_MinValue = value;
             }
         }
+
+        public ValueOutOfRangeException(int i_Number)
+            : base(i_Number.ToString())
+        {
+        }
     }
 }

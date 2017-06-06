@@ -76,8 +76,7 @@ namespace Ex03.GarageLogic
             Vehicle vehicle;
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
-                Vehicle.e_FuelType fuelType = vehicle.FuelType ?? Vehicle.e_FuelType.none;
-                if (fuelType == i_FuelType)
+                if (vehicle.FuelType == i_FuelType)
                 {
 
                 }
