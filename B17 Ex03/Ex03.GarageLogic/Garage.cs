@@ -61,6 +61,10 @@ namespace Ex03.GarageLogic
             {
                 vehicle.VehicleState = i_VehicleState;
             }
+            else
+            {
+                throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
+            }
         }
 
         public void FillAirInVehicle(string i_VehicleLicence)
