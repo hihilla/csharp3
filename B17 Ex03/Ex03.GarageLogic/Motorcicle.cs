@@ -15,7 +15,7 @@ namespace Ex03.GarageLogic
             B1
         };
 
-        public override void AddEnergy()
+        public override void AddEnergy(float i_EnergyToAdd, e_FuelType? i_EnergyType = default(e_FuelType?), e_FuelType i_FuelType = e_FuelType.none)
         {
             throw new NotImplementedException();
         }
