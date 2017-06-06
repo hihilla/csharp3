@@ -40,12 +40,24 @@ namespace Ex03.GarageLogic
             return licenceNumbers.ToString();
         }
 
-        public void ChangeVehicleState(string i_LicenceNumber, Vehicle.e_VehicleState i_VehicleState)
+        public void ChangeVehicleState(string i_VehicleLicence, Vehicle.e_VehicleState i_VehicleState)
         {
             Vehicle vehicle;
-            if (m_VehiclesInGarage.TryGetValue(i_LicenceNumber, out vehicle))
+            if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
                 vehicle.VehicleState = i_VehicleState;
+            }
+        }
+
+        public void FillAirInVehicle(string i_VehicleLicence)
+        {
+            Vehicle vehicle;
+            if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
+            {
+                foreach (Weel weel in vehicle.Weels)
+                {
+                    weel.FillAir(weel.MaxAirPressure);
+                }
             }
         }
     }

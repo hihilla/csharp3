@@ -53,4 +53,13 @@ namespace Ex03.GarageLogic
                 m_VehicleState = value;
             }
         }
+
+        public List<Weel> Weels
+        {
+            get
+            {
+                return m_Weels;
+            }
+
+        }
     }
