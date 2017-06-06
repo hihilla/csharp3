@@ -20,7 +20,7 @@ namespace Ex03.GarageLogic
             {
                 m_VehiclesInGarage.Add(i_Vehicle.LicenceNumber, i_Vehicle);
             }
-            
+
             return successfulInsertion;
         }
 
@@ -74,8 +74,29 @@ namespace Ex03.GarageLogic
             {
                 foreach (Weel weel in vehicle.Weels)
                 {
-                    weel.FillAir(weel.MaxAirPressure);
+                    float airToFill = weel.MaxAirPressure - weel.CurrentAirPressure;
+                    if (airToFill > 0)
+                    {
+                        weel.FillAir(airToFill);
+                    }
                 }
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
+            }
+        }
+
+        private void fillEnergyForVehicle(Vehicle i_Vehicle, float i_AmountToFill)
+        {
+            float newAmount = i_Vehicle.CurrentEnergyLevel + i_AmountToFill;
+            if ((i_AmountToFill < 0) || (newAmount > i_Vehicle.MaximalEnergyLevel))
+            {
+                throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
+            }
+            else
+            {
+                i_Vehicle.AddEnergy(i_AmountToFill, i_Vehicle.EnergyType, i_Vehicle.FuelType);
             }
         }
 
@@ -84,14 +105,35 @@ namespace Ex03.GarageLogic
             Vehicle vehicle;
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
-                if (vehicle.FuelType == i_FuelType)
+                if (i_FuelType == Vehicle.e_FuelType.none)
                 {
-
+                    throw new ArgumentException("Wrong vahicle Type!");
                 }
-                else
+                if (vehicle.FuelType != i_FuelType)
                 {
                     throw new ArgumentException("Wrong Fuel Type!");
                 }
+                else
+                {
+                    fillEnergyForVehicle(vehicle, i_AmountToFill);
+                }
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
+            }
+        }
+
+        public void ChargeEnergy(string i_VehicleLicence, float i_MinutesToCharge)
+        {
+            Vehicle vehicle;
+            if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
+            {
+                fillEnergyForVehicle(vehicle, i_MinutesToCharge);
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
             }
         }
     }
