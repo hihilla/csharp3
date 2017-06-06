@@ -8,8 +8,8 @@ namespace Ex03.GarageLogic
     {
         protected string m_ModelName;
         protected string m_LicenceNumber;
-        protected e_EnergyType m_EnergyType;
-        protected Nullable<e_FuelType> m_FuelType;
+        protected Nullable<e_EnergyType> m_EnergyType;
+        protected e_FuelType m_FuelType;
         protected float m_CurrentEnergyLevel;
         protected float m_MaximalEnergyLevel;
         protected List<Weel> m_Weels;
@@ -61,6 +61,14 @@ namespace Ex03.GarageLogic
                 return m_Weels;
             }
 
+        }
+
+        public string LicenceNumber
+        {
+            get
+            {
+                return m_LicenceNumber;
+            }
         }
     }
 }

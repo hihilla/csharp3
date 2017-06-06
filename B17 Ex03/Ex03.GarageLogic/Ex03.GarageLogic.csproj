@@ -38,6 +38,7 @@
     <Compile Include="Garage.cs" />
     <Compile Include="Motorcicle.cs" />
     <Compile Include="Truck.cs" />
+    <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="Weel.cs" />
   </ItemGroup>

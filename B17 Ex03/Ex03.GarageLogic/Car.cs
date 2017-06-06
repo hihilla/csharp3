@@ -18,7 +18,8 @@ namespace Ex03.GarageLogic
 
         public override void AddEnergy(float i_EnergyToAdd, Nullable<e_FuelType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none)
         {
-            throw new NotImplementedException();
+            
+            float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
         }
     }
 }
