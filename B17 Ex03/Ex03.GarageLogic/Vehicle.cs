@@ -48,5 +48,9 @@ namespace Ex03.GarageLogic
             {
                 return m_VehicleState;
             }
+            set
+            {
+                m_VehicleState = value;
+            }
         }
     }
