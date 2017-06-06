@@ -3,7 +3,7 @@ namespace Ex03.GarageLogic
 {
     abstract class FuelVehicle : Vehicle
     {
-        enum e_FuelType
+        protected enum e_FuelType
         {
             Soler,
             Octan95,
@@ -11,9 +11,9 @@ namespace Ex03.GarageLogic
             Octan98
         };
 
-        e_FuelType m_FuelType;
-        float m_CurrentFuelLevelLiters;
-        float m_MaxFuelLevelLiters;
+        protected e_FuelType m_FuelType;
+        protected float m_CurrentFuelLevelLiters;
+        protected float m_MaxFuelLevelLiters;
 
         public void AddFuel(float m_LitersToAdd)
         {

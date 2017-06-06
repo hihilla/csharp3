@@ -3,8 +3,8 @@ namespace Ex03.GarageLogic
 {
     abstract class ElectricVehicle : Vehicle
     {
-        float m_RemainingRunningTimeInHours;
-        float m_MaxRunningTimeInHours;
+        protected float m_RemainingRunningTimeInHours;
+        protected float m_MaxRunningTimeInHours;
 
         public void ChargeBattery(float i_HoursToAddToBattery)
         {

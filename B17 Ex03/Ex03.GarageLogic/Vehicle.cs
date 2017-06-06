@@ -5,20 +5,28 @@ namespace Ex03.GarageLogic
 {
     abstract class Vehicle
     {
-        string m_ModelName;
-        string m_LicenceNumber;
-        float m_CurrentEnergyLevel;
-        List<Weel> m_Weels;
+        protected string m_ModelName;
+        protected string m_LicenceNumber;
+        protected float m_CurrentEnergyLevel;
+        protected List<Weel> m_Weels;
         // information for garage
-        string m_OwnerName;
-        string m_OwnerPhoneNumber;
-        e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
+        protected string m_OwnerName;
+        protected string m_OwnerPhoneNumber;
+        protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
 
-        enum e_VehicleState
+        protected enum e_VehicleState
         {
             RepairInProgress,
             RepairComplete,
             RepairPaid
+        };
+
+        protected enum e_CarColor
+        {
+            Yellow,
+            White,
+            Black,
+            Blue
         };
     }
 }

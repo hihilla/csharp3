@@ -1,7 +1,7 @@
 ﻿
 namespace Ex03.GarageLogic
 {
-    class Motorcicle : Vehicle
+    class Motorcicle : FuelVehicle
     {
         enum e_LicenceType // make sure e_Name is by conventions
         {

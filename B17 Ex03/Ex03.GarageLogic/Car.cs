@@ -1,16 +1,8 @@
 ﻿
 namespace Ex03.GarageLogic
 {
-    class Car : Vehicle
+    class Car : FuelVehicle
     {
-        enum e_CarColor
-        {
-            Yellow,
-            White,
-            Black,
-            Blue
-        };
-
         e_CarColor m_CarColor;
         int m_NumberOfDoors; //{2, 3, 4, 5}
     }
