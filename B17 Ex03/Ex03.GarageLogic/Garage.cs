@@ -11,13 +11,17 @@ namespace Ex03.GarageLogic
 
         public bool InsertNewVehicleToGarage(Vehicle i_Vehicle)
         {
+            bool successfulInsertion = true;
             if (m_VehiclesInGarage.ContainsKey(i_Vehicle.LicenceNumber))
             {
-                return false;
+                successfulInsertion = false;
             }
-
-            m_VehiclesInGarage.Add(i_Vehicle.LicenceNumber, i_Vehicle);
-            return true;
+            else
+            {
+                m_VehiclesInGarage.Add(i_Vehicle.LicenceNumber, i_Vehicle);
+            }
+            
+            return successfulInsertion;
         }
 
         public string GetLicenceNumbers(Nullable<Vehicle.e_VehicleState> i_StateFilter = null)
