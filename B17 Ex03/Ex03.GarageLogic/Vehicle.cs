@@ -18,13 +18,13 @@ namespace Ex03.GarageLogic
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
         
-        enum e_EnergyType
+        public enum e_EnergyType
         {
             Electric,
             Fuel
         };
 
-        enum e_FuelType
+        public enum e_FuelType
         {
             none,
             Octan95,
@@ -33,7 +33,7 @@ namespace Ex03.GarageLogic
             Soler
         };
 
-        enum e_VehicleState
+        protected enum e_VehicleState
         {
             RepairInProgress,
             RepairComplete,
