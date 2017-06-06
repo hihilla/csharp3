@@ -17,7 +17,19 @@ namespace Ex03.GarageLogic
 
         public void FillAir(float i_AirToAdd)
         {
-            // מקבלת כמה אוויר להוסיף לגלגל, משנה לחץ אוויר אם הוא לא חורג מהמקס
+            if (i_AirToAdd <= 0)
+            {
+                throw new ValueOutOfRangeException("Too little air");
+            }
+            float newAirPressure = i_AirToAdd + m_CurrentAirPressure;
+            if (newAirPressure > m_MaxAirPressure)
+            {
+                throw new ValueOutOfRangeException("Too much air");
+            }
+            else
+            {
+                m_CurrentAirPressure = newAirPressure;
+            }
         }
     }
 }

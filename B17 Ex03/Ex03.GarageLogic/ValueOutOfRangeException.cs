@@ -31,8 +31,8 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public ValueOutOfRangeException(int i_Number)
-            : base(i_Number.ToString())
+        public ValueOutOfRangeException(string i_Message)
+            : base(i_Message)
         {
         }
     }
