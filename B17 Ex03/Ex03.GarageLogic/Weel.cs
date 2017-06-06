@@ -15,6 +15,14 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public float CurrentAirPressure
+        {
+            get
+            {
+                return m_CurrentAirPressure;
+            }
+        }
+
         public void FillAir(float i_AirToAdd)
         {
             float newAirPressure = i_AirToAdd + m_CurrentAirPressure;

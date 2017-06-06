@@ -72,7 +72,7 @@ namespace Ex03.GarageLogic
             Paid
         };
 
-        abstract public void AddEnergy(float i_EnergyToAdd, Nullable<e_FuelType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none);
+        abstract public void AddEnergy(float i_EnergyToAdd, Nullable<e_EnergyType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none);
 
         public e_VehicleState VehicleState
         {
@@ -118,6 +118,22 @@ namespace Ex03.GarageLogic
             {
                 return m_FuelType;
 
+            }
+        }
+
+        public float MaximalEnergyLevel
+        {
+            get
+            {
+                return m_MaximalEnergyLevel;
+            }
+        }
+
+        public float CurrentEnergyLevel
+        {
+            get
+            {
+                return m_CurrentEnergyLevel;
             }
         }
     }
