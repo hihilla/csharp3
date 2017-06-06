@@ -63,11 +63,29 @@ namespace Ex03.GarageLogic
 
         }
 
+
         public string LicenceNumber
         {
             get
             {
                 return m_LicenceNumber;
+            }
+        }
+
+        public Nullable<e_EnergyType> EnergyType
+        {
+            get
+            {
+                return m_EnergyType;
+            }
+        }
+
+        public e_FuelType FuelType
+        {
+            get
+            {
+                return m_FuelType;
+
             }
         }
     }

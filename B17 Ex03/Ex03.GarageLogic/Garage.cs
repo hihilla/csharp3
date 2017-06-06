@@ -70,5 +70,22 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
+        public void FillFuel(string i_VehicleLicence, Vehicle.e_FuelType i_FuelType, float i_AmountToFill)
+        {
+            Vehicle vehicle;
+            if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
+            {
+                Vehicle.e_FuelType fuelType = vehicle.FuelType ?? Vehicle.e_FuelType.none;
+                if (fuelType == i_FuelType)
+                {
+
+                }
+                else
+                {
+                    throw new ArgumentException("Wrong Fuel Type!");
+                }
+            }
+        }
     }
 }
