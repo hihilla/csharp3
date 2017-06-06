@@ -24,6 +24,7 @@ namespace Ex03.GarageLogic
             return successfulInsertion;
         }
 
+
         public string GetLicenceNumbers(Nullable<Vehicle.e_VehicleState> i_StateFilter = null)
         {
             StringBuilder licenceNumbers = new StringBuilder();

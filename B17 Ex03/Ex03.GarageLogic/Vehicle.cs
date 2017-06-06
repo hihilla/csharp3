@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Ex03.GarageLogic
 {
@@ -17,6 +18,37 @@ namespace Ex03.GarageLogic
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
+
+        public override string ToString()
+        {
+            StringBuilder vehicleString = new StringBuilder();
+
+            vehicleString.Append("Licence number: ");
+            vehicleString.Append(m_LicenceNumber);
+            vehicleString.Append("\n");
+
+            vehicleString.Append("Model name: ");
+            vehicleString.Append(m_ModelName);
+            vehicleString.Append("\n");
+
+            vehicleString.Append("Owner's name: ");
+            vehicleString.Append(m_OwnerName);
+            vehicleString.Append("\n");
+
+            vehicleString.Append("State in garage: ");
+            vehicleString.Append(m_VehicleState);
+            vehicleString.Append("\n");
+
+            vehicleString.Append("Energy state: ");// put together!!!!!! with the next one oops
+            vehicleString.Append(m_CurrentEnergyLevel / m_MaximalEnergyLevel);
+            vehicleString.Append("\n");
+
+            vehicleString.Append("Energy source state: ");
+            vehicleString.Append(m_EnergyType.ToString()); //AM I OK?????????????????
+            vehicleString.Append("\n");
+
+            return vehicleString.ToString();
+        }
 
         public enum e_EnergyType
         {
