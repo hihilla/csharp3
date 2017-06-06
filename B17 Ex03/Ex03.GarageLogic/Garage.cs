@@ -5,7 +5,7 @@ namespace Ex03.GarageLogic
 {
     class Garage
     {
-        private List<Vehicle> m_VehiclesInGarage;
+        private Dictionary<string,Vehicle> m_VehiclesInGarage;
 
     }
 }
