@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 namespace Ex03.GarageLogic
@@ -7,26 +8,37 @@ namespace Ex03.GarageLogic
     {
         protected string m_ModelName;
         protected string m_LicenceNumber;
+        protected e_EnergyType m_EnergyType; 
+        protected Nullable<e_FuelType> m_EnergyType;
         protected float m_CurrentEnergyLevel;
+        protected float m_MaximalEnergyLevel;
         protected List<Weel> m_Weels;
         // information for garage
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
+        
+        protected enum e_EnergyType
+        {
+            Electric,
+            Fuel
+        };
+
+        protected enum e_FuelType
+        {
+            Octan95,
+            Octan96,
+            Octan98,
+            Soler
+        };
 
         protected enum e_VehicleState
         {
             RepairInProgress,
             RepairComplete,
-            RepairPaid
+            Paid
         };
 
-        protected enum e_CarColor
-        {
-            Yellow,
-            White,
-            Black,
-            Blue
-        };
+        abstract public void AddEnergy();
     }
 }
