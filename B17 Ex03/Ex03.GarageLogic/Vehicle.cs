@@ -8,8 +8,8 @@ namespace Ex03.GarageLogic
     {
         protected string m_ModelName;
         protected string m_LicenceNumber;
-        protected e_EnergyType m_EnergyType; 
-        protected Nullable<e_FuelType> m_EnergyType;
+        protected e_EnergyType m_EnergyType;
+        protected Nullable<e_FuelType> m_FuelType;
         protected float m_CurrentEnergyLevel;
         protected float m_MaximalEnergyLevel;
         protected List<Weel> m_Weels;
@@ -17,7 +17,7 @@ namespace Ex03.GarageLogic
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
-        
+
         public enum e_EnergyType
         {
             Electric,
@@ -33,7 +33,7 @@ namespace Ex03.GarageLogic
             Soler
         };
 
-        protected enum e_VehicleState
+        public enum e_VehicleState
         {
             RepairInProgress,
             RepairComplete,
@@ -41,5 +41,12 @@ namespace Ex03.GarageLogic
         };
 
         abstract public void AddEnergy(float i_EnergyToAdd, Nullable<e_FuelType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none);
+
+        public e_VehicleState VehicleState
+        {
+            get
+            {
+                return m_VehicleState;
+            }
+        }
     }
-}
