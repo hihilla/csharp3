@@ -31,9 +31,11 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public ValueOutOfRangeException(string i_Message)
-            : base(i_Message)
+        public ValueOutOfRangeException(float i_MinValue, float i_MaxValue, float i_OutOfBoundValue)
+            : base(string.Format("Input {0} is out of bounds: {1} - {2}", i_OutOfBoundValue, i_MinValue, i_MaxValue))
         {
+            m_MinValue = i_MinValue;
+            m_MaxValue = i_MaxValue;
         }
     }
 }

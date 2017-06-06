@@ -17,14 +17,10 @@ namespace Ex03.GarageLogic
 
         public void FillAir(float i_AirToAdd)
         {
-            if (i_AirToAdd <= 0)
-            {
-                throw new ValueOutOfRangeException("Too little air");
-            }
             float newAirPressure = i_AirToAdd + m_CurrentAirPressure;
-            if (newAirPressure > m_MaxAirPressure)
+            if ((i_AirToAdd <= 0) || (newAirPressure > m_MaxAirPressure))
             {
-                throw new ValueOutOfRangeException("Too much air");
+                throw new ValueOutOfRangeException(0, m_MaxAirPressure, i_AirToAdd);
             }
             else
             {
