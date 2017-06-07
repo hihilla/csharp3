@@ -18,49 +18,7 @@ namespace Ex03.GarageLogic
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
-
-        public override string ToString()
-        {
-            StringBuilder vehicleString = new StringBuilder();
-
-            vehicleString.Append("Licence number: ");
-            vehicleString.Append(m_LicenceNumber);
-            vehicleString.Append("\n");
-
-            vehicleString.Append("Model name: ");
-            vehicleString.Append(m_ModelName);
-            vehicleString.Append("\n");
-
-            vehicleString.Append("Owner's name: ");
-            vehicleString.Append(m_OwnerName);
-            vehicleString.Append("\n");
-
-            vehicleString.Append("State in garage: ");
-            vehicleString.Append(m_VehicleState);
-            vehicleString.Append("\n");
-
-            foreach (Weel wheel in m_Weels)
-            {
-                vehicleString.Append(wheel.ToString());
-                vehicleString.Append("\n");
-            }
-
-            if (this.m_EnergyType == e_EnergyType.Fuel)
-            {
-                vehicleString.Append(this.m_FuelType);
-            }
-            else
-            {
-                vehicleString.Append(this.m_EnergyType);
-            }
-
-            vehicleString.Append(" level is: ");
-            vehicleString.Append(this.m_CurrentEnergyLevel / this.m_MaximalEnergyLevel);
-            vehicleString.Append("\n");
-
-            return vehicleString.ToString();
-        }
-
+        
         public enum e_EnergyType
         {
             Electric,
@@ -164,5 +122,46 @@ namespace Ex03.GarageLogic
             this.m_CurrentEnergyLevel = newAmount;
         }
 
+        public override string ToString()
+        {
+            StringBuilder vehicleString = new StringBuilder();
+
+            vehicleString.Append("Licence number: ");
+            vehicleString.Append(m_LicenceNumber);
+            vehicleString.Append("\n");
+
+            vehicleString.Append("Model name: ");
+            vehicleString.Append(m_ModelName);
+            vehicleString.Append("\n");
+
+            vehicleString.Append("Owner's name: ");
+            vehicleString.Append(m_OwnerName);
+            vehicleString.Append("\n");
+
+            vehicleString.Append("State in garage: ");
+            vehicleString.Append(m_VehicleState);
+            vehicleString.Append("\n");
+
+            foreach (Weel wheel in m_Weels)
+            {
+                vehicleString.Append(wheel.ToString());
+                vehicleString.Append("\n");
+            }
+
+            if (this.m_EnergyType == e_EnergyType.Fuel)
+            {
+                vehicleString.Append(this.m_FuelType);
+            }
+            else
+            {
+                vehicleString.Append(this.m_EnergyType);
+            }
+
+            vehicleString.Append("Energy level is: ");
+            vehicleString.Append(this.m_CurrentEnergyLevel / this.m_MaximalEnergyLevel);
+            vehicleString.Append("\n");
+
+            return vehicleString.ToString();
+        }
     }
 }

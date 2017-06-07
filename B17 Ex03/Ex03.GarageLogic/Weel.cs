@@ -14,7 +14,8 @@ namespace Ex03.GarageLogic
         {
             StringBuilder wheelString = new StringBuilder;
 
-            wheelString.AppendFormat("Wheel Manufacturer: {0}, Wheel pressure: {1}", this.ManufacturerName, this.CurrentAirPressure);
+            wheelString.AppendFormat("Wheel Manufacturer: {0}, Current wheel pressure: {1}, Maximal wheel pressure {2}", 
+                this.ManufacturerName, this.CurrentAirPressure, this.m_MaxAirPressure);
 
             return wheelString.ToString();
         }

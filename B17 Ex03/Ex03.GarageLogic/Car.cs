@@ -20,8 +20,8 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             StringBuilder carToString = new StringBuilder();
-
-            carToString.AppendFormat("The car has {0} doors and its color is: {1}", this.m_NumberOfDoors, this.m_CarColor);
+            carToString.Append("Car\n");
+            carToString.AppendFormat("The car has {0} doors\nColor: {1}", this.m_NumberOfDoors, this.m_CarColor);
             carToString.Append(base.ToString());
 
             return null;

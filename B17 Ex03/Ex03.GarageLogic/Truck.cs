@@ -12,17 +12,18 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             StringBuilder truckToString = new StringBuilder();
+            truckToString.Append("Truck\n");
 
             if (m_IsCarryingHazardousMaterials)
             {
-                truckToString.Append("This truck carries hazardous materials");
+                truckToString.Append("This truck carries hazardous materials\n");
             }
             else
             {
-                truckToString.Append("This truck doesn't carry any hazardous materials");
+                truckToString.Append("This truck doesn't carry any hazardous materials\n");
             }
 
-            truckToString.AppendFormat("The truck maximux carrying weight is {0}", m_MaxCarryingWeight);
+            truckToString.AppendFormat("Maximux carrying weight: {0}\n", m_MaxCarryingWeight);
             truckToString.Append(base.ToString());
 
             return truckToString.ToString();

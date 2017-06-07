@@ -19,8 +19,9 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             StringBuilder motorcycleToString = new StringBuilder();
+            motorcycleToString.Append("Motorcycle\n");
             
-            motorcycleToString.AppendFormat("The motorcycle has licence type {0} and engine capacity of {1} CCM", this.m_LicenceType, this.m_EngineCapacity);
+            motorcycleToString.AppendFormat("Licence type :{0}\nEngine capacity: {1} CCM\n", this.m_LicenceType, this.m_EngineCapacity);
             motorcycleToString.Append(base.ToString());
 
             return motorcycleToString.ToString();
