@@ -67,14 +67,20 @@ namespace Ex03.GarageLogic
                     i_ManufacturerName, maxWheelAirPressure, numberOfWheels, i_CarColor, i_NumOfDoors);
         }
 
-        public Truck CreateNewTruck()
+        public Truck CreateNewTruck(string i_ModelName, string i_LicenceNumber,
+                                    float i_CurrentEnergyLevel, string i_OwnerName, 
+                                    string i_OwnerPhoneNumber, string i_ManufacturerName,
+                                    bool i_IsCarryingHazardousMaterials, float i_MaxCarryingWeight)
         {
             int numberOfWheels = 12;
             float maxWheelAirPressure = 32;
             Vehicle.e_EnergyType energyType = Vehicle.e_EnergyType.Fuel;
             Vehicle.e_FuelType fuelType = Vehicle.e_FuelType.Octan96;
             float tankSize = 135F;
-            return new Truck();
+            return new Truck(i_ModelName, i_LicenceNumber, energyType,fuelType,
+                    i_CurrentEnergyLevel, tankSize, i_OwnerName, i_OwnerPhoneNumber,
+                    i_ManufacturerName, maxWheelAirPressure, numberOfWheels, i_IsCarryingHazardousMaterials,
+                    i_MaxCarryingWeight);
         }
     }
 }
