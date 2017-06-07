@@ -1,25 +1,14 @@
 ﻿using System.Text;
 using System.Collections.Generic;
 
-
 namespace Ex03.GarageLogic
 {
-    class Wheel
+    internal class Wheel
     {
         private string m_ManufacturerName;
         private float m_CurrentAirPressure;
         private float m_MaxAirPressure;
-
-        public override string ToString()
-        {
-            StringBuilder wheelString = new StringBuilder();
-
-            wheelString.AppendFormat("Wheel Manufacturer: {0}, Current wheel pressure: {1}, Maximal wheel pressure {2}", 
-                this.ManufacturerName, this.CurrentAirPressure, this.m_MaxAirPressure);
-
-            return wheelString.ToString();
-        }
-
+        
         public string ManufacturerName
         {
             get
@@ -66,7 +55,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public static List<Wheel> GenerateWeels(string i_ManufacturerName, float i_MaxAirPressure, int i_NumberOfWeels)
+        public static List<Wheel> GenerateWheels(string i_ManufacturerName, float i_MaxAirPressure, int i_NumberOfWeels)
         {
             List<Wheel> weels = new List<Wheel>();
             for (int i = 0; i < i_NumberOfWeels; i++)
@@ -74,6 +63,16 @@ namespace Ex03.GarageLogic
                 weels.Add(new Wheel(i_ManufacturerName, i_MaxAirPressure));
             }
             return weels;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder wheelString = new StringBuilder();
+
+            wheelString.AppendFormat("Wheel Manufacturer: {0}, Current wheel pressure: {1}, Maximal wheel pressure {2}",
+                this.ManufacturerName, this.CurrentAirPressure, this.m_MaxAirPressure);
+
+            return wheelString.ToString();
         }
     }
 }
