@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Ex03.GarageLogic
 {
-    class Weel
+    class Wheel
     {
         private string m_ManufacturerName;
         private float m_CurrentAirPressure;
@@ -44,7 +44,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public Weel(string i_ManufacturerName, float i_MaxAirPressure)
+        public Wheel(string i_ManufacturerName, float i_MaxAirPressure)
         {
             // creating a new filled wheel
             this.m_ManufacturerName = i_ManufacturerName;
@@ -66,12 +66,12 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public static List<Weel> GenerateWeels(string i_ManufacturerName, float i_MaxAirPressure, int i_NumberOfWeels)
+        public static List<Wheel> GenerateWeels(string i_ManufacturerName, float i_MaxAirPressure, int i_NumberOfWeels)
         {
-            List<Weel> weels = new List<Weel>();
+            List<Wheel> weels = new List<Wheel>();
             for (int i = 0; i < i_NumberOfWeels; i++)
             {
-                weels.Add(new Weel(i_ManufacturerName, i_MaxAirPressure));
+                weels.Add(new Wheel(i_ManufacturerName, i_MaxAirPressure));
             }
             return weels;
         }

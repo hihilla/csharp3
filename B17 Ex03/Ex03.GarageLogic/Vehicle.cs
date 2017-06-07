@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
         protected e_FuelType m_FuelType;
         protected float m_CurrentEnergyLevel;
         protected float m_MaximalEnergyLevel;
-        protected List<Weel> m_Weels;
+        protected List<Wheel> m_Weels;
         // information for garage
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
@@ -53,7 +53,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public List<Weel> Weels
+        public List<Wheel> Weels
         {
             get
             {
@@ -142,7 +142,7 @@ namespace Ex03.GarageLogic
             vehicleString.Append(m_VehicleState);
             vehicleString.Append("\n");
 
-            foreach (Weel wheel in m_Weels)
+            foreach (Wheel wheel in m_Weels)
             {
                 vehicleString.Append(wheel.ToString());
                 vehicleString.Append("\n");
