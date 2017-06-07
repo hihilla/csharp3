@@ -152,10 +152,6 @@ namespace Ex03.GarageLogic
             {
                 vehicleString.Append(this.m_FuelType);
             }
-            else
-            {
-                vehicleString.Append(this.m_EnergyType);
-            }
 
             vehicleString.Append("Energy level is: ");
             vehicleString.Append(this.m_CurrentEnergyLevel / this.m_MaximalEnergyLevel);
