@@ -9,8 +9,8 @@ namespace Ex03.GarageLogic
     {
         protected string m_ModelName;
         protected string m_LicenceNumber;
-        protected Nullable<e_EnergyType> m_EnergyType;
-        protected e_FuelType m_FuelType;
+        protected e_EnergyType m_EnergyType;
+        protected Nullable<e_FuelType> m_FuelType;
         protected float m_CurrentEnergyLevel;
         protected float m_MaximalEnergyLevel;
         protected List<Wheel> m_Wheels;
@@ -27,7 +27,6 @@ namespace Ex03.GarageLogic
 
         public enum e_FuelType
         {
-            none,
             Octan95,
             Octan96,
             Octan98,
@@ -70,7 +69,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public Nullable<e_EnergyType> EnergyType
+        public e_EnergyType EnergyType
         {
             get
             {
@@ -78,7 +77,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public e_FuelType FuelType
+        public Nullable<e_FuelType> FuelType
         {
             get
             {
@@ -103,7 +102,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        protected Vehicle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, e_FuelType i_FuelType,
+        protected Vehicle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
                             float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
                             string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels)
         {
@@ -118,7 +117,7 @@ namespace Ex03.GarageLogic
             this.m_Wheels = Wheel.GenerateWheels(i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels);
         }
 
-        public void AddEnergy(float i_EnergyToAdd, Nullable<e_EnergyType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none)
+        public void AddEnergy(float i_EnergyToAdd, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType = null)
         {
             if (i_EnergyType != this.m_EnergyType)
             {

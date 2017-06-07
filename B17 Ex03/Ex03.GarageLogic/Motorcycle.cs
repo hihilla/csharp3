@@ -16,7 +16,7 @@ namespace Ex03.GarageLogic
             B1
         }
 
-        public Motorcycle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, e_FuelType i_FuelType,
+        public Motorcycle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
                           float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
                           string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels, e_LicenceType i_LicenceType,
                           int i_EngineCapacity) 
