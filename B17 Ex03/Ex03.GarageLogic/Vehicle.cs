@@ -39,12 +39,17 @@ namespace Ex03.GarageLogic
             vehicleString.Append(m_VehicleState);
             vehicleString.Append("\n");
 
-            vehicleString.Append("Energy state: ");// put together!!!!!! with the next one oops
-            vehicleString.Append(m_CurrentEnergyLevel / m_MaximalEnergyLevel);
-            vehicleString.Append("\n");
+            if (this.m_EnergyType == e_EnergyType.Fuel)
+            {
+                vehicleString.Append(this.m_FuelType);
+            }
+            else
+            {
+                vehicleString.Append(this.m_EnergyType);
+            }
 
-            vehicleString.Append("Energy source state: ");
-            vehicleString.Append(m_EnergyType.ToString()); //AM I OK?????????????????
+            vehicleString.Append(" level is: ");
+            vehicleString.Append(this.m_CurrentEnergyLevel / this.m_MaximalEnergyLevel);
             vehicleString.Append("\n");
 
             return vehicleString.ToString();

@@ -1,4 +1,6 @@
 ﻿
+using System.Text;
+
 namespace Ex03.GarageLogic
 {
     class Weel
@@ -6,6 +8,13 @@ namespace Ex03.GarageLogic
         private string m_ManufacturerName;
         private float m_CurrentAirPressure;
         private float m_MaxAirPressure;
+
+        public override string ToString()
+        {
+            StringBuilder wheelsState = new StringBuilder();
+
+            wheelsState.Append("Air pressure")
+        }
 
         public float MaxAirPressure
         {
