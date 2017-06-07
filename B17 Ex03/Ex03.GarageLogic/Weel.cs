@@ -56,7 +56,8 @@ namespace Ex03.GarageLogic
             float newAirPressure = i_AirToAdd + m_CurrentAirPressure;
             if ((i_AirToAdd <= 0) || (newAirPressure > m_MaxAirPressure))
             {
-                throw new ValueOutOfRangeException(0, m_MaxAirPressure, i_AirToAdd);
+                float wrongValue = (i_AirToAdd < 0) ? i_AirToAdd : newAirPressure;
+                throw new ValueOutOfRangeException(0, m_MaxAirPressure, wrongValue);
             }
             else
             {
