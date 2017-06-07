@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ex03.GarageLogic
 {
-    class Wheel
+    internal class Wheel
     {
         private string m_ManufacturerName;
         private float m_CurrentAirPressure;

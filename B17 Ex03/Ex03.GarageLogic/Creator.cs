@@ -1,7 +1,7 @@
 ﻿
 namespace Ex03.GarageLogic
 {
-    class Creator
+    internal class Creator
     {
         Garage m_Garage = new Garage();
 
