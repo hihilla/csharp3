@@ -15,19 +15,5 @@ namespace Ex03.GarageLogic
             Black,
             Blue
         };
-
-        public override void AddEnergy(float i_EnergyToAdd, Nullable<e_EnergyType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none)
-        {
-            
-            float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
-            if ((i_EnergyToAdd < 0) || (newAmount > m_MaximalEnergyLevel))
-            {
-                throw new ValueOutOfRangeException(0, m_MaximalEnergyLevel, i_EnergyToAdd);
-            }
-            else
-            {
-
-            }
-        }
     }
 }

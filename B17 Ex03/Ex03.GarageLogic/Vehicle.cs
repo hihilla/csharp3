@@ -77,8 +77,6 @@ namespace Ex03.GarageLogic
             Paid
         };
 
-        abstract public void AddEnergy(float i_EnergyToAdd, Nullable<e_EnergyType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none);
-
         public e_VehicleState VehicleState
         {
             get
@@ -141,5 +139,25 @@ namespace Ex03.GarageLogic
                 return m_CurrentEnergyLevel;
             }
         }
+
+        public void AddEnergy(float i_EnergyToAdd, Nullable<e_EnergyType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none)
+        {
+            if (i_EnergyType != this.m_EnergyType)
+            {
+                throw new ArgumentException("Wrong Energy Type!");
+            }
+            if (i_FuelType != this.FuelType)
+            {
+                throw new ArgumentException("Wrong Fuel Type!");
+            }
+            float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
+            if ((i_EnergyToAdd < 0) || (newAmount > m_MaximalEnergyLevel))
+            {
+                float wrongValue = (i_EnergyToAdd < 0) ? i_EnergyToAdd : newAmount;
+                throw new ValueOutOfRangeException(0, m_MaximalEnergyLevel, wrongValue);
+            }
+            this.m_CurrentEnergyLevel = newAmount;
+        }
+
     }
 }
