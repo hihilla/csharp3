@@ -37,24 +37,34 @@ namespace Ex03.GarageLogic
                           i_EngineCapacity);
         }
 
-        public Car CreateNewRegularCar()
+        public Car CreateNewRegularCar(string i_ModelName, string i_LicenceNumber, 
+                                        float i_CurrentEnergyLevel, string i_OwnerName, 
+                                        string i_OwnerPhoneNumber, string i_ManufacturerName,
+                                        Car.e_Color i_CarColor, int i_NumOfDoors)
         {
             int numberOfWheels = 4;
             float maxWheelAirPressure = 30;
             Vehicle.e_EnergyType energyType = Vehicle.e_EnergyType.Fuel;
             Vehicle.e_FuelType fuelType = Vehicle.e_FuelType.Octan98;
             float tankSize = 42F;
-            return new Car();
+            return new Car(i_ModelName, i_LicenceNumber, energyType, fuelType,
+                    i_CurrentEnergyLevel, tankSize, i_OwnerName, i_OwnerPhoneNumber,
+                    i_ManufacturerName, maxWheelAirPressure, numberOfWheels, i_CarColor, i_NumOfDoors);
         }
 
-        public Car CreateNewElectricCar()
+        public Car CreateNewElectricCar(string i_ModelName, string i_LicenceNumber,
+                                        float i_CurrentEnergyLevel, string i_OwnerName,
+                                        string i_OwnerPhoneNumber, string i_ManufacturerName,
+                                        Car.e_Color i_CarColor, int i_NumOfDoors)
         {
             int numberOfWheels = 4;
             float maxWheelAirPressure = 30;
             Vehicle.e_EnergyType energyType = Vehicle.e_EnergyType.Electric;
             Vehicle.e_FuelType fuelType = Vehicle.e_FuelType.none;
             float batteryTime = 2.5F;
-            return new Car();
+            return new Car(i_ModelName, i_LicenceNumber, energyType, fuelType,
+                    i_CurrentEnergyLevel, batteryTime, i_OwnerName, i_OwnerPhoneNumber,
+                    i_ManufacturerName, maxWheelAirPressure, numberOfWheels, i_CarColor, i_NumOfDoors);
         }
 
         public Truck CreateNewTruck()
