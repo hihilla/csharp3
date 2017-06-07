@@ -104,8 +104,8 @@ namespace Ex03.GarageLogic
         }
 
         protected Vehicle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, e_FuelType i_FuelType,
-            float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
-            string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels)
+                            float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
+                            string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels)
         {
             this.m_ModelName = i_ModelName;
             this.m_LicenceNumber = i_LicenceNumber;
@@ -115,7 +115,7 @@ namespace Ex03.GarageLogic
             this.m_MaximalEnergyLevel = i_MaximalEnergyLevel;
             this.m_OwnerName = i_OwnerName;
             this.m_OwnerPhoneNumber = i_OwnerPhoneNumber;
-            this.m_Wheels = Wheel.GenerateWeels(i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels);
+            this.m_Wheels = Wheel.GenerateWheels(i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels);
         }
 
         public void AddEnergy(float i_EnergyToAdd, Nullable<e_EnergyType> i_EnergyType = null, e_FuelType i_FuelType = e_FuelType.none)
