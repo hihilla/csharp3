@@ -29,5 +29,15 @@ namespace Ex03.GarageLogic
             return truckToString.ToString();
         }
 
+        public Truck(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, e_FuelType i_FuelType,
+          float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
+          string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels, bool i_IsCarryingHazardousMaterials,
+          float i_MaxCarryingWeight) : base(i_ModelName, i_LicenceNumber, i_EnergyType, i_FuelType, i_CurrentEnergyLevel, i_MaximalEnergyLevel,
+            i_OwnerName, i_OwnerPhoneNumber, i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels)
+        {
+            this.m_IsCarryingHazardousMaterials = i_IsCarryingHazardousMaterials;
+            this.m_MaxCarryingWeight = i_MaxCarryingWeight;
+        }
+
     }
 }

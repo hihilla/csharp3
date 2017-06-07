@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
         private e_Color m_CarColor;
         private int m_NumberOfDoors; // {2, 3, 4, 5}
 
-        enum e_Color
+        public enum e_Color
         {
             Yellow,
             White,
@@ -25,6 +25,16 @@ namespace Ex03.GarageLogic
             carToString.Append(base.ToString());
 
             return null;
+        }
+
+        public Car(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, e_FuelType i_FuelType,
+            float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
+            string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels, e_Color i_CarColor, int i_NumOfDoors) :
+            base(i_ModelName, i_LicenceNumber, i_EnergyType, i_FuelType, i_CurrentEnergyLevel, i_MaximalEnergyLevel,
+            i_OwnerName, i_OwnerPhoneNumber, i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels)
+        {
+            this.m_CarColor = i_CarColor;
+            this.m_NumberOfDoors = i_NumOfDoors;
         }
     }
 }
