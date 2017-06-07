@@ -12,9 +12,19 @@ namespace Ex03.GarageLogic
 
         public override string ToString()
         {
-            StringBuilder wheelsState = new StringBuilder();
+            StringBuilder wheelString = new StringBuilder;
 
-            wheelsState.Append("Air pressure")
+            wheelString.AppendFormat("Wheel Manufacturer: {0}, Wheel pressure: {1}", this.ManufacturerName, this.CurrentAirPressure);
+
+            return wheelString.ToString();
+        }
+
+        public string ManufacturerName
+        {
+            get
+            {
+                return m_ManufacturerName;
+            }
         }
 
         public float MaxAirPressure
@@ -39,7 +49,7 @@ namespace Ex03.GarageLogic
             this.m_ManufacturerName = i_ManufacturerName;
             this.m_CurrentAirPressure = i_MaxAirPressure;
             this.m_MaxAirPressure = i_MaxAirPressure;
-    }
+        }
 
         public void FillAir(float i_AirToAdd)
         {

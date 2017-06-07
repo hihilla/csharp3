@@ -39,6 +39,12 @@ namespace Ex03.GarageLogic
             vehicleString.Append(m_VehicleState);
             vehicleString.Append("\n");
 
+            foreach (Weel wheel in m_Weels)
+            {
+                vehicleString.Append(wheel.ToString());
+                vehicleString.Append("\n");
+            }
+
             if (this.m_EnergyType == e_EnergyType.Fuel)
             {
                 vehicleString.Append(this.m_FuelType);
@@ -97,7 +103,6 @@ namespace Ex03.GarageLogic
             }
 
         }
-
 
         public string LicenceNumber
         {

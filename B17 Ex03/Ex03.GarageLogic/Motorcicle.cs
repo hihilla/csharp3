@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Ex03.GarageLogic
 {
@@ -14,5 +15,15 @@ namespace Ex03.GarageLogic
             A2,
             B1
         };
+
+        public override string ToString()
+        {
+            StringBuilder motorcycleToString = new StringBuilder();
+            
+            motorcycleToString.AppendFormat("The motorcycle has licence type {0} and engine capacity of {1} CCM", this.m_LicenceType, this.m_EngineCapacity);
+            motorcycleToString.Append(base.ToString());
+
+            return motorcycleToString.ToString();
+        }
     }
 }
