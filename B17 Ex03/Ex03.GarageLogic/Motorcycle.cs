@@ -8,7 +8,7 @@ namespace Ex03.GarageLogic
         private e_LicenceType m_LicenceType;
         private int m_EngineCapacity;
 
-        enum e_LicenceType
+        public enum e_LicenceType
         {
             A,
             AB,
@@ -25,6 +25,16 @@ namespace Ex03.GarageLogic
             motorcycleToString.Append(base.ToString());
 
             return motorcycleToString.ToString();
+        }
+
+        public Motorcycle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, e_FuelType i_FuelType,
+            float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
+            string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels, e_LicenceType i_LicenceType,
+            int i_EngineCapacity) : base(i_ModelName, i_LicenceNumber, i_EnergyType, i_FuelType, i_CurrentEnergyLevel,
+            i_MaximalEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels)
+        {
+            this.m_LicenceType = i_LicenceType;
+            this.m_EngineCapacity = i_EngineCapacity;
         }
     }
 }
