@@ -40,31 +40,31 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>Car.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Ex03.GarageLogic.Motorcicle">
+  <Class Name="Ex03.GarageLogic.Motorcycle">
     <Position X="3.25" Y="10.75" Width="2.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="Ex03.GarageLogic.Motorcicle.e_LicenceType">
+      <Enum Name="Ex03.GarageLogic.Motorcycle.e_LicenceType">
         <TypeIdentifier>
-          <NewMemberFileName>Motorcicle.cs</NewMemberFileName>
+          <NewMemberFileName>Motorcycle.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
-      <FileName>Motorcicle.cs</FileName>
+      <HashCode>AAAAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Motorcycle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Truck">
     <Position X="6.5" Y="10.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAACAAAAA=</HashCode>
       <FileName>Truck.cs</FileName>
     </TypeIdentifier>
   </Class>
