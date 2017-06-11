@@ -55,6 +55,19 @@ namespace Ex03.GarageLogic
             return licenceNumbers.ToString();
         }
 
+        public string DisplayVehicleDetails(string i_VehicleLicence)
+        {
+            Vehicle vehicle;
+            if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
+            {
+                return vehicle.ToString();
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
+            }
+        }
+
         public void ChangeVehicleState(string i_VehicleLicence, Vehicle.e_VehicleState i_VehicleState)
         {
             Vehicle vehicle;

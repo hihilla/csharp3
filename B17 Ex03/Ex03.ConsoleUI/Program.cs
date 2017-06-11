@@ -172,7 +172,9 @@ namespace Ex03.ConsoleUI
 
         private static void displayVehicleDetails(GarageLogic.Garage i_Garage)
         {
-
+            Console.WriteLine("Please enter the vehicle licence number");
+            string licenceNumber = Console.ReadLine();
+            Console.WriteLine(i_Garage.DisplayVehicleDetails(licenceNumber));
         }
     }
 }
