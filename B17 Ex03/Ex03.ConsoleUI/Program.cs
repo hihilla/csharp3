@@ -11,9 +11,19 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Adar and Hilla rock!");
         }
 
-        private static void askUserForInstructions()
+        private static void manageGarage()
         {
             GarageLogic.Garage garage = new GarageLogic.Garage();
+            char exitChar;
+            do
+            {
+                askUserForInstructions(garage);
+                Console.WriteLine("Do you want to exit garage? <Y/N>");
+            } while (char.TryParse(Console.ReadLine(), out exitChar) && (exitChar != 'N'));
+        }
+
+        private static void askUserForInstructions(GarageLogic.Garage i_Garage)
+        {
             Console.WriteLine("Hello Garage manager. What would you like to do?");
             Console.WriteLine("Press 1 to insert new vehicle to garage.");
             Console.WriteLine("Press 2 to see licence number of vehicles in garage.");
@@ -33,25 +43,25 @@ namespace Ex03.ConsoleUI
             switch (chosenAction)
             {
                 case 1:
-                    insertNewVehicle(garage);
+                    insertNewVehicle(i_Garage);
                     break;
                 case 2:
-                    printLicenceNumbersOfVehicles(garage);
+                    printLicenceNumbersOfVehicles(i_Garage);
                     break;
                 case 3:
-                    changeState(garage);
+                    changeState(i_Garage);
                     break;
                 case 4:
-                    fillAirInVehicle(garage);
+                    fillAirInVehicle(i_Garage);
                     break;
                 case 5:
-                    fillFuel(garage);
+                    fillFuel(i_Garage);
                     break;
                 case 6:
-                    fillElectricity(garage);
+                    fillElectricity(i_Garage);
                     break;
                 case 7:
-                    displayVehicleDetails(garage);
+                    displayVehicleDetails(i_Garage);
                     break;
             }
         }
