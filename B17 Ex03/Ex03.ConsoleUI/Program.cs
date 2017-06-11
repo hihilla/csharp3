@@ -131,7 +131,23 @@ namespace Ex03.ConsoleUI
         
         private static void insertNewFeuledCar(string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
         {
-            Console.WriteLine("Enter number of doors <2-5>");
+            
+            int numberOfWheels = 4;
+            float maxAirPressure = 30;
+
+            Console.WriteLine("Enter remain fuel level: ");
+            string remainFuel = Console.ReadLine();
+            float remainFuelAsNumber;
+
+            while (!float.TryParse(remainFuel, out remainFuelAsNumber) || (remainFuelAsNumber < 0 || remainFuelAsNumber > 42))
+            {
+                Console.WriteLine("Invalid fuel level, insert number between 0 - 42");
+                remainFuel = Console.ReadLine();
+            }
+
+            Console.WriteLine("Enter number of doors: ");
+            string userNumberOfDoors = Console.ReadLine();
+
             int numberOfDoors;
 
             while (!int.TryParse(Console.ReadLine(), out numberOfDoors))
@@ -161,6 +177,27 @@ namespace Ex03.ConsoleUI
                 case 4:
                     chosenColor = GarageLogic.Car.e_Color.Blue;
                     break;
+            }
+
+            Console.WriteLine("Insert manufactorors for wheel #1 (and hit enter), #2 (hit enter), #3 (hit enter), #4 (hit enter), with respect to that order: ");
+            string[] manufactororsNames = new string[numberOfWheels]; 
+            for (int i = 0; i < manufactororsNames.Length; i++)
+            {
+                manufactororsNames[i] = Console.ReadLine();
+            }
+
+            Console.WriteLine("Insert current air pressure in each wheel, hit enter for every wheel");
+            string[] userCurrentPressureInWheels = new string[numberOfWheels];
+            float[] currentPressureInWheels = new float[4];
+            for (int i = 0; i < userCurrentPressureInWheels.Length; i++)
+            {
+                userCurrentPressureInWheels[i] = Console.ReadLine();
+                while (!float.TryParse(userCurrentPressureInWheels[i], out currentPressureInWheels[i]) || (currentPressureInWheels[i] < 0 || currentPressureInWheels[i] > maxAirPressure))
+                {
+                    Console.WriteLine("Invalid air pressure, insert a number between 0 and 30"); //HARDCODEDDDDDDDDDDDD
+                    userCurrentPressureInWheels[i] = Console.ReadLine();
+                }
+
             }
 
 
