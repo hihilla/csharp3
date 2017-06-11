@@ -8,9 +8,14 @@ namespace Ex03.GarageLogic
         private e_LicenceType m_LicenceType;
         private int m_EngineCapacity;
 
+        public Motorcycle(e_EnergyType i_EnergyType, e_FuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
+            : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
+        {
+        }
+
         //public Motorcycle(e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType, float i_MaximalEnergyLevel,
-          //                                       float i_MaxAirPressure, int i_NumOfWheels) 
-            //                          : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
+        //                                       float i_MaxAirPressure, int i_NumOfWheels) 
+        //                          : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
         //{
         //}
 
