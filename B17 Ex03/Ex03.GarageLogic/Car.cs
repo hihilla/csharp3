@@ -21,6 +21,13 @@
             this.m_numberOfDoors = i_NumOfDoors;
         }
 
+        public string NeededInputs()
+        {
+            string neededInputs = "Needed: number of doors (2-5) and color of car {white, black, yellow, blue}";
+
+            return neededInputs;
+        }
+
         public enum e_Color
         {
             Yellow,

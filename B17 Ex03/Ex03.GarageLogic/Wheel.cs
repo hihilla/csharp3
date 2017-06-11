@@ -82,8 +82,6 @@ namespace Ex03.GarageLogic
             return weels;
         }
 
-
-
         public override string ToString()
         {
             StringBuilder wheelString = new StringBuilder();
