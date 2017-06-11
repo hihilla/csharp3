@@ -33,60 +33,60 @@ namespace Ex03.ConsoleUI
             switch (chosenAction)
             {
                 case 1:
-                    insertNewVehicle();
+                    insertNewVehicle(garage);
                     break;
                 case 2:
-                    printLicenceNumbersOfVehicles();
+                    printLicenceNumbersOfVehicles(garage);
                     break;
                 case 3:
-                    changeState();
+                    changeState(garage);
                     break;
                 case 4:
-                    fillAirInVehicle();
+                    fillAirInVehicle(garage);
                     break;
                 case 5:
-                    fillFuel();
+                    fillFuel(garage);
                     break;
                 case 6:
-                    fillElectricity();
+                    fillElectricity(garage);
                     break;
                 case 7:
-                    displayVehicleDetails();
+                    displayVehicleDetails(garage);
                     break;
             }
         }
 
-        private static void insertNewVehicle()
+        private static void insertNewVehicle(GarageLogic.Garage i_Garage)
         {
 
         }
 
-        private static void printLicenceNumbersOfVehicles()
+        private static void printLicenceNumbersOfVehicles(GarageLogic.Garage i_Garage)
         {
 
         }
 
-        private static void changeState()
+        private static void changeState(GarageLogic.Garage i_Garage)
         {
 
         }
 
-        private static void fillAirInVehicle()
+        private static void fillAirInVehicle(GarageLogic.Garage i_Garage)
         {
 
         }
 
-        private static void fillFuel()
+        private static void fillFuel(GarageLogic.Garage i_Garage)
         {
 
         }
 
-        private static void fillElectricity()
+        private static void fillElectricity(GarageLogic.Garage i_Garage)
         {
 
         }
 
-        private static void displayVehicleDetails()
+        private static void displayVehicleDetails(GarageLogic.Garage i_Garage)
         {
 
         }
