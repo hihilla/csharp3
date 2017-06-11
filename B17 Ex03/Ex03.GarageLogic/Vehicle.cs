@@ -71,7 +71,7 @@ namespace Ex03.GarageLogic
 
         protected Vehicle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
                             float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
-                            string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels)
+                            string[] i_ManufacturerName, float[] i_CurrentAirPressure, float i_MaxAirPressure, int i_NumOfWheels)
         {
             this.m_ModelName = i_ModelName;
             this.m_LicenceNumber = i_LicenceNumber;
@@ -81,21 +81,9 @@ namespace Ex03.GarageLogic
             this.m_MaximalEnergyLevel = i_MaximalEnergyLevel;
             this.m_OwnerName = i_OwnerName;
             this.m_OwnerPhoneNumber = i_OwnerPhoneNumber;
-            this.m_Wheels = Wheel.GenerateFilledDupsWheels(i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels);
-        }
-
-        protected Vehicle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
-                            float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
-                            string[] i_ManufacturerName, float[] i_CurrentAirPressure,  float[] i_MaxAirPressure, int i_NumOfWheels) 
-            : this (i_ModelName, i_LicenceNumber, i_EnergyType, i_FuelType,
-                            i_CurrentEnergyLevel, i_MaximalEnergyLevel, i_OwnerName, i_OwnerPhoneNumber,
-                            i_ManufacturerName[0], i_MaxAirPressure[0], i_NumOfWheels)
-        {
-
             this.m_Wheels = Wheel.GenerateDifWheels(i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure, i_NumOfWheels);
         }
-
-
+        
         public enum e_EnergyType
         {
             Electric,
