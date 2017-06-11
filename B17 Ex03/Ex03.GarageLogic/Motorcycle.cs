@@ -10,10 +10,10 @@ namespace Ex03.GarageLogic
 
         public Motorcycle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
                           float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
-                          string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels, e_LicenceType i_LicenceType,
+                          string[] i_ManufacturerName, float[] i_CurrentAirPressure, float i_MaxAirPressure, int i_NumOfWheels, e_LicenceType i_LicenceType,
                           int i_EngineCapacity) 
             : base(i_ModelName, i_LicenceNumber, i_EnergyType, i_FuelType, i_CurrentEnergyLevel,
-                    i_MaximalEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels)
+                    i_MaximalEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure, i_NumOfWheels)
         {
             this.m_LicenceType = i_LicenceType;
             this.m_EngineCapacity = i_EngineCapacity;

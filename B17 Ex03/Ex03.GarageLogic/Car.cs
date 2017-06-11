@@ -17,13 +17,11 @@
             float i_MaximalEnergyLevel, 
             string i_OwnerName, 
             string i_OwnerPhoneNumber,
-            string i_ManufacturerName, 
-            float i_MaxAirPressure, 
-            int i_NumOfWheels, 
+            string[] i_ManufacturerName, float[] i_CurrentAirPressure, float i_MaxAirPressure, int i_NumOfWheels, 
             e_Color i_CarColor, 
             int i_NumOfDoors) 
             : base(i_ModelName, i_LicenceNumber, i_EnergyType, i_FuelType, i_CurrentEnergyLevel, i_MaximalEnergyLevel,
-                    i_OwnerName, i_OwnerPhoneNumber, i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels)
+                    i_OwnerName, i_OwnerPhoneNumber, i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure, i_NumOfWheels)
         {
             this.m_carColor = i_CarColor;
             this.m_numberOfDoors = i_NumOfDoors;
