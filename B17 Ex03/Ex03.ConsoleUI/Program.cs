@@ -179,6 +179,41 @@ namespace Ex03.ConsoleUI
                                        chosenColor, numberOfDoors,  i_IsElectric);
         }
 
+        private static GarageLogic.Motorcycle newNotorcycle(bool i_IsElectric,
+            string i_ModelName, string i_LicenseNumber, float i_CurrentEnergyLevel,
+            string i_OwnerName, string i_OwnerPhoneNumber,
+            string[] i_Manufacturers, float[] i_CurrAirPressure)
+        {
+            Console.WriteLine("Enter Engine Capacity in CCM");
+            int engineCapacity;
+            while (!int.TryParse(Console.ReadLine(), out engineCapacity) || engineCapacity < 0)
+            {
+                Console.WriteLine("Invalid engine capacity, please enter a non negative number");
+            }
+
+            Console.WriteLine("For licence type A enter 1, for licence type AB enter 2, for licence type A2 enter 3, for licence type B1 enter 4");
+            int carColor;
+            while (!int.TryParse(Console.ReadLine(), out carColor) || !(carColor >= 1 && carColor <= 4))
+            {
+                Console.WriteLine("Invalid color. please choose valid color (1 - 4");
+            }
+
+            GarageLogic.Motorcycle.e_LicenceType licenceType = GarageLogic.Motorcycle.e_LicenceType.A;
+            switch (carColor)
+            {
+                case 2:
+                    licenceType = GarageLogic.Motorcycle.e_LicenceType.AB;
+                    break;
+                case 3:
+                    licenceType = GarageLogic.Motorcycle.e_LicenceType.A2;
+                    break;
+                case 4:
+                    licenceType = GarageLogic.Motorcycle.e_LicenceType.B1;
+                    break;
+            }
+
+            return GarageLogic.Creator.CreateNewMotorcycle(i_ModelName, i_LicenseNumber, i_CurrentEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_Manufacturers, i_CurrAirPressure, licenceType, engineCapacity, i_IsElectric);
+        }
 
         private static void printLicenceNumbersOfVehicles(GarageLogic.Garage i_Garage)
         {
