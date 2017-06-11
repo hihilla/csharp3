@@ -5,8 +5,8 @@
 
     public class Car : Vehicle
     {
-        private readonly int r_MaxNumOfDoors;
-        private readonly int r_MinNumOfDoors;
+        private readonly int r_MaxNumOfDoors = 5;
+        private readonly int r_MinNumOfDoors = 2;
         private e_Color m_carColor;
         private int m_numberOfDoors; // {2, 3, 4, 5}
 

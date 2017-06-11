@@ -236,7 +236,7 @@ namespace Ex03.ConsoleUI
 
             Console.WriteLine("Enter Maximal carrying weight");
             float maxCarryingWeight;
-            while (!float.TryParse(Console.ReadLine(), out maxCarryingWeight) || maxCarryingWeight < 0())
+            while (!float.TryParse(Console.ReadLine(), out maxCarryingWeight) || (maxCarryingWeight < 0))
             {
                 Console.WriteLine("Invalid input. Please enter a non valid number");
             }
