@@ -134,8 +134,31 @@ namespace Ex03.ConsoleUI
                 userNumberOfDoors = Console.ReadLine();
             }
 
-            Console.WriteLine("Enter the color of the car");
-            while (Console.ReadLine() != GarageLogic.Car.e_Color)
+            Console.WriteLine("For Yellow car enter 1, for white car enter 2, for black car enter 3, for blue car enter 4");
+            string userChosenColor = Console.ReadLine();
+            int carColor;
+            while (!int.TryParse(userChosenColor, out carColor) || (carColor < 1 || carColor > 4))
+            {
+                Console.WriteLine("Invalid color. please choose valid color (1 - 4");
+            }
+
+            GarageLogic.Car.e_Color chosenColor = GarageLogic.Car.e_Color.Black;
+            switch (carColor)
+            {
+                case 1:
+                    chosenColor = GarageLogic.Car.e_Color.Yellow;
+                    break;
+                case 2:
+                    chosenColor = GarageLogic.Car.e_Color.White;
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    chosenColor = GarageLogic.Car.e_Color.Blue;
+                    break;
+            }
+
+
         }
 
 
