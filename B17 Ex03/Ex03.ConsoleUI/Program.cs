@@ -282,6 +282,7 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Invalid state. please choose valid state.");
             }
+
             GarageLogic.Vehicle.e_VehicleState vehicleState = GarageLogic.Vehicle.e_VehicleState.RepairInProgress;
             switch (chosenState)
             {
@@ -295,6 +296,7 @@ namespace Ex03.ConsoleUI
                     vehicleState = GarageLogic.Vehicle.e_VehicleState.Paid;
                     break;
             }
+
             i_Garage.ChangeVehicleState(licenceNumber, vehicleState);
         }
 
