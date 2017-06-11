@@ -58,8 +58,76 @@ namespace Ex03.ConsoleUI
 
         private static void insertNewVehicle(GarageLogic.Garage i_Garage)
         {
+            Console.WriteLine("To insert new fuel-based motorcycle, press 1");
+            Console.WriteLine("To insert new electric motorcycle, press 2");
+            Console.WriteLine("To insert new fuel-based car, press 3");
+            Console.WriteLine("To insert new electric car, press 4");
+            Console.WriteLine("To insert new truck, press 5");
+            string userChosenVehicle = Console.ReadLine();
+            int vehicleOption;
 
+            while (!int.TryParse(userChosenVehicle, out vehicleOption) || (1 > vehicleOption || vehicleOption > 5))
+            {
+                Console.WriteLine("Invalid input. please choose valid input.");
+                userChosenVehicle = Console.ReadLine();
+            }
+
+            Console.WriteLine("Insert model name: ");
+            string modelName = Console.ReadLine();
+            Console.WriteLine("Insert licence number: ");
+            string licenceNumber = Console.ReadLine();
+            Console.WriteLine("Insert owner's name: ");
+            string ownerName = Console.ReadLine();
+            Console.WriteLine("Insert owner's phone number: ");
+            string ownerPhoneNumber = Console.ReadLine();
+
+            switch (vehicleOption)
+            {
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    
+                    break;
+                case 5:
+                    
+                    break;
+
+            }
         }
+
+        private static void insertNewFeuledCar(string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
+        {
+            Console.WriteLine("Enter remain fuel level: ");
+            string remainFuel = Console.ReadLine();
+            float remainFuelAsNumber;
+
+            while (!float.TryParse(remainFuel, out remainFuelAsNumber) || (remainFuelAsNumber < 0 || remainFuelAsNumber > 42))
+            {
+                Console.WriteLine("Invalid fuel level, insert number between 0 - 42");
+                remainFuel = Console.ReadLine();
+            }
+
+            Console.WriteLine("Enter number of doors: ");
+            string userNumberOfDoors = Console.ReadLine();
+            int numberOfDoors;
+
+            while (!int.TryParse(userNumberOfDoors, out numberOfDoors) || (numberOfDoors < 2 || numberOfDoors > 5))
+            {
+                Console.WriteLine("Invalid doors number, insert number between 2 - 5");
+                userNumberOfDoors = Console.ReadLine();
+            }
+
+            Console.WriteLine("Enter the color of the car");
+            while (Console.ReadLine() != GarageLogic.Car.e_Color)
+        }
+
 
         private static void printLicenceNumbersOfVehicles(GarageLogic.Garage i_Garage)
         {
