@@ -73,6 +73,11 @@ namespace Ex03.GarageLogic
                             float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
                             string[] i_ManufacturerName, float[] i_CurrentAirPressure, float i_MaxAirPressure, int i_NumOfWheels)
         {
+            if (i_CurrentEnergyLevel < 0 || i_CurrentEnergyLevel > i_MaximalEnergyLevel)
+            {
+                throw new ValueOutOfRangeException(0, i_MaximalEnergyLevel, i_CurrentEnergyLevel);
+            }
+            
             this.m_ModelName = i_ModelName;
             this.m_LicenceNumber = i_LicenceNumber;
             this.m_EnergyType = i_EnergyType;
