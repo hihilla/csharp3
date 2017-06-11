@@ -117,7 +117,9 @@ namespace Ex03.ConsoleUI
 
         private static void fillAirInVehicle(GarageLogic.Garage i_Garage)
         {
-
+            Console.WriteLine("Please enter the vehicle licence number");
+            string licenceNumber = Console.ReadLine();
+            i_Garage.FillAirInVehicle(licenceNumber);
         }
 
         private static void fillFuel(GarageLogic.Garage i_Garage)
