@@ -129,6 +129,10 @@ namespace Ex03.GarageLogic
                 throw new ArgumentException("Wrong Fuel Type!");
             }
             float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
+            if (i_EnergyType == e_EnergyType.Electric)
+            {
+                newAmount = m_CurrentEnergyLevel + convertMinutesToHours(i_EnergyToAdd);
+            }
             if ((i_EnergyToAdd < 0) || (newAmount > m_MaximalEnergyLevel))
             {
                 float wrongValue = (i_EnergyToAdd < 0) ? i_EnergyToAdd : newAmount;
@@ -173,6 +177,11 @@ namespace Ex03.GarageLogic
             vehicleString.Append("\n");
 
             return vehicleString.ToString();
+        }
+
+        private static float convertMinutesToHours(float i_MinutesToConvert)
+        {
+            return i_MinutesToConvert / 60;
         }
     }
 }
