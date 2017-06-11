@@ -8,7 +8,7 @@ namespace Ex03.ConsoleUI
     {
         public static void Main()
         {
-            Console.WriteLine("Adar and Hilla rock!");
+            manageGarage();
         }
 
         private static void manageGarage()

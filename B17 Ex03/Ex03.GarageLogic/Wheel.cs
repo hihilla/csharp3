@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Collections.Generic;
+using System;
 
 namespace Ex03.GarageLogic
 {
@@ -33,11 +34,11 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public Wheel(string i_ManufacturerName, float i_MaxAirPressure)
+        public Wheel(string i_ManufacturerName, float i_CurrentAirPressure, float i_MaxAirPressure)
         {
             // creating a new filled wheel
             this.m_ManufacturerName = i_ManufacturerName;
-            this.m_CurrentAirPressure = i_MaxAirPressure;
+            this.m_CurrentAirPressure = i_CurrentAirPressure;
             this.m_MaxAirPressure = i_MaxAirPressure;
         }
 
@@ -55,15 +56,33 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public static List<Wheel> GenerateWheels(string i_ManufacturerName, float i_MaxAirPressure, int i_NumberOfWeels)
+        public static List<Wheel> GenerateFilledDupsWheels(string i_ManufacturerName, float i_MaxAirPressure, int i_NumberOfWeels)
         {
             List<Wheel> weels = new List<Wheel>();
             for (int i = 0; i < i_NumberOfWeels; i++)
             {
-                weels.Add(new Wheel(i_ManufacturerName, i_MaxAirPressure));
+                weels.Add(new Wheel(i_ManufacturerName, i_MaxAirPressure, i_MaxAirPressure));
             }
             return weels;
         }
+
+        public static List<Wheel> GenerateDifWheels(string[] i_ManufacturerName, float[] i_CurrentAirPressure, float[] i_MaxAirPressure, int i_NumberOfWeels)
+        {
+            if (i_ManufacturerName.Length != i_NumberOfWeels ||
+                i_CurrentAirPressure.Length != i_NumberOfWeels ||
+                i_MaxAirPressure.Length != i_NumberOfWeels)
+            {
+                throw new ArgumentException("Number of inputs inconsisntent");
+            }
+            List<Wheel> weels = new List<Wheel>();
+            for (int i = 0; i < i_NumberOfWeels; i++)
+            {
+                weels.Add(new Wheel(i_ManufacturerName[i], i_CurrentAirPressure[i], i_MaxAirPressure[i]));
+            }
+            return weels;
+        }
+
+
 
         public override string ToString()
         {
