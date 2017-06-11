@@ -19,7 +19,8 @@ namespace Ex03.ConsoleUI
             {
                 askUserForInstructions(garage);
                 Console.WriteLine("Do you want to exit garage? <Y/N>");
-            } while (char.TryParse(Console.ReadLine(), out exitChar) && (exitChar != 'N'));
+            }
+            while (char.TryParse(Console.ReadLine(), out exitChar) && (exitChar != 'N'));
         }
 
         private static void askUserForInstructions(GarageLogic.Garage i_Garage)
@@ -76,12 +77,14 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Invalid input. please insert valid input.");
             }
+
             Console.WriteLine("For fuel based vehicle Enter 1, fot electric Enter 2");
             int engineOption;
             while (!int.TryParse(Console.ReadLine(), out engineOption) || !(engineOption >= 1 && engineOption <= 2))
             {
                 Console.WriteLine("Invalid input. please insert valid input.");
             }
+
             Console.WriteLine("Enter model name: ");
             string modelName = Console.ReadLine();
             Console.WriteLine("Enter licence number: ");
@@ -96,6 +99,7 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Invalid input. please enter non negative energy level.");
             }
+
             Console.WriteLine("Enter manufacturers of wheels for all wheels, seperated buy comma (,). If all Wheels have the sema manufacture, enter it <number of wheels> times.");
             string allManufacturers = Console.ReadLine();
             List<string> manufactureList = new List<string>();
@@ -105,6 +109,7 @@ namespace Ex03.ConsoleUI
                 allManufacturers = allManufacturers.Substring(seperator + 2);
                 seperator = allManufacturers.IndexOf(',');
             }
+
             Console.WriteLine("Enter current air pressure of wheels for all wheels, seperated buy comma (,). If all Wheels have the same air pressure, enter it <number of wheels> times.");
             string allAirPressurs = Console.ReadLine();
             List<float> airPressureList = new List<float>();
@@ -115,6 +120,7 @@ namespace Ex03.ConsoleUI
                 allAirPressurs = allAirPressurs.Substring(seperator + 2);
                 seperator = allAirPressurs.IndexOf(',');
             }
+
             GarageLogic.Vehicle newVehicle;
             switch (vehicleOption)
             {
@@ -136,10 +142,6 @@ namespace Ex03.ConsoleUI
             string i_OwnerName, string i_OwnerPhoneNumber,
             string[] i_Manufacturers, float[] i_CurrAirPressure)
         {
-            
-            //int numberOfWheels = 4;
-            //float maxAirPressure = 30;
-            
             Console.WriteLine("Enter number of doors: ");
             int numberOfDoors;
             while (!int.TryParse(Console.ReadLine(), out numberOfDoors))
@@ -175,30 +177,6 @@ namespace Ex03.ConsoleUI
                                         i_OwnerPhoneNumber, i_Manufacturers,
                                                 i_CurrAirPressure,
                                        chosenColor, numberOfDoors,  i_IsElectric);
-
-
-            //Console.WriteLine("Insert manufactorors for wheel #1 (and hit enter), #2 (hit enter), #3 (hit enter), #4 (hit enter), with respect to that order: ");
-            //string[] manufactororsNames = new string[numberOfWheels]; 
-            //for (int i = 0; i < manufactororsNames.Length; i++)
-            //{
-            //    manufactororsNames[i] = Console.ReadLine();
-            //}
-
-            //Console.WriteLine("Insert current air pressure in each wheel, hit enter for every wheel");
-            //string[] userCurrentPressureInWheels = new string[numberOfWheels];
-            //float[] currentPressureInWheels = new float[4];
-            //for (int i = 0; i < userCurrentPressureInWheels.Length; i++)
-            //{
-            //    userCurrentPressureInWheels[i] = Console.ReadLine();
-            //    while (!float.TryParse(userCurrentPressureInWheels[i], out currentPressureInWheels[i]) || (currentPressureInWheels[i] < 0 || currentPressureInWheels[i] > maxAirPressure))
-            //    {
-            //        Console.WriteLine("Invalid air pressure, insert a number between 0 and 30"); //HARDCODEDDDDDDDDDDDD
-            //        userCurrentPressureInWheels[i] = Console.ReadLine();
-            //    }
-
-            //}
-
-
         }
 
 
@@ -273,6 +251,7 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Invalid fuel type. please choose valid fuel type.");
             }
+
             GarageLogic.Vehicle.e_FuelType chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan95;
             switch (fuelType)
             {
@@ -289,12 +268,14 @@ namespace Ex03.ConsoleUI
                     chosenFuel = GarageLogic.Vehicle.e_FuelType.Soler;
                     break;
             }
+
             Console.WriteLine("Please enter amount of fuel to fill in liters");
             float amountToFill;
             while (!float.TryParse(Console.ReadLine(), out amountToFill))
             {
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
+
             i_Garage.FillEnergyInVehicle(licenceNumber, chosenFuel, amountToFill);
         }
 
@@ -308,6 +289,7 @@ namespace Ex03.ConsoleUI
             {
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
+
             i_Garage.FillEnergyInVehicle(licenceNumber, null, amountToFill);
         }
 
