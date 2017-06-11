@@ -9,15 +9,40 @@ namespace Ex03.GarageLogic
     {
         protected string m_ModelName;
         protected string m_LicenceNumber;
-        protected e_EnergyType m_EnergyType;
-        protected Nullable<e_FuelType> m_FuelType;
+        protected e_EnergyType m_EnergyType;//
+        protected Nullable<e_FuelType> m_FuelType;//
         protected float m_CurrentEnergyLevel;
-        protected float m_MaximalEnergyLevel;
-        protected List<Wheel> m_Wheels;
+        protected float m_MaximalEnergyLevel;//
+        protected List<Wheel> m_Wheels;// Max air pressure + num wheels
         // information for garage
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
+
+        public string VehicleInput()
+        {
+            StringBuilder inputNeeded = new StringBuilder();
+            inputNeeded.Append("<Model Name>,");
+            inputNeeded.Append("<Licence Number>,");
+            inputNeeded.Append("<Current Energy Level>,");
+            inputNeeded.Append("<Owner Name>,");
+            inputNeeded.Append("<Owners Phone Number>,");
+            inputNeeded.Append("<Wheels current air pressure>,");
+            inputNeeded.Append("<Wheels Manufacturer>");
+            return inputNeeded.ToString();
+        }
+
+        public abstract string NeededInputs();
+
+        protected Vehicle(e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
+                            float i_MaximalEnergyLevel,
+                            float i_MaxAirPressure, int i_NumOfWheels)
+        {
+            this.m_EnergyType = i_EnergyType;
+            this.m_FuelType = i_FuelType;
+            this.m_MaximalEnergyLevel = i_MaximalEnergyLevel;
+            this.m_Wheels = Wheel.GenerateGeneralWheels(i_MaxAirPressure, i_NumOfWheels);
+        }
 
         public List<Wheel> Weels
         {
@@ -69,15 +94,6 @@ namespace Ex03.GarageLogic
             }
         }
         
-        protected Vehicle(e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
-                            float i_MaximalEnergyLevel,
-                            float i_MaxAirPressure, int i_NumOfWheels)
-        {
-            this.m_EnergyType = i_EnergyType;
-            this.m_FuelType = i_FuelType;
-            this.m_MaximalEnergyLevel = i_MaximalEnergyLevel;
-            this.m_Wheels = Wheel.GenerateGeneralWheels(i_MaxAirPressure, i_NumOfWheels);
-        }
         
         public enum e_EnergyType
         {
