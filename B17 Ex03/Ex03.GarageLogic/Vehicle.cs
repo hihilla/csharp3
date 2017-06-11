@@ -18,39 +18,6 @@ namespace Ex03.GarageLogic
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
-        
-        public enum e_EnergyType
-        {
-            Electric,
-            Fuel
-        };
-
-        public enum e_FuelType
-        {
-            Octan95,
-            Octan96,
-            Octan98,
-            Soler
-        };
-
-        public enum e_VehicleState
-        {
-            RepairInProgress,
-            RepairComplete,
-            Paid
-        };
-
-        public e_VehicleState VehicleState
-        {
-            get
-            {
-                return m_VehicleState;
-            }
-            set
-            {
-                m_VehicleState = value;
-            }
-        }
 
         public List<Wheel> Weels
         {
@@ -115,6 +82,40 @@ namespace Ex03.GarageLogic
             this.m_OwnerName = i_OwnerName;
             this.m_OwnerPhoneNumber = i_OwnerPhoneNumber;
             this.m_Wheels = Wheel.GenerateWheels(i_ManufacturerName, i_MaxAirPressure, i_NumOfWheels);
+        }
+
+
+        public enum e_EnergyType
+        {
+            Electric,
+            Fuel
+        };
+
+        public enum e_FuelType
+        {
+            Octan95,
+            Octan96,
+            Octan98,
+            Soler
+        };
+
+        public enum e_VehicleState
+        {
+            RepairInProgress,
+            RepairComplete,
+            Paid
+        };
+
+        public e_VehicleState VehicleState
+        {
+            get
+            {
+                return m_VehicleState;
+            }
+            set
+            {
+                m_VehicleState = value;
+            }
         }
 
         public void AddEnergy(float i_EnergyToAdd, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType = null)

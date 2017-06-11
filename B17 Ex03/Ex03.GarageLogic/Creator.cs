@@ -15,8 +15,13 @@ namespace Ex03.GarageLogic
         {
             int numberOfWheels = 2;
             float maxWheelAirPressure = 33;
-            Vehicle.e_EnergyType energyType = i_IsElectric ? Vehicle.e_EnergyType.Electric : Vehicle.e_EnergyType.Fuel;
-            Nullable< Vehicle.e_FuelType> fuelType = i_IsElectric ? null : Vehicle.e_FuelType.Octan95;
+            Vehicle.e_EnergyType energyType = Vehicle.e_EnergyType.Electric;
+            Nullable<Vehicle.e_FuelType> fuelType = null;
+            if (!i_IsElectric)
+            {
+                energyType = Vehicle.e_EnergyType.Fuel;
+                fuelType = Vehicle.e_FuelType.Octan95;
+            }
             float tankSize = i_IsElectric ? 2.7F : 5.5F;
             return new Motorcycle(i_ModelName, i_LicenceNumber, energyType, fuelType,
                           i_CurrentEnergyLevel, tankSize, i_OwnerName, i_OwnerPhoneNumber,
@@ -31,8 +36,13 @@ namespace Ex03.GarageLogic
         {
             int numberOfWheels = 4;
             float maxWheelAirPressure = 30;
-            Vehicle.e_EnergyType energyType = i_IsElectric ? Vehicle.e_EnergyType.Electric : Vehicle.e_EnergyType.Fuel;
-            Vehicle.e_FuelType fuelType = i_IsElectric ? Vehicle.e_FuelType.none : Vehicle.e_FuelType.Octan98;
+            Vehicle.e_EnergyType energyType = Vehicle.e_EnergyType.Electric;
+            Nullable<Vehicle.e_FuelType> fuelType = null;
+            if (!i_IsElectric)
+            {
+                fuelType = Vehicle.e_FuelType.Octan98;
+                energyType = Vehicle.e_EnergyType.Fuel;
+            }
             float maxEnergyLevel = i_IsElectric ? 2.5F : 42F;
             return new Car(i_ModelName, i_LicenceNumber, energyType, fuelType,
                     i_CurrentEnergyLevel, maxEnergyLevel, i_OwnerName, i_OwnerPhoneNumber,

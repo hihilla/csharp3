@@ -8,14 +8,6 @@ namespace Ex03.GarageLogic
         private e_LicenceType m_LicenceType;
         private int m_EngineCapacity;
 
-        public enum e_LicenceType
-        {
-            A,
-            AB,
-            A2,
-            B1
-        }
-
         public Motorcycle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
                           float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
                           string i_ManufacturerName, float i_MaxAirPressure, int i_NumOfWheels, e_LicenceType i_LicenceType,
@@ -25,6 +17,14 @@ namespace Ex03.GarageLogic
         {
             this.m_LicenceType = i_LicenceType;
             this.m_EngineCapacity = i_EngineCapacity;
+        }
+        
+        public enum e_LicenceType
+        {
+            A,
+            AB,
+            A2,
+            B1
         }
 
         public override string ToString()
