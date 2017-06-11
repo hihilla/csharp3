@@ -171,11 +171,7 @@ namespace Ex03.ConsoleUI
                     break;
             }
 
-            return GarageLogic.Creator.CreateNewCar(i_ModelName, i_LicenseNumber,
-                                        i_CurrentEnergyLevel, i_OwnerName,
-                                        i_OwnerPhoneNumber, i_Manufacturers,
-                                                i_CurrAirPressure,
-                                       chosenColor, numberOfDoors, i_IsElectric);
+            return GarageLogic.Creator.CreateNewCar(numberOfDoors, i_IsElectric);
         }
 
         private static GarageLogic.Motorcycle newMotorcycle(bool i_IsElectric,
@@ -211,7 +207,7 @@ namespace Ex03.ConsoleUI
                     break;
             }
 
-            return GarageLogic.Creator.CreateNewMotorcycle(i_ModelName, i_LicenseNumber, i_CurrentEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_Manufacturers, i_CurrAirPressure, chosenLicenceType, engineCapacity, i_IsElectric);
+            return GarageLogic.Creator.CreateNewMotorcycle(i_IsElectric);
         }
 
 
@@ -233,7 +229,7 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid input. Please enter a non valid number");
             }
 
-            return GarageLogic.Creator.CreateNewTruck(i_ModelName, i_LicenseNumber, i_CurrentEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_Manufacturers, i_CurrAirPressure, (hazardousMaterials == 1), maxCarryingWeight);
+            return GarageLogic.Creator.CreateNewTruck();
         }
 
         private static void printLicenceNumbersOfVehicles(GarageLogic.Garage i_Garage)
