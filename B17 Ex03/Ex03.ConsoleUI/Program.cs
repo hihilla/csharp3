@@ -35,7 +35,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Enter 7 to display full details of a vehicle.");
             string userAnswer = Console.ReadLine();
             int chosenAction;
-            while (!int.TryParse(userAnswer, out chosenAction) || !(chosenAction >= 1 && chosenAction <= 7)) 
+            while (!int.TryParse(userAnswer, out chosenAction) || !(chosenAction >= 1 && chosenAction <= 7))
             {
                 Console.WriteLine("Invalid action. please choose valid action.");
                 userAnswer = Console.ReadLine();
@@ -104,7 +104,8 @@ namespace Ex03.ConsoleUI
             string allManufacturers = Console.ReadLine();
             List<string> manufactureList = new List<string>();
             int seperator = allManufacturers.IndexOf(',');
-            while (seperator != -1) {
+            while (seperator != -1)
+            {
                 manufactureList.Add(allManufacturers.Substring(0, seperator));
                 allManufacturers = allManufacturers.Substring(seperator + 2);
                 seperator = allManufacturers.IndexOf(',');
@@ -125,18 +126,24 @@ namespace Ex03.ConsoleUI
             switch (vehicleOption)
             {
                 case 1:
-                    
+                    newVehicle = newMotorcycle((engineOption == 2), modelName, licenceNumber, energyLevel, ownerName, ownerPhoneNumber, manufactureList.ToArray(), airPressureList.ToArray());
+                    i_Garage.InsertNewVehicleToGarage(newVehicle);
                     break;
                 case 2:
-                    newVehicle = newCar((engineOption == 2), modelName, licenceNumber, energyLevel, ownerName,ownerPhoneNumber, manufactureList.ToArray(), airPressureList.ToArray());
+                    newVehicle = newCar((engineOption == 2), modelName, licenceNumber, energyLevel, ownerName, ownerPhoneNumber, manufactureList.ToArray(), airPressureList.ToArray());
+                    i_Garage.InsertNewVehicleToGarage(newVehicle);
                     break;
                 case 3:
-                    
+                    if (engineOption == 2)
+                    {
+                        throw new ArgumentException("Truck cannot be electric");
+                    }
+                    newVehicle = newTruck(modelName, licenceNumber, energyLevel, ownerName, ownerPhoneNumber, manufactureList.ToArray(), airPressureList.ToArray());
+                    i_Garage.InsertNewVehicleToGarage(newVehicle);
                     break;
-            }
-            i_Garage.InsertNewVehicleToGarage(newVehicle);
+            }   
         }
-        
+
         private static GarageLogic.Car newCar(bool i_IsElectric,
             string i_ModelName, string i_LicenseNumber, float i_CurrentEnergyLevel,
             string i_OwnerName, string i_OwnerPhoneNumber,
@@ -176,10 +183,10 @@ namespace Ex03.ConsoleUI
                                         i_CurrentEnergyLevel, i_OwnerName,
                                         i_OwnerPhoneNumber, i_Manufacturers,
                                                 i_CurrAirPressure,
-                                       chosenColor, numberOfDoors,  i_IsElectric);
+                                       chosenColor, numberOfDoors, i_IsElectric);
         }
 
-        private static GarageLogic.Motorcycle newNotorcycle(bool i_IsElectric,
+        private static GarageLogic.Motorcycle newMotorcycle(bool i_IsElectric,
             string i_ModelName, string i_LicenseNumber, float i_CurrentEnergyLevel,
             string i_OwnerName, string i_OwnerPhoneNumber,
             string[] i_Manufacturers, float[] i_CurrAirPressure)
@@ -192,27 +199,49 @@ namespace Ex03.ConsoleUI
             }
 
             Console.WriteLine("For licence type A enter 1, for licence type AB enter 2, for licence type A2 enter 3, for licence type B1 enter 4");
-            int carColor;
-            while (!int.TryParse(Console.ReadLine(), out carColor) || !(carColor >= 1 && carColor <= 4))
+            int userLicenceType;
+            while (!int.TryParse(Console.ReadLine(), out userLicenceType) || !(userLicenceType >= 1 && userLicenceType <= 4))
             {
-                Console.WriteLine("Invalid color. please choose valid color (1 - 4");
+                Console.WriteLine("Invalid color. please choose valid number (1 - 4)");
             }
 
-            GarageLogic.Motorcycle.e_LicenceType licenceType = GarageLogic.Motorcycle.e_LicenceType.A;
-            switch (carColor)
+            GarageLogic.Motorcycle.e_LicenceType chosenLicenceType = GarageLogic.Motorcycle.e_LicenceType.A;
+            switch (userLicenceType)
             {
                 case 2:
-                    licenceType = GarageLogic.Motorcycle.e_LicenceType.AB;
+                    chosenLicenceType = GarageLogic.Motorcycle.e_LicenceType.AB;
                     break;
                 case 3:
-                    licenceType = GarageLogic.Motorcycle.e_LicenceType.A2;
+                    chosenLicenceType = GarageLogic.Motorcycle.e_LicenceType.A2;
                     break;
                 case 4:
-                    licenceType = GarageLogic.Motorcycle.e_LicenceType.B1;
+                    chosenLicenceType = GarageLogic.Motorcycle.e_LicenceType.B1;
                     break;
             }
 
-            return GarageLogic.Creator.CreateNewMotorcycle(i_ModelName, i_LicenseNumber, i_CurrentEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_Manufacturers, i_CurrAirPressure, licenceType, engineCapacity, i_IsElectric);
+            return GarageLogic.Creator.CreateNewMotorcycle(i_ModelName, i_LicenseNumber, i_CurrentEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_Manufacturers, i_CurrAirPressure, chosenLicenceType, engineCapacity, i_IsElectric);
+        }
+
+
+        private static GarageLogic.Truck newTruck(string i_ModelName, string i_LicenseNumber, float i_CurrentEnergyLevel,
+            string i_OwnerName, string i_OwnerPhoneNumber,
+            string[] i_Manufacturers, float[] i_CurrAirPressure)
+        {
+            Console.WriteLine("If the truck carries Hazardous Materials enter 1, if not enter 0");
+            int hazardousMaterials;
+            while (!int.TryParse(Console.ReadLine(), out hazardousMaterials) || !(hazardousMaterials == 0 || hazardousMaterials == 1))
+            {
+                Console.WriteLine("Invalid input, please enter valid input");
+            }
+
+            Console.WriteLine("Enter Maximal carrying weight");
+            float maxCarryingWeight;
+            while (!float.TryParse(Console.ReadLine(), out maxCarryingWeight) || maxCarryingWeight < 0())
+            {
+                Console.WriteLine("Invalid input. Please enter a non valid number");
+            }
+
+            return GarageLogic.Creator.CreateNewTruck(i_ModelName, i_LicenseNumber, i_CurrentEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_Manufacturers, i_CurrAirPressure, (hazardousMaterials == 1), maxCarryingWeight);
         }
 
         private static void printLicenceNumbersOfVehicles(GarageLogic.Garage i_Garage)
