@@ -66,6 +66,10 @@ namespace Ex03.GarageLogic
             List<Wheel> weels = new List<Wheel>();
             for (int i = 0; i < i_NumberOfWeels; i++)
             {
+                if (i_CurrentAirPressure[i] > i_MaxAirPressure)
+                {
+                    throw new ValueOutOfRangeException(0, i_MaxAirPressure, i_CurrentAirPressure[i]);
+                }
                 weels.Add(new Wheel(i_ManufacturerName[i], i_CurrentAirPressure[i], i_MaxAirPressure));
             }
             return weels;
