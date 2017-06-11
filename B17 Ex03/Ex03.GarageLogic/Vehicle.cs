@@ -19,7 +19,7 @@ namespace Ex03.GarageLogic
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
 
-        public string VehicleInput()
+        public static string VehicleInput()
         {
             StringBuilder inputNeeded = new StringBuilder();
             inputNeeded.Append("<Model Name>,");

@@ -46,7 +46,7 @@ namespace Ex03.GarageLogic
             return truckToString.ToString();
         }
 
-        public string NeededInputs()
+        public static string NeededInputs()
         {
             string neededInput = "Needed: is truck allowen to carry hazardous materials (T/F), max carring weight";
 

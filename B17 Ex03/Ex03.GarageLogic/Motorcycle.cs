@@ -38,7 +38,7 @@ namespace Ex03.GarageLogic
             return motorcycleToString.ToString();
         }
 
-        public string NeededInputs()
+        public static string NeededInputs()
         {
             string neededInputs = "Needed: licence type {A, AB, A2, B1}, engine capacity (CCM)";
 
