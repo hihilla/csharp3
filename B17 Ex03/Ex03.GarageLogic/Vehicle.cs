@@ -68,25 +68,15 @@ namespace Ex03.GarageLogic
                 return m_CurrentEnergyLevel;
             }
         }
-
-        protected Vehicle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
-                            float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
-                            string[] i_ManufacturerName, float[] i_CurrentAirPressure, float i_MaxAirPressure, int i_NumOfWheels)
+        
+        protected Vehicle(e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
+                            float i_MaximalEnergyLevel,
+                            float i_MaxAirPressure, int i_NumOfWheels)
         {
-            if (i_CurrentEnergyLevel < 0 || i_CurrentEnergyLevel > i_MaximalEnergyLevel)
-            {
-                throw new ValueOutOfRangeException(0, i_MaximalEnergyLevel, i_CurrentEnergyLevel);
-            }
-            
-            this.m_ModelName = i_ModelName;
-            this.m_LicenceNumber = i_LicenceNumber;
             this.m_EnergyType = i_EnergyType;
             this.m_FuelType = i_FuelType;
-            this.m_CurrentEnergyLevel = i_CurrentEnergyLevel;
             this.m_MaximalEnergyLevel = i_MaximalEnergyLevel;
-            this.m_OwnerName = i_OwnerName;
-            this.m_OwnerPhoneNumber = i_OwnerPhoneNumber;
-            this.m_Wheels = Wheel.GenerateDifWheels(i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure, i_NumOfWheels);
+            this.m_Wheels = Wheel.GenerateGeneralWheels(i_MaxAirPressure, i_NumOfWheels);
         }
         
         public enum e_EnergyType

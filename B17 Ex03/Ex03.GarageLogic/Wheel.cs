@@ -34,11 +34,8 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public Wheel(string i_ManufacturerName, float i_CurrentAirPressure, float i_MaxAirPressure)
+        public Wheel(float i_MaxAirPressure)
         {
-            // creating a new filled wheel
-            this.m_ManufacturerName = i_ManufacturerName;
-            this.m_CurrentAirPressure = i_CurrentAirPressure;
             this.m_MaxAirPressure = i_MaxAirPressure;
         }
 
@@ -54,6 +51,16 @@ namespace Ex03.GarageLogic
             {
                 m_CurrentAirPressure = newAirPressure;
             }
+        }
+
+        public static List<Wheel> GenerateGeneralWheels(float i_MaxAirPressure, int i_NumberOfWeels)
+        {
+            List<Wheel> wheels = new List<Wheel>();
+            for (int i = 0; i < i_NumberOfWeels; i++)
+            {
+                wheels.Add(new Wheel(i_MaxAirPressure));
+            }
+            return wheels;
         }
 
         public static List<Wheel> GenerateDifWheels(string[] i_ManufacturerName, float[] i_CurrentAirPressure, float i_MaxAirPressure, int i_NumberOfWeels)
