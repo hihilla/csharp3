@@ -8,17 +8,12 @@ namespace Ex03.GarageLogic
         private e_LicenceType m_LicenceType;
         private int m_EngineCapacity;
 
-        public Motorcycle(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
-                          float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
-                          string[] i_ManufacturerName, float[] i_CurrentAirPressure, float i_MaxAirPressure, int i_NumOfWheels, e_LicenceType i_LicenceType,
-                          int i_EngineCapacity) 
-            : base(i_ModelName, i_LicenceNumber, i_EnergyType, i_FuelType, i_CurrentEnergyLevel,
-                    i_MaximalEnergyLevel, i_OwnerName, i_OwnerPhoneNumber, i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure, i_NumOfWheels)
-        {
-            this.m_LicenceType = i_LicenceType;
-            this.m_EngineCapacity = i_EngineCapacity;
-        }
-        
+        //public Motorcycle(e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType, float i_MaximalEnergyLevel,
+          //                                       float i_MaxAirPressure, int i_NumOfWheels) 
+            //                          : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
+        //{
+        //}
+
         public enum e_LicenceType
         {
             A,
@@ -31,7 +26,7 @@ namespace Ex03.GarageLogic
         {
             StringBuilder motorcycleToString = new StringBuilder();
             motorcycleToString.AppendFormat("{0} Motorcycle\n", this.EnergyType);
-            
+
             motorcycleToString.AppendFormat("Licence type :{0}\nEngine capacity: {1} CCM\n", this.m_LicenceType, this.m_EngineCapacity);
             motorcycleToString.Append(base.ToString());
 

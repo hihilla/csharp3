@@ -20,7 +20,9 @@ namespace Ex03.ConsoleUI
                 askUserForInstructions(garage);
                 Console.WriteLine("Do you want to exit garage? <Y/N>");
             }
-            while (char.TryParse(Console.ReadLine(), out exitChar) && (exitChar != 'N'));
+            while (char.TryParse(Console.ReadLine(), out exitChar) && (exitChar != 'Y'));
+            Console.Write(exitChar);
+            Console.ReadLine();
         }
 
         private static void askUserForInstructions(GarageLogic.Garage i_Garage)
@@ -100,28 +102,18 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid input. please enter non negative energy level.");
             }
 
-            Console.WriteLine("Enter manufacturers of wheels for all wheels, seperated buy comma (,). If all Wheels have the sema manufacture, enter it <number of wheels> times.");
+            Console.WriteLine("Enter manufacturers of wheels for all wheels, seperated buy comma (,). If all Wheels have the same manufacture, enter it <number of wheels> times.");
             string allManufacturers = Console.ReadLine();
-            List<string> manufactureList = new List<string>();
-            int seperator = allManufacturers.IndexOf(',');
-            while (seperator != -1)
-            {
-                manufactureList.Add(allManufacturers.Substring(0, seperator));
-                allManufacturers = allManufacturers.Substring(seperator + 2);
-                seperator = allManufacturers.IndexOf(',');
-            }
-
+            List<string> manufactureList = new List<string>(allManufacturers.Split(','));
+            
             Console.WriteLine("Enter current air pressure of wheels for all wheels, seperated buy comma (,). If all Wheels have the same air pressure, enter it <number of wheels> times.");
             string allAirPressurs = Console.ReadLine();
+            List<string> airPressureListString = new List<string>(allAirPressurs.Split(','));
             List<float> airPressureList = new List<float>();
-            seperator = allAirPressurs.IndexOf(',');
-            while (seperator != -1)
+            foreach (string element in airPressureListString)
             {
-                airPressureList.Add(float.Parse(allAirPressurs.Substring(0, seperator)));
-                allAirPressurs = allAirPressurs.Substring(seperator + 2);
-                seperator = allAirPressurs.IndexOf(',');
+                airPressureList.Add(float.Parse(element));
             }
-
             GarageLogic.Vehicle newVehicle;
             switch (vehicleOption)
             {
@@ -257,7 +249,7 @@ namespace Ex03.ConsoleUI
 
             switch (chosenFilter)
             {
-                case 0:
+                case 0:////returns string, print the motherfucker
                     i_Garage.GetLicenceNumbers();
                     break;
                 case 1:
