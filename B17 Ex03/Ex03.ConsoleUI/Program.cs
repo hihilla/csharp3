@@ -26,7 +26,7 @@ namespace Ex03.ConsoleUI
             int chosenAction;
             while (!int.TryParse(userAnswer, out chosenAction)) 
             {
-                Console.WriteLine("Invalid action. please coose valid cation.");
+                Console.WriteLine("Invalid action. please choose valid action.");
                 userAnswer = Console.ReadLine();
             }
 
