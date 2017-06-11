@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    internal class Truck : Vehicle
+    public class Truck : Vehicle
     {
         bool m_IsCarryingHazardousMaterials;
         float m_MaxCarryingWeight;

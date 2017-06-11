@@ -3,7 +3,7 @@
     using System;
     using System.Text;
 
-    internal class Car : Vehicle
+    public class Car : Vehicle
     {
         private e_Color m_carColor;
         private int m_numberOfDoors; // {2, 3, 4, 5}

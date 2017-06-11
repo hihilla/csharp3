@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    internal class Garage
+    public class Garage
     {
         private Dictionary<string, Vehicle> m_VehiclesInGarage = new Dictionary<string, Vehicle>();
 

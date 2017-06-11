@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    internal class Motorcycle : Vehicle
+    public class Motorcycle : Vehicle
     {
         private e_LicenceType m_LicenceType;
         private int m_EngineCapacity;

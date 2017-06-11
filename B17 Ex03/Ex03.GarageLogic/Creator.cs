@@ -3,11 +3,9 @@ using System;
 
 namespace Ex03.GarageLogic
 {
-    internal class Creator
+    public class Creator
     {
-        Garage m_Garage = new Garage();
-
-        private Motorcycle CreateNewMotorcycle(string i_ModelName, string i_LicenceNumber,
+        public Motorcycle CreateNewMotorcycle(string i_ModelName, string i_LicenceNumber,
                                                 float i_CurrentEnergyLevel, string i_OwnerName,
                                                 string i_OwnerPhoneNumber, string i_ManufacturerName,
                                                 Motorcycle.e_LicenceType i_LicenceType, int i_EngineCapacity,
@@ -29,7 +27,7 @@ namespace Ex03.GarageLogic
                           i_EngineCapacity);
         }
 
-        private Car CreateNewCar(string i_ModelName, string i_LicenceNumber,
+        public Car CreateNewCar(string i_ModelName, string i_LicenceNumber,
                                         float i_CurrentEnergyLevel, string i_OwnerName,
                                         string i_OwnerPhoneNumber, string i_ManufacturerName,
                                         Car.e_Color i_CarColor, int i_NumOfDoors, bool i_IsElectric)
@@ -49,7 +47,7 @@ namespace Ex03.GarageLogic
                     i_ManufacturerName, maxWheelAirPressure, numberOfWheels, i_CarColor, i_NumOfDoors);
         }
 
-        private Truck CreateNewTruck(string i_ModelName, string i_LicenceNumber,
+        public Truck CreateNewTruck(string i_ModelName, string i_LicenceNumber,
                                     float i_CurrentEnergyLevel, string i_OwnerName,
                                     string i_OwnerPhoneNumber, string i_ManufacturerName,
                                     bool i_IsCarryingHazardousMaterials, float i_MaxCarryingWeight)
