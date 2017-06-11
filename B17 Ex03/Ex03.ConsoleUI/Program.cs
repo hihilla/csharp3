@@ -76,7 +76,7 @@ namespace Ex03.ConsoleUI
             string userChosenVehicle = Console.ReadLine();
             int vehicleOption;
 
-            while (!int.TryParse(userChosenVehicle, out vehicleOption) || (1 > vehicleOption || vehicleOption > 5))
+            while (!int.TryParse(userChosenVehicle, out vehicleOption) || !(vehicleOption >= 1 && vehicleOption <= 5))
             {
                 Console.WriteLine("Invalid input. please choose valid input.");
                 userChosenVehicle = Console.ReadLine();
@@ -111,7 +111,7 @@ namespace Ex03.ConsoleUI
 
             }
         }
-
+        
         private static void insertNewFeuledCar(string i_ModelName, string i_LicenseNumber, string i_OwnerName, string i_OwnerPhoneNumber)
         {
             Console.WriteLine("Enter remain fuel level: ");
