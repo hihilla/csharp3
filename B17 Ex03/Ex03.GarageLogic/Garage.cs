@@ -68,6 +68,19 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public void FillEnergyInVehicle(string i_VehicleLicence, Nullable<Vehicle.e_FuelType> i_FuelType, float i_AmountToFill)
+        {
+            Vehicle vehicle;
+            if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
+            {
+                vehicle.AddEnergy(i_AmountToFill, vehicle.EnergyType, i_FuelType);
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
+            }
+        }
+
         public void FillAirInVehicle(string i_VehicleLicence)
         {
             Vehicle vehicle;

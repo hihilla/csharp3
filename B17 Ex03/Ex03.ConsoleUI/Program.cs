@@ -124,12 +124,50 @@ namespace Ex03.ConsoleUI
 
         private static void fillFuel(GarageLogic.Garage i_Garage)
         {
-
+            Console.WriteLine("Please enter the vehicle licence number");
+            string licenceNumber = Console.ReadLine();
+            Console.WriteLine("Please enter 1 for Octan95, 2 for Octan96, 3 for Octan98, 4 for Soler.");
+            int fuelType;
+            while (!int.TryParse(Console.ReadLine(), out fuelType) || !(fuelType >= 1 && fuelType <= 4))
+            {
+                Console.WriteLine("Invalid fuel type. please choose valid fuel type.");
+            }
+            GarageLogic.Vehicle.e_FuelType chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan95;
+            switch (fuelType)
+            {
+                case 1:
+                    chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan95;
+                    break;
+                case 2:
+                    chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan96;
+                    break;
+                case 3:
+                    chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan98;
+                    break;
+                case 4:
+                    chosenFuel = GarageLogic.Vehicle.e_FuelType.Soler;
+                    break;
+            }
+            Console.WriteLine("Please enter amount of fuel to fill in liters");
+            float amountToFill;
+            while (!float.TryParse(Console.ReadLine(), out amountToFill))
+            {
+                Console.WriteLine("Invalid amount. please insert valid amount.");
+            }
+            i_Garage.FillEnergyInVehicle(licenceNumber, chosenFuel, amountToFill);
         }
 
         private static void fillElectricity(GarageLogic.Garage i_Garage)
         {
-
+            Console.WriteLine("Please enter the vehicle licence number");
+            string licenceNumber = Console.ReadLine();
+            Console.WriteLine("Please enter amount of energy to fill in minutes");
+            float amountToFill;
+            while (!float.TryParse(Console.ReadLine(), out amountToFill))
+            {
+                Console.WriteLine("Invalid amount. please insert valid amount.");
+            }
+            i_Garage.FillEnergyInVehicle(licenceNumber, null, amountToFill);
         }
 
         private static void displayVehicleDetails(GarageLogic.Garage i_Garage)
