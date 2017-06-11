@@ -33,53 +33,60 @@ namespace Ex03.ConsoleUI
             switch (chosenAction)
             {
                 case 1:
+                    insertNewVehicle();
                     break;
                 case 2:
+                    printLicenceNumbersOfVehicles();
                     break;
                 case 3:
+                    changeState();
                     break;
                 case 4:
+                    fillAirInVehicle();
                     break;
                 case 5:
+                    fillFuel();
                     break;
                 case 6:
+                    fillElectricity();
                     break;
                 case 7:
+                    displayVehicleDetails();
                     break;
             }
         }
 
-        private void insertNewVehicle()
+        private static void insertNewVehicle()
         {
 
         }
 
-        private void printLicenceNumbersOfVehicles()
+        private static void printLicenceNumbersOfVehicles()
         {
 
         }
 
-        private void changeState()
+        private static void changeState()
         {
 
         }
 
-        private void fillAirInVehicle()
+        private static void fillAirInVehicle()
         {
 
         }
 
-        private void fillFuel()
+        private static void fillFuel()
         {
 
         }
 
-        private void fillElectricity()
+        private static void fillElectricity()
         {
 
         }
 
-        private void displayVehicleDetails()
+        private static void displayVehicleDetails()
         {
 
         }
