@@ -24,8 +24,8 @@ namespace Ex03.GarageLogic
         private static readonly string sr_CurrentEnergyLevelKey = "Current Energy Level";
         private static readonly string sr_OwnerNameKey = "Owner Name";
         private static readonly string sr_OwnerPhoneNumberKey = "Owners Phone Number";
-        private static readonly string sr_WheelsAirPressureKey = "Wheels current air pressure";
-        private static readonly string sr_WheelsManufacturerKey = "Wheels Manufacturer";
+        private static readonly string sr_WheelsAirPressureKey = "Wheels current air pressure (seperated by comma)";
+        private static readonly string sr_WheelsManufacturerKey = "Wheels Manufacturer (seperated by comma)";
 
         public Dictionary<string, string> VehicleInput()
         {
