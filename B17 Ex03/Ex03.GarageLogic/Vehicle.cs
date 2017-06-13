@@ -9,15 +9,15 @@ namespace Ex03.GarageLogic
     {
         protected string m_ModelName;
         protected string m_LicenceNumber;
-        protected e_EnergyType m_EnergyType;//
-        protected Nullable<e_FuelType> m_FuelType;//
+        protected eEnergyType m_EnergyType;//
+        protected Nullable<eFuelType> m_FuelType;//
         protected float m_CurrentEnergyLevel;
         protected float m_MaximalEnergyLevel;//
         protected List<Wheel> m_Wheels;// Max air pressure + num wheels
         // information for garage
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
-        protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
+        protected eVehicleState m_VehicleState = eVehicleState.RepairInProgress;
 
         private static readonly string sr_ModelNameKey = "Model Name";
         private static readonly string sr_LicenceNumberKey = "Licence Number";
@@ -138,7 +138,7 @@ namespace Ex03.GarageLogic
 
         public abstract void ParseNeededInput(Dictionary<string, string> i_InputToParse);
 
-        protected Vehicle(e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
+        protected Vehicle(eEnergyType i_EnergyType, Nullable<eFuelType> i_FuelType,
                             float i_MaximalEnergyLevel,
                             float i_MaxAirPressure, int i_NumOfWheels)
         {
@@ -165,7 +165,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public e_EnergyType EnergyType
+        public eEnergyType EnergyType
         {
             get
             {
@@ -173,7 +173,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public Nullable<e_FuelType> FuelType
+        public Nullable<eFuelType> FuelType
         {
             get
             {
@@ -199,13 +199,13 @@ namespace Ex03.GarageLogic
         }
         
         
-        public enum e_EnergyType
+        public enum eEnergyType
         {
             Electric,
             Fuel
         };
 
-        public enum e_FuelType
+        public enum eFuelType
         {
             Octan95,
             Octan96,
@@ -213,14 +213,14 @@ namespace Ex03.GarageLogic
             Soler
         };
 
-        public enum e_VehicleState
+        public enum eVehicleState
         {
             RepairInProgress,
             RepairComplete,
             Paid
         };
 
-        public e_VehicleState VehicleState
+        public eVehicleState VehicleState
         {
             get
             {
@@ -232,7 +232,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void AddEnergy(float i_EnergyToAdd, e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType = null)
+        public void AddEnergy(float i_EnergyToAdd, eEnergyType i_EnergyType, Nullable<eFuelType> i_FuelType = null)
         {
             if (i_EnergyType != this.m_EnergyType)
             {
@@ -243,7 +243,7 @@ namespace Ex03.GarageLogic
                 throw new ArgumentException("Wrong Fuel Type!");
             }
             float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
-            if (i_EnergyType == e_EnergyType.Electric)
+            if (i_EnergyType == eEnergyType.Electric)
             {
                 newAmount = m_CurrentEnergyLevel + convertMinutesToHours(i_EnergyToAdd);
             }
@@ -281,7 +281,7 @@ namespace Ex03.GarageLogic
                 vehicleString.Append("\n");
             }
 
-            if (this.m_EnergyType == e_EnergyType.Fuel)
+            if (this.m_EnergyType == eEnergyType.Fuel)
             {
                 vehicleString.Append(this.m_FuelType);
             }
