@@ -1,14 +1,18 @@
 ﻿namespace Ex03.GarageLogic
 {
     using System;
+    using System.Collections.Generic;
     using System.Text;
 
     public class Car : Vehicle
     {
-        private readonly int r_MaxNumOfDoors = 5;
-        private readonly int r_MinNumOfDoors = 2;
+        private static readonly int sr_MaxNumOfDoors = 5;
+        private static readonly int sr_MinNumOfDoors = 2;
         private e_Color m_carColor;
-        private int m_numberOfDoors; // {2, 3, 4, 5}       
+        private int m_numberOfDoors; // {2, 3, 4, 5}   
+
+        private static readonly string sr_CarColorKey = "Car Color";
+        private static readonly string sr_NumberOfDoorsKey = "Number of doors";
 
         public Car(
             e_EnergyType i_EnergyType,
@@ -21,11 +25,56 @@
             this.m_numberOfDoors = i_NumOfDoors;
         }
 
-        public static string NeededInputs()
+        public override Dictionary<string, string> NeededInputs()
         {
-            string neededInputs = "Needed: number of doors (2-5), color of car {white, black, yellow, blue}";
+            Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
+            inputNeeded.Add(sr_CarColorKey, null);
+            inputNeeded.Add(sr_NumberOfDoorsKey, null);
 
-            return neededInputs;
+            return inputNeeded;
+        }
+
+        public override void ParseNeededInput(Dictionary<string, string> i_InputToParse)
+        {
+            string carColor;
+            string numOfDoorsInput;
+            int numberOfDoors = 0;
+
+            if (!i_InputToParse.TryGetValue(sr_CarColorKey, out carColor)){
+                throw new FormatException("No Car Color");
+			}
+			
+            if (!((i_InputToParse.TryGetValue(sr_NumberOfDoorsKey, out numOfDoorsInput)) || 
+                  (int.TryParse(numOfDoorsInput, out numberOfDoors))))
+			{
+				throw new FormatException("No Number of doors");
+			}
+
+            if (!(numberOfDoors > 2 && numberOfDoors < 5)) {
+                string exceptionMsg = string.Format("Number of doors should be minimun {0} and maximum {1}", 
+                                                    sr_MinNumOfDoors, sr_MaxNumOfDoors);
+                throw new ArgumentException(exceptionMsg);
+            }
+
+            switch (carColor.ToLower())
+            {
+                case "yellow":
+                    this.m_carColor = e_Color.Yellow;
+                    break;
+				case "white":
+                    this.m_carColor = e_Color.White;
+					break;
+				case "black":
+                    this.m_carColor = e_Color.Black;
+					break;
+				case "blue":
+                    this.m_carColor = e_Color.Blue;
+					break;
+                default:
+                    throw new ArgumentException("Invalid car color");
+            }
+
+            this.m_numberOfDoors = numberOfDoors;
         }
 
         public enum e_Color

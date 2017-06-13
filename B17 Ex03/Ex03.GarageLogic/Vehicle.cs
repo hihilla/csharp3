@@ -19,20 +19,124 @@ namespace Ex03.GarageLogic
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
 
-        public static string VehicleInput()
+        private static readonly string sr_ModelNameKey = "Model Name";
+        private static readonly string sr_LicenceNumberKey = "Licence Number";
+        private static readonly string sr_CurrentEnergyLevelKey = "Current Energy Level";
+        private static readonly string sr_OwnerNameKey = "Owner Name";
+        private static readonly string sr_OwnerPhoneNumberKey = "Owners Phone Number";
+        private static readonly string sr_WheelsAirPressureKey = "Wheels current air pressure";
+        private static readonly string sr_WheelsManufacturerKey = "Wheels Manufacturer";
+
+        public Dictionary<string, string> VehicleInput()
         {
-            StringBuilder inputNeeded = new StringBuilder();
-            inputNeeded.Append("<Model Name>,");
-            inputNeeded.Append("<Licence Number>,");
-            inputNeeded.Append("<Current Energy Level>,");
-            inputNeeded.Append("<Owner Name>,");
-            inputNeeded.Append("<Owners Phone Number>,");
-            inputNeeded.Append("<Wheels current air pressure>,");
-            inputNeeded.Append("<Wheels Manufacturer>");
-            return inputNeeded.ToString();
+            Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
+            inputNeeded.Add(sr_ModelNameKey, null);
+            inputNeeded.Add(sr_LicenceNumberKey, null);
+            inputNeeded.Add(sr_CurrentEnergyLevelKey, null);
+            inputNeeded.Add(sr_OwnerNameKey, null);
+            inputNeeded.Add(sr_OwnerPhoneNumberKey, null);
+            inputNeeded.Add(sr_WheelsAirPressureKey, null);
+            inputNeeded.Add(sr_WheelsManufacturerKey, null);
+
+            return inputNeeded;
         }
 
-        public abstract string NeededInputs();
+        public abstract Dictionary<string, string> NeededInputs();
+
+        public void ParseVehicleInput(Dictionary<string, string> i_VehicleInput){
+            string modelName;
+            string licenceNumber;
+            string tempStringBeforeParsing;
+            float curEnergyLevel;
+            string ownerName;
+            string ownerPhoneNumber;
+            string airPressures;
+            string wheelsManufacturers;
+
+            if (!i_VehicleInput.TryGetValue(sr_ModelNameKey, out modelName)) 
+            {
+                throw new FormatException("No Model Name");
+            }
+
+            if (!i_VehicleInput.TryGetValue(sr_LicenceNumberKey, out licenceNumber))
+			{
+				throw new FormatException("No Licence Number");
+			}
+
+            if (!i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing))
+			{
+				throw new FormatException("No Current Energy Level");
+			}
+            else {
+                if (!float.TryParse(tempStringBeforeParsing, out curEnergyLevel)){
+                    throw new FormatException("No Current Energy Level");   
+                }
+            }
+
+            if (!i_VehicleInput.TryGetValue(sr_OwnerNameKey, out ownerName))
+			{
+				throw new FormatException("No Owner Name");
+			}
+
+            if (!i_VehicleInput.TryGetValue(sr_OwnerPhoneNumberKey, out ownerPhoneNumber))
+			{
+				throw new FormatException("No Owner Phone Number");
+			}
+
+            if (!i_VehicleInput.TryGetValue(sr_WheelsAirPressureKey, out airPressures))
+			{
+				throw new FormatException("No Wheels air pressure");
+			}
+
+            if (!i_VehicleInput.TryGetValue(sr_WheelsManufacturerKey, out wheelsManufacturers))
+			{
+				throw new FormatException("No Wheels manufacturers");
+			}
+
+            this.m_ModelName = modelName;
+            this.m_LicenceNumber = licenceNumber;
+            this.m_CurrentEnergyLevel = curEnergyLevel;
+            this.m_OwnerName = ownerName;
+            this.m_OwnerPhoneNumber = ownerPhoneNumber;
+            parseWheelAirPressure(airPressures);
+            parseWheelManufacturers(wheelsManufacturers);
+        }
+
+        private void parseWheelAirPressure (string i_AirPressures){
+            string[] airPressures = i_AirPressures.Split(',');
+            if (airPressures.Length != this.m_Wheels.Count) {
+                string exceptionMsg = string.Format("Not Enough arguments. There are {0} wheels, and {1} arguments", 
+                                                    this.m_Wheels.Count, airPressures.Length);
+                throw new ArgumentException(exceptionMsg);
+            }
+
+            for (int i = 0; i < airPressures.Length; i++) {
+                float wheelAirPressure;
+                if (!float.TryParse(airPressures[i], out wheelAirPressure)){
+                    throw new FormatException("Air Pressure must be a float");
+                }
+
+                this.m_Wheels[i].CurrentAirPressure = wheelAirPressure;
+            }
+        }
+
+		private void parseWheelManufacturers(string i_Manufacturers)
+		{
+            string[] manufacturers = i_Manufacturers.Split(',');
+			if (manufacturers.Length != this.m_Wheels.Count)
+			{
+				string exceptionMsg = string.Format("Not Enough arguments. There are {0} wheels, and {1} arguments",
+													this.m_Wheels.Count, manufacturers.Length);
+				throw new ArgumentException(exceptionMsg);
+			}
+
+			for (int i = 0; i < manufacturers.Length; i++)
+			{
+                this.m_Wheels[i].ManufacturerName = manufacturers[i];
+			}
+		}
+
+        public abstract void ParseNeededInput(Dictionary<string, string> i_InputToParse);
 
         protected Vehicle(e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
                             float i_MaximalEnergyLevel,
