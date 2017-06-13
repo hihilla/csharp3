@@ -22,7 +22,6 @@
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel,
                     i_MaxAirPressure, i_NumOfWheels)
         {
-            this.m_numberOfDoors = i_NumOfDoors;
         }
 
         public override Dictionary<string, string> NeededInputs()

@@ -22,7 +22,7 @@ namespace Ex03.GarageLogic
                           maxWheelAirPressure, numberOfWheels);
         }
 
-        public static Car CreateNewCar(int i_NumOfDoors, bool i_IsElectric)
+        public static Car CreateNewCar(bool i_IsElectric)
         {
             int numberOfWheels = 4;
             float maxWheelAirPressure = 30;
@@ -36,7 +36,7 @@ namespace Ex03.GarageLogic
             float maxEnergyLevel = i_IsElectric ? 2.5F : 42F;
             return new Car(energyType, fuelType,
                     maxEnergyLevel,
-                   maxWheelAirPressure, numberOfWheels, i_NumOfDoors);
+                   maxWheelAirPressure, numberOfWheels);
         }
 
         public static Truck CreateNewTruck()
