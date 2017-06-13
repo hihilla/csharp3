@@ -10,25 +10,13 @@ namespace Ex03.GarageLogic
         private bool m_IsCarryingHazardousMaterials;
         private float m_MaxCarryingWeight;
 
-        private readonly string r_HasardMaterialKey = "Hazardous Materials";
+        private readonly string r_HazardMaterialKey = "Hazardous Materials <Y/N>";
         private readonly string r_MaxCarryWeightKey = "Maximum Carrying Weight";
 
         public Truck(e_EnergyType i_EnergyType, e_FuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
         {
         }
-
-        //public Truck(string i_ModelName, string i_LicenceNumber, e_EnergyType i_EnergyType, e_FuelType i_FuelType,
-        //            float i_CurrentEnergyLevel, float i_MaximalEnergyLevel, string i_OwnerName, string i_OwnerPhoneNumber,
-        //            string[] i_ManufacturerName, float[] i_CurrentAirPressure, float i_MaxAirPressure, int i_NumOfWheels, 
-        //            bool i_IsCarryingHazardousMaterials,
-        //            float i_MaxCarryingWeight) 
-        //    : base(i_EnergyType, i_FuelType,
-        //            i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
-        //{
-        //    this.m_IsCarryingHazardousMaterials = i_IsCarryingHazardousMaterials;
-        //    this.m_MaxCarryingWeight = i_MaxCarryingWeight;
-        //}
 
         public override string ToString()
         {
@@ -53,10 +41,46 @@ namespace Ex03.GarageLogic
         public override Dictionary<string, string> NeededInputs()
         {
             Dictionary<string, string> neededInput = new Dictionary<string, string>();
-            neededInput.Add(r_HasardMaterialKey, null);
+            neededInput.Add(r_HazardMaterialKey, null);
             neededInput.Add(r_MaxCarryWeightKey, null);
 
             return neededInput;
+        }
+
+        public override void ParseNeededInput(Dictionary<string, string> i_InputToParse)
+        {
+            string hazMaterialsInput;
+            string maxCarryWInput;
+            int maxCarryWeight = -1;
+
+            if (!((i_InputToParse.TryGetValue(r_MaxCarryWeightKey, out maxCarryWInput)) ||
+                  (int.TryParse(maxCarryWInput, out maxCarryWeight))))
+			{
+				throw new FormatException("No Max Carrying Weight");
+			}
+
+            if (maxCarryWeight < 0) {
+                throw new ArgumentException("Max Carrying Weight must be positive");
+            }
+
+            if (!i_InputToParse.TryGetValue(r_HazardMaterialKey, out hazMaterialsInput))
+			{
+				throw new FormatException("No Hazardous Materials");
+			}
+
+            switch (hazMaterialsInput.ToUpper())
+            {
+                case "Y":
+                    this.m_IsCarryingHazardousMaterials = true;
+                    break;
+				case "N":
+                    this.m_IsCarryingHazardousMaterials = false;
+					break;
+                default:
+                    throw new ArgumentException("Invalid answer foe hazardous materials");
+            }
+
+            this.m_MaxCarryingWeight = maxCarryWeight;
         }
     }
 }
