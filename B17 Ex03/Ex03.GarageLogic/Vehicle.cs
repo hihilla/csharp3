@@ -1,4 +1,4 @@
-﻿﻿
+﻿﻿﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -333,7 +333,7 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             StringBuilder vehicleString = new StringBuilder();
-
+            vehicleString.Append("\n");
             vehicleString.Append("Licence number: ");
             vehicleString.Append(m_LicenceNumber);
             vehicleString.Append("\n");
@@ -359,6 +359,7 @@ namespace Ex03.GarageLogic
             if (this.m_EnergyType == eEnergyType.Fuel)
             {
                 vehicleString.Append(this.m_FuelType);
+                vehicleString.Append("\n");
             }
 
             vehicleString.Append("Energy level is: ");
