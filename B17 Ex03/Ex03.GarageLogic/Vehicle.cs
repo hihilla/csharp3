@@ -1,4 +1,4 @@
-﻿﻿﻿
+﻿﻿﻿﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -358,7 +358,9 @@ namespace Ex03.GarageLogic
             }
 
             vehicleString.Append("Energy level is: ");
-            vehicleString.Append(this.m_CurrentEnergyLevel / this.m_MaximalEnergyLevel);
+            float curEnergyLevel = (this.m_CurrentEnergyLevel / this.m_MaximalEnergyLevel) * 100;
+            vehicleString.Append(curEnergyLevel);
+            vehicleString.Append("%");
             vehicleString.Append("\n");
 
             return vehicleString.ToString();
