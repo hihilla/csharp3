@@ -43,7 +43,8 @@ namespace Ex03.GarageLogic
 
         public abstract Dictionary<string, string> NeededInputs();
 
-        public void ParseVehicleInput(Dictionary<string, string> i_VehicleInput){
+        public void ParseVehicleInput(Dictionary<string, string> i_VehicleInput)
+        {
             string modelName;
             string licenceNumber;
             string tempStringBeforeParsing;
@@ -53,45 +54,47 @@ namespace Ex03.GarageLogic
             string airPressures;
             string wheelsManufacturers;
 
-            if (!i_VehicleInput.TryGetValue(sr_ModelNameKey, out modelName)) 
+            if (!i_VehicleInput.TryGetValue(sr_ModelNameKey, out modelName))
             {
                 throw new FormatException("No Model Name");
             }
 
             if (!i_VehicleInput.TryGetValue(sr_LicenceNumberKey, out licenceNumber))
-			{
-				throw new FormatException("No Licence Number");
-			}
+            {
+                throw new FormatException("No Licence Number");
+            }
 
             if (!i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing))
-			{
-				throw new FormatException("No Current Energy Level");
-			}
-            else {
-                if (!float.TryParse(tempStringBeforeParsing, out curEnergyLevel)){
-                    throw new FormatException("No Current Energy Level");   
+            {
+                throw new FormatException("No Current Energy Level");
+            }
+            else
+            {
+                if (!float.TryParse(tempStringBeforeParsing, out curEnergyLevel))
+                {
+                    throw new FormatException("No Current Energy Level");
                 }
             }
 
             if (!i_VehicleInput.TryGetValue(sr_OwnerNameKey, out ownerName))
-			{
-				throw new FormatException("No Owner Name");
-			}
+            {
+                throw new FormatException("No Owner Name");
+            }
 
             if (!i_VehicleInput.TryGetValue(sr_OwnerPhoneNumberKey, out ownerPhoneNumber))
-			{
-				throw new FormatException("No Owner Phone Number");
-			}
+            {
+                throw new FormatException("No Owner Phone Number");
+            }
 
             if (!i_VehicleInput.TryGetValue(sr_WheelsAirPressureKey, out airPressures))
-			{
-				throw new FormatException("No Wheels air pressure");
-			}
+            {
+                throw new FormatException("No Wheels air pressure");
+            }
 
             if (!i_VehicleInput.TryGetValue(sr_WheelsManufacturerKey, out wheelsManufacturers))
-			{
-				throw new FormatException("No Wheels manufacturers");
-			}
+            {
+                throw new FormatException("No Wheels manufacturers");
+            }
 
             this.m_ModelName = modelName;
             this.m_LicenceNumber = licenceNumber;
@@ -102,17 +105,28 @@ namespace Ex03.GarageLogic
             parseWheelManufacturers(wheelsManufacturers);
         }
 
-        private void parseWheelAirPressure (string i_AirPressures){
+        private void parseWheelAirPressure(string i_AirPressures)
+        {
             string[] airPressures = i_AirPressures.Split(',');
-            if (airPressures.Length != this.m_Wheels.Count) {
-                string exceptionMsg = string.Format("Not Enough arguments. There are {0} wheels, and {1} arguments", 
+
+            if (airPressures.Length == 1)
+            {
+                parseWheelOneAirPressure(i_AirPressures);
+                return;
+            }
+
+            if (airPressures.Length != this.m_Wheels.Count)
+            {
+                string exceptionMsg = string.Format("Not Enough arguments. There are {0} wheels, and {1} arguments",
                                                     this.m_Wheels.Count, airPressures.Length);
                 throw new ArgumentException(exceptionMsg);
             }
 
-            for (int i = 0; i < airPressures.Length; i++) {
+            for (int i = 0; i < airPressures.Length; i++)
+            {
                 float wheelAirPressure;
-                if (!float.TryParse(airPressures[i], out wheelAirPressure)){
+                if (!float.TryParse(airPressures[i], out wheelAirPressure))
+                {
                     throw new FormatException("Air Pressure must be a float");
                 }
 
@@ -120,25 +134,49 @@ namespace Ex03.GarageLogic
             }
         }
 
-		private void parseWheelManufacturers(string i_Manufacturers)
-		{
+        private void parseWheelManufacturers(string i_Manufacturers)
+        {
             string[] manufacturers = i_Manufacturers.Split(',');
-			if (manufacturers.Length != this.m_Wheels.Count)
-			{
-				string exceptionMsg = string.Format("Not Enough arguments. There are {0} wheels, and {1} arguments",
-													this.m_Wheels.Count, manufacturers.Length);
-				throw new ArgumentException(exceptionMsg);
-			}
 
-			for (int i = 0; i < manufacturers.Length; i++)
-			{
+            if (manufacturers.Length == 1)
+            {
+                parseWheelOneManufacturer(i_Manufacturers);
+                return;
+            }
+
+            if (manufacturers.Length != this.m_Wheels.Count)
+            {
+                string exceptionMsg = string.Format("Not Enough arguments. There are {0} wheels, and {1} arguments",
+                                                    this.m_Wheels.Count, manufacturers.Length);
+                throw new ArgumentException(exceptionMsg);
+            }
+
+            for (int i = 0; i < manufacturers.Length; i++)
+            {
                 this.m_Wheels[i].ManufacturerName = manufacturers[i];
-			}
-		}
+            }
+        }
+
+        private void parseWheelOneManufacturer(string i_Manufacturer)
+        {
+            for (int i = 0; i < m_Wheels.Count; i++)
+            {
+                this.m_Wheels[i].ManufacturerName = i_Manufacturer;
+            }
+        }
+
+        private void parseWheelOneAirPressure(string i_AirPressure)
+        {
+            for (int i = 0; i < m_Wheels.Count; i++)
+            {
+                this.m_Wheels[i].ManufacturerName = i_AirPressure;
+            }
+        }
 
         public abstract void ParseNeededInput(Dictionary<string, string> i_InputToParse);
 
-        protected Vehicle(eEnergyType i_EnergyType, Nullable<eFuelType> i_FuelType,
+        protected Vehicle(eEnergyType i_EnergyType,
+                          Nullable<eFuelType> i_FuelType,
                             float i_MaximalEnergyLevel,
                             float i_MaxAirPressure, int i_NumOfWheels)
         {
@@ -197,8 +235,8 @@ namespace Ex03.GarageLogic
                 return m_CurrentEnergyLevel;
             }
         }
-        
-        
+
+
         public enum eEnergyType
         {
             Electric,

@@ -10,10 +10,10 @@ namespace Ex03.GarageLogic
         private bool m_IsCarryingHazardousMaterials;
         private float m_MaxCarryingWeight;
 
-        private readonly string r_HazardMaterialKey = "Hazardous Materials <Y/N>";
-        private readonly string r_MaxCarryWeightKey = "Maximum Carrying Weight";
+        private static readonly string sr_HazardMaterialKey = "Hazardous Materials <Y/N>";
+        private static readonly string sr_MaxCarryWeightKey = "Maximum Carrying Weight";
 
-        public Truck(e_EnergyType i_EnergyType, e_FuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
+        public Truck(eEnergyType i_EnergyType, eFuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
         {
         }
@@ -41,8 +41,8 @@ namespace Ex03.GarageLogic
         public override Dictionary<string, string> NeededInputs()
         {
             Dictionary<string, string> neededInput = new Dictionary<string, string>();
-            neededInput.Add(r_HazardMaterialKey, null);
-            neededInput.Add(r_MaxCarryWeightKey, null);
+            neededInput.Add(sr_HazardMaterialKey, null);
+            neededInput.Add(sr_MaxCarryWeightKey, null);
 
             return neededInput;
         }
@@ -53,7 +53,7 @@ namespace Ex03.GarageLogic
             string maxCarryWInput;
             int maxCarryWeight = -1;
 
-            if (!((i_InputToParse.TryGetValue(r_MaxCarryWeightKey, out maxCarryWInput)) ||
+            if (!((i_InputToParse.TryGetValue(sr_MaxCarryWeightKey, out maxCarryWInput)) ||
                   (int.TryParse(maxCarryWInput, out maxCarryWeight))))
 			{
 				throw new FormatException("No Max Carrying Weight");
@@ -63,7 +63,7 @@ namespace Ex03.GarageLogic
                 throw new ArgumentException("Max Carrying Weight must be positive");
             }
 
-            if (!i_InputToParse.TryGetValue(r_HazardMaterialKey, out hazMaterialsInput))
+            if (!i_InputToParse.TryGetValue(sr_HazardMaterialKey, out hazMaterialsInput))
 			{
 				throw new FormatException("No Hazardous Materials");
 			}
