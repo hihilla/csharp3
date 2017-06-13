@@ -64,16 +64,10 @@ namespace Ex03.GarageLogic
                 throw new FormatException("No Licence Number");
             }
 
-            if (!i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing))
+            if (!((i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing)) && 
+                  (float.TryParse(tempStringBeforeParsing, out curEnergyLevel))))
             {
                 throw new FormatException("No Current Energy Level");
-            }
-            else
-            {
-                if (!float.TryParse(tempStringBeforeParsing, out curEnergyLevel))
-                {
-                    throw new FormatException("No Current Energy Level");
-                }
             }
 
             if (!i_VehicleInput.TryGetValue(sr_OwnerNameKey, out ownerName))

@@ -53,7 +53,7 @@ namespace Ex03.GarageLogic
             string maxCarryWInput;
             int maxCarryWeight = -1;
 
-            if (!((i_InputToParse.TryGetValue(sr_MaxCarryWeightKey, out maxCarryWInput)) ||
+            if (!((i_InputToParse.TryGetValue(sr_MaxCarryWeightKey, out maxCarryWInput)) &&
                   (int.TryParse(maxCarryWInput, out maxCarryWeight))))
 			{
 				throw new FormatException("No Max Carrying Weight");
