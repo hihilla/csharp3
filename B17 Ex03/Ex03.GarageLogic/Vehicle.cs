@@ -1,4 +1,4 @@
-﻿﻿
+﻿﻿﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,8 +24,8 @@ namespace Ex03.GarageLogic
         private static readonly string sr_CurrentEnergyLevelKey = "Current Energy Level";
         private static readonly string sr_OwnerNameKey = "Owner Name";
         private static readonly string sr_OwnerPhoneNumberKey = "Owners Phone Number";
-        private static readonly string sr_WheelsAirPressureKey = "Wheels current air pressure";
-        private static readonly string sr_WheelsManufacturerKey = "Wheels Manufacturer";
+        private static readonly string sr_WheelsAirPressureKey = "Wheels current air pressure (seperated by comma)";
+        private static readonly string sr_WheelsManufacturerKey = "Wheels Manufacturer (seperated by comma)";
 
         public Dictionary<string, string> VehicleInput()
         {
@@ -195,7 +195,13 @@ namespace Ex03.GarageLogic
         {
             for (int i = 0; i < m_Wheels.Count; i++)
             {
-                this.m_Wheels[i].ManufacturerName = i_AirPressure;
+				float wheelAirPressure;
+				if (!float.TryParse(i_AirPressure, out wheelAirPressure))
+				{
+					throw new FormatException("Air Pressure must be a float");
+				}
+
+                this.m_Wheels[i].CurrentAirPressure = wheelAirPressure;
             }
         }
 
@@ -322,7 +328,7 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             StringBuilder vehicleString = new StringBuilder();
-
+            vehicleString.Append("\n");
             vehicleString.Append("Licence number: ");
             vehicleString.Append(m_LicenceNumber);
             vehicleString.Append("\n");
@@ -348,6 +354,7 @@ namespace Ex03.GarageLogic
             if (this.m_EnergyType == eEnergyType.Fuel)
             {
                 vehicleString.Append(this.m_FuelType);
+                vehicleString.Append("\n");
             }
 
             vehicleString.Append("Energy level is: ");

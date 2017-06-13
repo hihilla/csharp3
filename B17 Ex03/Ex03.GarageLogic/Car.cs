@@ -90,7 +90,7 @@
             carToString.AppendFormat("The car has {0} doors\nColor: {1}", this.m_numberOfDoors, this.m_carColor);
             carToString.Append(base.ToString());
 
-            return null;
+            return carToString.ToString();
         }
     }
 }

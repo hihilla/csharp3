@@ -14,14 +14,12 @@ namespace Ex03.ConsoleUI
         private static void manageGarage()
         {
             GarageLogic.Garage garage = new GarageLogic.Garage();
-            char exitChar;
             do
             {
                 askUserForInstructions(garage);
                 Console.WriteLine("Do you want to exit garage? <Y/N>");
             }
-            while (char.TryParse(Console.ReadLine(), out exitChar) && (exitChar != 'Y'));
-            Console.Write(exitChar);
+            while (Console.ReadLine().ToUpper() != "Y");
             Console.ReadLine();
         }
 
