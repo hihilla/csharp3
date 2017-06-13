@@ -71,8 +71,8 @@ namespace Ex03.ConsoleUI
 
         private static void insertNewVehicle(GarageLogic.Garage i_Garage)
         {
-            Console.Write("To insert new elecrtic motorcycle, Enter 1, ");
-            Console.Write("To insert new fuel-based motorcycle, Enter 2, ");
+            Console.WriteLine("To insert new elecrtic motorcycle, Enter 1, ");
+            Console.WriteLine("To insert new fuel-based motorcycle, Enter 2, ");
             Console.WriteLine("To insert new elecrtic car, Enter 3");
             Console.WriteLine("To insert new fuel-based car, Enter 4");
             Console.WriteLine("To insert new truck, Enter 5");
@@ -84,16 +84,16 @@ namespace Ex03.ConsoleUI
             switch (chosenVehiclel)
             {
                 case 1:
-                    newMotorcycle();
+                    newMotorcycle(true);
                     break;
                 case 2:
-                    newMotorcycle();
+                    newMotorcycle(false);
                     break;
                 case 3:
-                    newCar();
+                    newCar(true);
                     break;
                 case 4:
-                    newCar();
+                    newCar(false);
                     break;
                 case 5:
                     newTruck();
@@ -101,39 +101,60 @@ namespace Ex03.ConsoleUI
             }
         }
 
-        private static GarageLogic.Car newCar()
+        private static GarageLogic.Car newCar(bool i_isElectric)
         {
-            GarageLogic.Car car = GarageLogic.Creator.CreateNewCar(false);
+            GarageLogic.Car car = GarageLogic.Creator.CreateNewCar(i_isElectric);
             Dictionary<string, string> vehicleDictionary = car.VehicleInput();
             Dictionary<string, string> carDictionary = car.NeededInputs();
 
-            foreach (string key in vehicleDictionary.Keys)
-            {
-                Console.WriteLine(key);
-                string userInputValue = Console.ReadLine();
-                vehicleDictionary[key] = userInputValue;
-            }
-
-            foreach (string key in carDictionary.Keys)
-            {
-                Console.WriteLine(key);
-                string userInputValue = Console.ReadLine();
-                vehicleDictionary[key] = userInputValue;
-            }
+            fillDictionary(vehicleDictionary);
+            fillDictionary(carDictionary);
 
             car.ParseVehicleInput(vehicleDictionary);
             car.ParseNeededInput(carDictionary);
+
+            return car;
         }
 
-        private static GarageLogic.Motorcycle newMotorcycle()
+        private static GarageLogic.Motorcycle newMotorcycle(bool i_isElectric)
         {
-            
-        }
+            GarageLogic.Motorcycle motorcycle = GarageLogic.Creator.CreateNewMotorcycle(i_isElectric);
+            Dictionary<string, string> vehicleDictionary = motorcycle.VehicleInput();
+            Dictionary<string, string> motorcycleDictionary = motorcycle.NeededInputs();
 
+            fillDictionary(vehicleDictionary);
+            fillDictionary(motorcycleDictionary);
+
+            motorcycle.ParseVehicleInput(vehicleDictionary);
+            motorcycle.ParseNeededInput(motorcycleDictionary);
+
+            return motorcycle;
+        }
 
         private static GarageLogic.Truck newTruck()
         {
-            
+            GarageLogic.Truck truck = GarageLogic.Creator.CreateNewTruck();
+            Dictionary<string, string> vehicleDictionary = truck.VehicleInput();
+            Dictionary<string, string> truckDictionary = truck.NeededInputs();
+
+            fillDictionary(vehicleDictionary);
+            fillDictionary(truckDictionary);
+
+            truck.ParseVehicleInput(vehicleDictionary);
+            truck.ParseNeededInput(truckDictionary);
+
+            return truck;
+        }
+
+        private static void fillDictionary(Dictionary<string, string> i_Dictionary)
+        {
+            List<string> keys = new List<string>(i_Dictionary.Keys);
+            foreach (string key in keys)
+            {
+                Console.WriteLine(key);
+                string userInputValue = Console.ReadLine();
+                i_Dictionary[key] = userInputValue;
+            }
         }
 
         private static void printLicenceNumbersOfVehicles(GarageLogic.Garage i_Garage)
