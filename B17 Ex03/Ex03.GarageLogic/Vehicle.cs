@@ -102,11 +102,6 @@ namespace Ex03.GarageLogic
                 throw new FormatException("No Current Energy Level");
             }
             
-            if (curEnergyLevel > MaximalEnergyLevel)
-            {
-                curEnergyLevel = MaximalEnergyLevel;
-            }
-
             if (!i_VehicleInput.TryGetValue(sr_OwnerNameKey, out ownerName))
             {
                 throw new FormatException("No Owner Name");
@@ -129,7 +124,7 @@ namespace Ex03.GarageLogic
 
             this.m_ModelName = modelName;
             this.m_LicenceNumber = licenceNumber;
-            this.m_CurrentEnergyLevel = curEnergyLevel;
+            this.m_CurrentEnergyLevel = (curEnergyLevel > m_MaximalEnergyLevel) ? m_MaximalEnergyLevel : curEnergyLevel;
             this.m_OwnerName = ownerName;
             this.m_OwnerPhoneNumber = ownerPhoneNumber;
             parseWheelAirPressure(airPressures);
