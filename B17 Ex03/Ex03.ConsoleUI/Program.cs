@@ -175,17 +175,17 @@ namespace Ex03.ConsoleUI
 
             switch (chosenFilter)
             {
-                case 0:////returns string, print the motherfucker
-                    i_Garage.GetLicenceNumbers();
+                case 0:
+                    Console.WriteLine(i_Garage.GetLicenceNumbers());
                     break;
                 case 1:
-                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.RepairInProgress);
+                    Console.WriteLine(i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.RepairInProgress));
                     break;
                 case 2:
-                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.RepairComplete);
+                    Console.WriteLine(i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.RepairComplete));
                     break;
                 case 3:
-                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.Paid);
+                    Console.WriteLine(i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.Paid));
                     break;
             }
         }
