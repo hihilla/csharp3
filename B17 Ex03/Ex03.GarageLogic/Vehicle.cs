@@ -143,7 +143,7 @@ namespace Ex03.GarageLogic
 
             if (airPressures.Length != this.m_Wheels.Count)
             {
-                string exceptionMsg = string.Format("Not Enough arguments. There are {0} wheels, and {1} arguments",
+                string exceptionMsg = string.Format("Number of arguments is not compatible. There are {0} wheels, and {1} arguments",
                                                     this.m_Wheels.Count, airPressures.Length);
                 throw new ArgumentException(exceptionMsg);
             }

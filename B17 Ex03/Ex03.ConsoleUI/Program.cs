@@ -31,7 +31,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Enter 3 to change state of vehicle.");
             Console.WriteLine("Enter 4 to fill air in vehicles wheels");
             Console.WriteLine("Enter 5 to fill gas in fuel based vehicle.");
-            Console.WriteLine("Enter 6 to fill energy in electric based vehicle.");
+            Console.WriteLine("Enter 6 to charge electric based vehicle.");
             Console.WriteLine("Enter 7 to display full details of a vehicle.");
             string userAnswer = Console.ReadLine();
             int chosenAction;
