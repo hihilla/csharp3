@@ -1,13 +1,17 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Ex03.GarageLogic
 {
     public class Truck : Vehicle
     {
-        bool m_IsCarryingHazardousMaterials;
-        float m_MaxCarryingWeight;
+        private bool m_IsCarryingHazardousMaterials;
+        private float m_MaxCarryingWeight;
+
+        private readonly string r_HasardMaterialKey = "Hazardous Materials";
+        private readonly string r_MaxCarryWeightKey = "Maximum Carrying Weight";
 
         public Truck(e_EnergyType i_EnergyType, e_FuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
@@ -46,9 +50,11 @@ namespace Ex03.GarageLogic
             return truckToString.ToString();
         }
 
-        public override string NeededInputs()
+        public override Dictionary<string, string> NeededInputs()
         {
-            string neededInput = "Needed: is truck allowen to carry hazardous materials (T/F), max carring weight";
+            Dictionary<string, string> neededInput = new Dictionary<string, string>();
+            neededInput.Add(r_HasardMaterialKey, null);
+            neededInput.Add(r_MaxCarryWeightKey, null);
 
             return neededInput;
         }

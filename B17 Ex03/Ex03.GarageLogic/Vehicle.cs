@@ -19,20 +19,28 @@ namespace Ex03.GarageLogic
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
 
-        public string VehicleInput()
+        private readonly string r_ModelName = "Model Name";
+        private readonly string r_LicenceNumber = "Licence Number";
+        private readonly string r_CurrentEnergyLevel = "Current Energy Level";
+        private readonly string r_OwnerName = "Owner Name";
+        private readonly string r_OwnerPhoneNumber = "Owners Phone Number";
+        private readonly string r_WheelsAirPressure = "Wheels current air pressure";
+        private readonly string r_WheelsManufacturer = "Wheels Manufacturer";
+
+        public Dictionary<string, string> VehicleInput()
         {
-            StringBuilder inputNeeded = new StringBuilder();
-            inputNeeded.Append("<Model Name>,");
-            inputNeeded.Append("<Licence Number>,");
-            inputNeeded.Append("<Current Energy Level>,");
-            inputNeeded.Append("<Owner Name>,");
-            inputNeeded.Append("<Owners Phone Number>,");
-            inputNeeded.Append("<Wheels current air pressure>,");
-            inputNeeded.Append("<Wheels Manufacturer>");
-            return inputNeeded.ToString();
+            Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
+            inputNeeded.Add(r_ModelName, null);
+            inputNeeded.Add(r_LicenceNumber, null);
+            inputNeeded.Add(r_CurrentEnergyLevel, null);
+            inputNeeded.Add(r_OwnerName, null);
+            inputNeeded.Add(r_OwnerPhoneNumber, null);
+            inputNeeded.Add(r_WheelsAirPressure, null);
+            inputNeeded.Add(r_WheelsManufacturer, null);
+            return inputNeeded;
         }
 
-        public abstract string NeededInputs();
+        public abstract Dictionary<string, string> NeededInputs();
 
         protected Vehicle(e_EnergyType i_EnergyType, Nullable<e_FuelType> i_FuelType,
                             float i_MaximalEnergyLevel,

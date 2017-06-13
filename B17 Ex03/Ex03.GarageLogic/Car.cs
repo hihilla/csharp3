@@ -1,6 +1,7 @@
 ﻿namespace Ex03.GarageLogic
 {
     using System;
+    using System.Collections.Generic;
     using System.Text;
 
     public class Car : Vehicle
@@ -8,7 +9,10 @@
         private readonly int r_MaxNumOfDoors = 5;
         private readonly int r_MinNumOfDoors = 2;
         private e_Color m_carColor;
-        private int m_numberOfDoors; // {2, 3, 4, 5}       
+        private int m_numberOfDoors; // {2, 3, 4, 5}   
+
+        private readonly string r_CarColorKey = "Car Color";
+        private readonly string r_NumberOfDoorsKey = "Number of doors";
 
         public Car(
             e_EnergyType i_EnergyType,
@@ -21,11 +25,12 @@
             this.m_numberOfDoors = i_NumOfDoors;
         }
 
-        public override string NeededInputs()
+        public override Dictionary<string, string> NeededInputs()
         {
-            string neededInputs = "Needed: number of doors (2-5) and color of car {white, black, yellow, blue}";
-
-            return neededInputs;
+            Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
+            inputNeeded.Add(r_CarColorKey, null);
+            inputNeeded.Add(r_NumberOfDoorsKey, null);
+            return inputNeeded;
         }
 
         public enum e_Color

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Ex03.GarageLogic
@@ -7,6 +8,9 @@ namespace Ex03.GarageLogic
     {
         private e_LicenceType m_LicenceType;
         private int m_EngineCapacity;
+
+        private readonly string r_LicenceTypeKey = "Licence Type";
+        private readonly string r_EngineCapacityKey = "Engine Capacity (CCM)";
 
         public Motorcycle(e_EnergyType i_EnergyType, e_FuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
@@ -38,9 +42,11 @@ namespace Ex03.GarageLogic
             return motorcycleToString.ToString();
         }
 
-        public override string NeededInputs()
+        public override Dictionary<string, string> NeededInputs()
         {
-            string neededInputs = "Needed: licence type {A, AB, A2, B1}, engine capacity (CCM)";
+            Dictionary<string, string> neededInputs = new Dictionary<string, string>();
+            neededInputs.Add(r_LicenceTypeKey, null);
+            neededInputs.Add(r_EngineCapacityKey, null);
 
             return neededInputs;
         }
