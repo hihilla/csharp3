@@ -56,7 +56,7 @@ namespace Ex03.GarageLogic
 				throw new FormatException("No Licence Type");
 			}
 
-            if (!((i_InputToParse.TryGetValue(sr_EngineCapacityKey, out engineCapacityInput)) || 
+            if (!((i_InputToParse.TryGetValue(sr_EngineCapacityKey, out engineCapacityInput)) && 
                   (int.TryParse(engineCapacityInput, out engineCapacityCCM))))
 			{
 				throw new FormatException("No Engine Capacity");

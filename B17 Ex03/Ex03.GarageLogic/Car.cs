@@ -44,7 +44,7 @@
                 throw new FormatException("No Car Color");
 			}
 			
-            if (!((i_InputToParse.TryGetValue(sr_NumberOfDoorsKey, out numOfDoorsInput)) || 
+            if (!((i_InputToParse.TryGetValue(sr_NumberOfDoorsKey, out numOfDoorsInput)) && 
                   (int.TryParse(numOfDoorsInput, out numberOfDoors))))
 			{
 				throw new FormatException("No Number of doors");
