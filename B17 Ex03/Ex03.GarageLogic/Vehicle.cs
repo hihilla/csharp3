@@ -30,6 +30,7 @@ namespace Ex03.GarageLogic
         public Dictionary<string, string> VehicleInput()
         {
             Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
+
             inputNeeded.Add(sr_ModelNameKey, null);
             inputNeeded.Add(sr_LicenceNumberKey, null);
             inputNeeded.Add(sr_CurrentEnergyLevelKey, null);
@@ -42,6 +43,36 @@ namespace Ex03.GarageLogic
         }
 
         public abstract Dictionary<string, string> NeededInputs();
+
+        public Dictionary<string, string> InputForExistingVehicle()
+        {
+            Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
+
+            inputNeeded.Add(sr_CurrentEnergyLevelKey, null);
+            inputNeeded.Add(sr_WheelsAirPressureKey, null);
+
+            return inputNeeded;
+        }
+
+        public void ParseExsitcingVehicleInput(Dictionary<string, string> i_VehicleInput){
+			string tempStringBeforeParsing;
+			float curEnergyLevel;
+            string airPressures;
+
+			if (!((i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing)) &&
+				  (float.TryParse(tempStringBeforeParsing, out curEnergyLevel))))
+			{
+				throw new FormatException("No Current Energy Level");
+			}
+
+			if (!i_VehicleInput.TryGetValue(sr_WheelsAirPressureKey, out airPressures))
+			{
+				throw new FormatException("No Wheels air pressure");
+			}
+
+            this.m_CurrentEnergyLevel = curEnergyLevel;
+            parseWheelAirPressure(airPressures);
+        }
 
         public void ParseVehicleInput(Dictionary<string, string> i_VehicleInput)
         {
@@ -64,7 +95,7 @@ namespace Ex03.GarageLogic
                 throw new FormatException("No Licence Number");
             }
 
-            if (!((i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing)) && 
+            if (!((i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing)) &&
                   (float.TryParse(tempStringBeforeParsing, out curEnergyLevel))))
             {
                 throw new FormatException("No Current Energy Level");

@@ -77,76 +77,108 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("To insert new fuel-based car, Enter 4");
             Console.WriteLine("To insert new truck, Enter 5");
 
-            string managerInput =  Console.ReadLine();
+            string managerInput = Console.ReadLine();
             int chosenVehiclel;
             int.TryParse(managerInput, out chosenVehiclel);
 
             switch (chosenVehiclel)
             {
                 case 1:
-                    GarageLogic.Motorcycle electriMotorcyle = newMotorcycle(true);
-                    i_Garage.InsertNewVehicleToGarage(electriMotorcyle);
+                    GarageLogic.Motorcycle electriMotorcyle = newMotorcycle(true, i_Garage);
                     break;
                 case 2:
-                    GarageLogic.Motorcycle fueledMotorcycle = newMotorcycle(false);
-                    i_Garage.InsertNewVehicleToGarage(fueledMotorcycle);
+                    GarageLogic.Motorcycle fueledMotorcycle = newMotorcycle(false, i_Garage);
                     break;
                 case 3:
-                    GarageLogic.Car electricCar = newCar(true);
-                    i_Garage.InsertNewVehicleToGarage(electricCar);
+                    GarageLogic.Car electricCar = newCar(true, i_Garage);
                     break;
                 case 4:
-                    GarageLogic.Car fueledCar = newCar(false);
-                    i_Garage.InsertNewVehicleToGarage(fueledCar);
+                    GarageLogic.Car fueledCar = newCar(false, i_Garage);
                     break;
                 case 5:
-                    GarageLogic.Truck truck = newTruck();
-                    i_Garage.InsertNewVehicleToGarage(truck);
+                    GarageLogic.Truck truck = newTruck(i_Garage);
                     break;
             }
         }
 
-        private static GarageLogic.Car newCar(bool i_isElectric)
+        private static GarageLogic.Car newCar(bool i_isElectric, GarageLogic.Garage i_Garage)
         {
             GarageLogic.Car car = GarageLogic.Creator.CreateNewCar(i_isElectric);
-            Dictionary<string, string> vehicleDictionary = car.VehicleInput();
-            Dictionary<string, string> carDictionary = car.NeededInputs();
 
-            fillDictionary(vehicleDictionary);
-            fillDictionary(carDictionary);
+            if (i_Garage.InsertNewVehicleToGarage(car))
+            {
+                Dictionary<string, string> vehicleDictionary = car.VehicleInput();
+                Dictionary<string, string> carDictionary = car.NeededInputs();
 
-            car.ParseVehicleInput(vehicleDictionary);
-            car.ParseNeededInput(carDictionary);
+                fillDictionary(vehicleDictionary);
+                fillDictionary(carDictionary);
+
+                car.ParseVehicleInput(vehicleDictionary);
+                car.ParseNeededInput(carDictionary);
+
+            }
+            else
+            {
+                Dictionary<string, string> vehicleDictionary = car.InputForExistingVehicle();
+
+                fillDictionary(vehicleDictionary);
+
+                car.ParseExsitcingVehicleInput(vehicleDictionary);
+            }
 
             return car;
         }
 
-        private static GarageLogic.Motorcycle newMotorcycle(bool i_isElectric)
+        private static GarageLogic.Motorcycle newMotorcycle(bool i_isElectric, GarageLogic.Garage i_Garage)
         {
             GarageLogic.Motorcycle motorcycle = GarageLogic.Creator.CreateNewMotorcycle(i_isElectric);
-            Dictionary<string, string> vehicleDictionary = motorcycle.VehicleInput();
-            Dictionary<string, string> motorcycleDictionary = motorcycle.NeededInputs();
 
-            fillDictionary(vehicleDictionary);
-            fillDictionary(motorcycleDictionary);
+            if (i_Garage.InsertNewVehicleToGarage(motorcycle))
+            {
+                Dictionary<string, string> vehicleDictionary = motorcycle.VehicleInput();
+                Dictionary<string, string> motorcycleDictionary = motorcycle.NeededInputs();
 
-            motorcycle.ParseVehicleInput(vehicleDictionary);
-            motorcycle.ParseNeededInput(motorcycleDictionary);
+                fillDictionary(vehicleDictionary);
+                fillDictionary(motorcycleDictionary);
+
+                motorcycle.ParseVehicleInput(vehicleDictionary);
+                motorcycle.ParseNeededInput(motorcycleDictionary);
+            }
+            else
+            {
+                Dictionary<string, string> vehicleDictionary = motorcycle.InputForExistingVehicle();
+
+                fillDictionary(vehicleDictionary);
+
+                motorcycle.ParseExsitcingVehicleInput(vehicleDictionary);
+            }
 
             return motorcycle;
         }
 
-        private static GarageLogic.Truck newTruck()
+        private static GarageLogic.Truck newTruck(GarageLogic.Garage i_Garage)
         {
             GarageLogic.Truck truck = GarageLogic.Creator.CreateNewTruck();
-            Dictionary<string, string> vehicleDictionary = truck.VehicleInput();
-            Dictionary<string, string> truckDictionary = truck.NeededInputs();
 
-            fillDictionary(vehicleDictionary);
-            fillDictionary(truckDictionary);
+            if (i_Garage.InsertNewVehicleToGarage(truck))
+            {
+				Dictionary<string, string> vehicleDictionary = truck.VehicleInput();
+				Dictionary<string, string> truckDictionary = truck.NeededInputs();
 
-            truck.ParseVehicleInput(vehicleDictionary);
-            truck.ParseNeededInput(truckDictionary);
+				fillDictionary(vehicleDictionary);
+				fillDictionary(truckDictionary);
+
+				truck.ParseVehicleInput(vehicleDictionary);
+				truck.ParseNeededInput(truckDictionary);
+            }
+            else
+            {
+                Dictionary<string, string> vehicleDictionary = truck.InputForExistingVehicle();
+
+				fillDictionary(vehicleDictionary);
+
+                truck.ParseExsitcingVehicleInput(vehicleDictionary);
+            }
 
             return truck;
         }
