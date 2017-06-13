@@ -100,6 +100,11 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException("No Current Energy Level");
             }
+            
+            if (curEnergyLevel > MaximalEnergyLevel)
+            {
+                curEnergyLevel = MaximalEnergyLevel;
+            }
 
             if (!i_VehicleInput.TryGetValue(sr_OwnerNameKey, out ownerName))
             {
