@@ -8,15 +8,15 @@
     {
         private static readonly int sr_MaxNumOfDoors = 5;
         private static readonly int sr_MinNumOfDoors = 2;
-        private e_Color m_carColor;
+        private eColor m_carColor;
         private int m_numberOfDoors; // {2, 3, 4, 5}   
 
         private static readonly string sr_CarColorKey = "Car Color";
         private static readonly string sr_NumberOfDoorsKey = "Number of doors";
 
         public Car(
-            e_EnergyType i_EnergyType,
-            Nullable<e_FuelType> i_FuelType,
+            eEnergyType i_EnergyType,
+            Nullable<eFuelType> i_FuelType,
             float i_MaximalEnergyLevel,float i_MaxAirPressure, int i_NumOfWheels,
             int i_NumOfDoors)
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel,
@@ -59,16 +59,16 @@
             switch (carColor.ToLower())
             {
                 case "yellow":
-                    this.m_carColor = e_Color.Yellow;
+                    this.m_carColor = eColor.Yellow;
                     break;
 				case "white":
-                    this.m_carColor = e_Color.White;
+                    this.m_carColor = eColor.White;
 					break;
 				case "black":
-                    this.m_carColor = e_Color.Black;
+                    this.m_carColor = eColor.Black;
 					break;
 				case "blue":
-                    this.m_carColor = e_Color.Blue;
+                    this.m_carColor = eColor.Blue;
 					break;
                 default:
                     throw new ArgumentException("Invalid car color");
@@ -77,7 +77,7 @@
             this.m_numberOfDoors = numberOfDoors;
         }
 
-        public enum e_Color
+        public enum eColor
         {
             Yellow,
             White,

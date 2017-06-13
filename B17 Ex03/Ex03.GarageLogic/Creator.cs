@@ -9,12 +9,12 @@ namespace Ex03.GarageLogic
         {
             int numberOfWheels = 2;
             float maxWheelAirPressure = 33;
-            Vehicle.e_EnergyType energyType = Vehicle.e_EnergyType.Electric;
-            Nullable<Vehicle.e_FuelType> fuelType = null;
+            Vehicle.eEnergyType energyType = Vehicle.eEnergyType.Electric;
+            Nullable<Vehicle.eFuelType> fuelType = null;
             if (!i_IsElectric)
             {
-                energyType = Vehicle.e_EnergyType.Fuel;
-                fuelType = Vehicle.e_FuelType.Octan95;
+                energyType = Vehicle.eEnergyType.Fuel;
+                fuelType = Vehicle.eFuelType.Octan95;
             }
             float tankSize = i_IsElectric ? 2.7F : 5.5F;
             return new Motorcycle(energyType, fuelType,
@@ -26,12 +26,12 @@ namespace Ex03.GarageLogic
         {
             int numberOfWheels = 4;
             float maxWheelAirPressure = 30;
-            Vehicle.e_EnergyType energyType = Vehicle.e_EnergyType.Electric;
-            Nullable<Vehicle.e_FuelType> fuelType = null;
+            Vehicle.eEnergyType energyType = Vehicle.eEnergyType.Electric;
+            Nullable<Vehicle.eFuelType> fuelType = null;
             if (!i_IsElectric)
             {
-                fuelType = Vehicle.e_FuelType.Octan98;
-                energyType = Vehicle.e_EnergyType.Fuel;
+                fuelType = Vehicle.eFuelType.Octan98;
+                energyType = Vehicle.eEnergyType.Fuel;
             }
             float maxEnergyLevel = i_IsElectric ? 2.5F : 42F;
             return new Car(energyType, fuelType,
@@ -43,8 +43,8 @@ namespace Ex03.GarageLogic
         {
             int numberOfWheels = 12;
             float maxWheelAirPressure = 32;
-            Vehicle.e_EnergyType energyType = Vehicle.e_EnergyType.Fuel;
-            Vehicle.e_FuelType fuelType = Vehicle.e_FuelType.Octan96;
+            Vehicle.eEnergyType energyType = Vehicle.eEnergyType.Fuel;
+            Vehicle.eFuelType fuelType = Vehicle.eFuelType.Octan96;
             float tankSize = 135F;
             return new Truck(energyType, fuelType,
                   tankSize, 

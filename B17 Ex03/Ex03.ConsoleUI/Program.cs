@@ -155,19 +155,19 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid color. please choose valid color (1 - 4");
             }
 
-            GarageLogic.Car.e_Color chosenColor = GarageLogic.Car.e_Color.Black;
+            GarageLogic.Car.eColor chosenColor = GarageLogic.Car.eColor.Black;
             switch (carColor)
             {
                 case 1:
-                    chosenColor = GarageLogic.Car.e_Color.Yellow;
+                    chosenColor = GarageLogic.Car.eColor.Yellow;
                     break;
                 case 2:
-                    chosenColor = GarageLogic.Car.e_Color.White;
+                    chosenColor = GarageLogic.Car.eColor.White;
                     break;
                 case 3:
                     break;
                 case 4:
-                    chosenColor = GarageLogic.Car.e_Color.Blue;
+                    chosenColor = GarageLogic.Car.eColor.Blue;
                     break;
             }
 
@@ -193,17 +193,17 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid color. please choose valid number (1 - 4)");
             }
 
-            GarageLogic.Motorcycle.e_LicenceType chosenLicenceType = GarageLogic.Motorcycle.e_LicenceType.A;
+            GarageLogic.Motorcycle.eLicenceType chosenLicenceType = GarageLogic.Motorcycle.eLicenceType.A;
             switch (userLicenceType)
             {
                 case 2:
-                    chosenLicenceType = GarageLogic.Motorcycle.e_LicenceType.AB;
+                    chosenLicenceType = GarageLogic.Motorcycle.eLicenceType.AB;
                     break;
                 case 3:
-                    chosenLicenceType = GarageLogic.Motorcycle.e_LicenceType.A2;
+                    chosenLicenceType = GarageLogic.Motorcycle.eLicenceType.A2;
                     break;
                 case 4:
-                    chosenLicenceType = GarageLogic.Motorcycle.e_LicenceType.B1;
+                    chosenLicenceType = GarageLogic.Motorcycle.eLicenceType.B1;
                     break;
             }
 
@@ -249,13 +249,13 @@ namespace Ex03.ConsoleUI
                     i_Garage.GetLicenceNumbers();
                     break;
                 case 1:
-                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.e_VehicleState.RepairInProgress);
+                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.RepairInProgress);
                     break;
                 case 2:
-                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.e_VehicleState.RepairComplete);
+                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.RepairComplete);
                     break;
                 case 3:
-                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.e_VehicleState.Paid);
+                    i_Garage.GetLicenceNumbers(GarageLogic.Vehicle.eVehicleState.Paid);
                     break;
             }
         }
@@ -271,17 +271,17 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid state. please choose valid state.");
             }
 
-            GarageLogic.Vehicle.e_VehicleState vehicleState = GarageLogic.Vehicle.e_VehicleState.RepairInProgress;
+            GarageLogic.Vehicle.eVehicleState vehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
             switch (chosenState)
             {
                 case 1:
-                    vehicleState = GarageLogic.Vehicle.e_VehicleState.RepairInProgress;
+                    vehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
                     break;
                 case 2:
-                    vehicleState = GarageLogic.Vehicle.e_VehicleState.RepairComplete;
+                    vehicleState = GarageLogic.Vehicle.eVehicleState.RepairComplete;
                     break;
                 case 3:
-                    vehicleState = GarageLogic.Vehicle.e_VehicleState.Paid;
+                    vehicleState = GarageLogic.Vehicle.eVehicleState.Paid;
                     break;
             }
 
@@ -306,20 +306,20 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid fuel type. please choose valid fuel type.");
             }
 
-            GarageLogic.Vehicle.e_FuelType chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan95;
+            GarageLogic.Vehicle.eFuelType chosenFuel = GarageLogic.Vehicle.eFuelType.Octan95;
             switch (fuelType)
             {
                 case 1:
-                    chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan95;
+                    chosenFuel = GarageLogic.Vehicle.eFuelType.Octan95;
                     break;
                 case 2:
-                    chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan96;
+                    chosenFuel = GarageLogic.Vehicle.eFuelType.Octan96;
                     break;
                 case 3:
-                    chosenFuel = GarageLogic.Vehicle.e_FuelType.Octan98;
+                    chosenFuel = GarageLogic.Vehicle.eFuelType.Octan98;
                     break;
                 case 4:
-                    chosenFuel = GarageLogic.Vehicle.e_FuelType.Soler;
+                    chosenFuel = GarageLogic.Vehicle.eFuelType.Soler;
                     break;
             }
 

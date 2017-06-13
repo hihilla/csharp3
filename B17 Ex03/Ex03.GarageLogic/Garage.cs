@@ -25,7 +25,7 @@ namespace Ex03.GarageLogic
         }
 
 
-        public string GetLicenceNumbers(Nullable<Vehicle.e_VehicleState> i_StateFilter = null)
+        public string GetLicenceNumbers(Nullable<Vehicle.eVehicleState> i_StateFilter = null)
         {
             StringBuilder licenceNumbers = new StringBuilder();
             if (i_StateFilter.HasValue)
@@ -68,7 +68,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void ChangeVehicleState(string i_VehicleLicence, Vehicle.e_VehicleState i_VehicleState)
+        public void ChangeVehicleState(string i_VehicleLicence, Vehicle.eVehicleState i_VehicleState)
         {
             Vehicle vehicle;
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
@@ -81,7 +81,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void FillEnergyInVehicle(string i_VehicleLicence, Nullable<Vehicle.e_FuelType> i_FuelType, float i_AmountToFill)
+        public void FillEnergyInVehicle(string i_VehicleLicence, Nullable<Vehicle.eFuelType> i_FuelType, float i_AmountToFill)
         {
             Vehicle vehicle;
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))

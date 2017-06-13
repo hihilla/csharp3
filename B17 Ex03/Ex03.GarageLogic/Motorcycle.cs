@@ -6,18 +6,18 @@ namespace Ex03.GarageLogic
 {
     public class Motorcycle : Vehicle
     {
-        private e_LicenceType m_LicenceType;
+        private eLicenceType m_LicenceType;
         private int m_EngineCapacity;
 
-        private readonly string r_LicenceTypeKey = "Licence Type <A, AB, A2, B1>";
-        private readonly string r_EngineCapacityKey = "Engine Capacity (CCM)";
+        private static readonly string sr_LicenceTypeKey = "Licence Type <A, AB, A2, B1>";
+        private static readonly string sr_EngineCapacityKey = "Engine Capacity (CCM)";
 
-        public Motorcycle(e_EnergyType i_EnergyType, e_FuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
+        public Motorcycle(eEnergyType i_EnergyType, eFuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
         {
         }
 
-        public enum e_LicenceType
+        public enum eLicenceType
         {
             A,
             AB,
@@ -39,8 +39,8 @@ namespace Ex03.GarageLogic
         public override Dictionary<string, string> NeededInputs()
         {
             Dictionary<string, string> neededInputs = new Dictionary<string, string>();
-            neededInputs.Add(r_LicenceTypeKey, null);
-            neededInputs.Add(r_EngineCapacityKey, null);
+            neededInputs.Add(sr_LicenceTypeKey, null);
+            neededInputs.Add(sr_EngineCapacityKey, null);
 
             return neededInputs;
         }
@@ -51,12 +51,12 @@ namespace Ex03.GarageLogic
             string engineCapacityInput;
             int engineCapacityCCM = -1;
 
-            if (!i_InputToParse.TryGetValue(r_LicenceTypeKey, out licenceType))
+            if (!i_InputToParse.TryGetValue(sr_LicenceTypeKey, out licenceType))
 			{
 				throw new FormatException("No Licence Type");
 			}
 
-            if (!((i_InputToParse.TryGetValue(r_EngineCapacityKey, out engineCapacityInput)) || 
+            if (!((i_InputToParse.TryGetValue(sr_EngineCapacityKey, out engineCapacityInput)) || 
                   (int.TryParse(engineCapacityInput, out engineCapacityCCM))))
 			{
 				throw new FormatException("No Engine Capacity");
@@ -69,16 +69,16 @@ namespace Ex03.GarageLogic
             switch (licenceType)
             {
                 case "A":
-                    this.m_LicenceType = e_LicenceType.A;
+                    this.m_LicenceType = eLicenceType.A;
                     break;
 				case "AB":
-					this.m_LicenceType = e_LicenceType.AB;
+					this.m_LicenceType = eLicenceType.AB;
 					break;
 				case "A2":
-					this.m_LicenceType = e_LicenceType.A2;
+					this.m_LicenceType = eLicenceType.A2;
 					break;
 				case "B1":
-                    this.m_LicenceType = e_LicenceType.B1;
+                    this.m_LicenceType = eLicenceType.B1;
 					break;
                 default:
                     throw new ArgumentException("Invalid licence type");
