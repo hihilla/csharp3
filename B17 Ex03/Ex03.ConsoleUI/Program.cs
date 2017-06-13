@@ -14,7 +14,6 @@ namespace Ex03.ConsoleUI
         private static void manageGarage()
         {
             GarageLogic.Garage garage = new GarageLogic.Garage();
-            char exitChar;
             do
             {
                 askUserForInstructions(garage);
