@@ -6,13 +6,13 @@
 
     public class Car : Vehicle
     {
-        private readonly int r_MaxNumOfDoors = 5;
-        private readonly int r_MinNumOfDoors = 2;
+        private static readonly int sr_MaxNumOfDoors = 5;
+        private static readonly int sr_MinNumOfDoors = 2;
         private e_Color m_carColor;
         private int m_numberOfDoors; // {2, 3, 4, 5}   
 
-        private readonly string r_CarColorKey = "Car Color";
-        private readonly string r_NumberOfDoorsKey = "Number of doors";
+        private static readonly string sr_CarColorKey = "Car Color";
+        private static readonly string sr_NumberOfDoorsKey = "Number of doors";
 
         public Car(
             e_EnergyType i_EnergyType,
@@ -28,8 +28,8 @@
         public override Dictionary<string, string> NeededInputs()
         {
             Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
-            inputNeeded.Add(r_CarColorKey, null);
-            inputNeeded.Add(r_NumberOfDoorsKey, null);
+            inputNeeded.Add(sr_CarColorKey, null);
+            inputNeeded.Add(sr_NumberOfDoorsKey, null);
 
             return inputNeeded;
         }
@@ -40,11 +40,11 @@
             string numOfDoorsInput;
             int numberOfDoors = 0;
 
-            if (!i_InputToParse.TryGetValue(r_CarColorKey, out carColor)){
+            if (!i_InputToParse.TryGetValue(sr_CarColorKey, out carColor)){
                 throw new FormatException("No Car Color");
 			}
 			
-            if (!((i_InputToParse.TryGetValue(r_NumberOfDoorsKey, out numOfDoorsInput)) || 
+            if (!((i_InputToParse.TryGetValue(sr_NumberOfDoorsKey, out numOfDoorsInput)) || 
                   (int.TryParse(numOfDoorsInput, out numberOfDoors))))
 			{
 				throw new FormatException("No Number of doors");
@@ -52,7 +52,7 @@
 
             if (!(numberOfDoors > 2 && numberOfDoors < 5)) {
                 string exceptionMsg = string.Format("Number of doors should be minimun {0} and maximum {1}", 
-                                                    r_MinNumOfDoors, r_MaxNumOfDoors);
+                                                    sr_MinNumOfDoors, sr_MaxNumOfDoors);
                 throw new ArgumentException(exceptionMsg);
             }
 

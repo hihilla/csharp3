@@ -19,24 +19,24 @@ namespace Ex03.GarageLogic
         protected string m_OwnerPhoneNumber;
         protected e_VehicleState m_VehicleState = e_VehicleState.RepairInProgress;
 
-        private readonly string r_ModelNameKey = "Model Name";
-        private readonly string r_LicenceNumberKey = "Licence Number";
-        private readonly string r_CurrentEnergyLevelKey = "Current Energy Level";
-        private readonly string r_OwnerNameKey = "Owner Name";
-        private readonly string r_OwnerPhoneNumberKey = "Owners Phone Number";
-        private readonly string r_WheelsAirPressureKey = "Wheels current air pressure";
-        private readonly string r_WheelsManufacturerKey = "Wheels Manufacturer";
+        private static readonly string sr_ModelNameKey = "Model Name";
+        private static readonly string sr_LicenceNumberKey = "Licence Number";
+        private static readonly string sr_CurrentEnergyLevelKey = "Current Energy Level";
+        private static readonly string sr_OwnerNameKey = "Owner Name";
+        private static readonly string sr_OwnerPhoneNumberKey = "Owners Phone Number";
+        private static readonly string sr_WheelsAirPressureKey = "Wheels current air pressure";
+        private static readonly string sr_WheelsManufacturerKey = "Wheels Manufacturer";
 
         public Dictionary<string, string> VehicleInput()
         {
             Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
-            inputNeeded.Add(r_ModelNameKey, null);
-            inputNeeded.Add(r_LicenceNumberKey, null);
-            inputNeeded.Add(r_CurrentEnergyLevelKey, null);
-            inputNeeded.Add(r_OwnerNameKey, null);
-            inputNeeded.Add(r_OwnerPhoneNumberKey, null);
-            inputNeeded.Add(r_WheelsAirPressureKey, null);
-            inputNeeded.Add(r_WheelsManufacturerKey, null);
+            inputNeeded.Add(sr_ModelNameKey, null);
+            inputNeeded.Add(sr_LicenceNumberKey, null);
+            inputNeeded.Add(sr_CurrentEnergyLevelKey, null);
+            inputNeeded.Add(sr_OwnerNameKey, null);
+            inputNeeded.Add(sr_OwnerPhoneNumberKey, null);
+            inputNeeded.Add(sr_WheelsAirPressureKey, null);
+            inputNeeded.Add(sr_WheelsManufacturerKey, null);
 
             return inputNeeded;
         }
@@ -53,17 +53,17 @@ namespace Ex03.GarageLogic
             string airPressures;
             string wheelsManufacturers;
 
-            if (!i_VehicleInput.TryGetValue(r_ModelNameKey, out modelName)) 
+            if (!i_VehicleInput.TryGetValue(sr_ModelNameKey, out modelName)) 
             {
                 throw new FormatException("No Model Name");
             }
 
-            if (!i_VehicleInput.TryGetValue(r_LicenceNumberKey, out licenceNumber))
+            if (!i_VehicleInput.TryGetValue(sr_LicenceNumberKey, out licenceNumber))
 			{
 				throw new FormatException("No Licence Number");
 			}
 
-            if (!i_VehicleInput.TryGetValue(r_CurrentEnergyLevelKey, out tempStringBeforeParsing))
+            if (!i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing))
 			{
 				throw new FormatException("No Current Energy Level");
 			}
@@ -73,22 +73,22 @@ namespace Ex03.GarageLogic
                 }
             }
 
-            if (!i_VehicleInput.TryGetValue(r_OwnerNameKey, out ownerName))
+            if (!i_VehicleInput.TryGetValue(sr_OwnerNameKey, out ownerName))
 			{
 				throw new FormatException("No Owner Name");
 			}
 
-            if (!i_VehicleInput.TryGetValue(r_OwnerPhoneNumberKey, out ownerPhoneNumber))
+            if (!i_VehicleInput.TryGetValue(sr_OwnerPhoneNumberKey, out ownerPhoneNumber))
 			{
 				throw new FormatException("No Owner Phone Number");
 			}
 
-            if (!i_VehicleInput.TryGetValue(r_WheelsAirPressureKey, out airPressures))
+            if (!i_VehicleInput.TryGetValue(sr_WheelsAirPressureKey, out airPressures))
 			{
 				throw new FormatException("No Wheels air pressure");
 			}
 
-            if (!i_VehicleInput.TryGetValue(r_WheelsManufacturerKey, out wheelsManufacturers))
+            if (!i_VehicleInput.TryGetValue(sr_WheelsManufacturerKey, out wheelsManufacturers))
 			{
 				throw new FormatException("No Wheels manufacturers");
 			}
