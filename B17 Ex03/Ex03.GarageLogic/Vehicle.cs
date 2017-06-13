@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -72,6 +72,7 @@ namespace Ex03.GarageLogic
 
             this.m_CurrentEnergyLevel = curEnergyLevel;
             parseWheelAirPressure(airPressures);
+            this.m_VehicleState = eVehicleState.RepairInProgress;
         }
 
         public void ParseVehicleInput(Dictionary<string, string> i_VehicleInput)
