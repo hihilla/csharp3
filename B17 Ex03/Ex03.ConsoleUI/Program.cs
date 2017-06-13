@@ -20,8 +20,7 @@ namespace Ex03.ConsoleUI
                 askUserForInstructions(garage);
                 Console.WriteLine("Do you want to exit garage? <Y/N>");
             }
-            while (char.TryParse(Console.ReadLine(), out exitChar) && (exitChar != 'Y'));
-            Console.Write(exitChar);
+            while (char.TryParse(Console.ReadLine(), out exitChar) && ((exitChar != 'Y') || (exitChar != 'y')));
             Console.ReadLine();
         }
 
