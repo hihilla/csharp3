@@ -195,7 +195,13 @@ namespace Ex03.GarageLogic
         {
             for (int i = 0; i < m_Wheels.Count; i++)
             {
-                this.m_Wheels[i].ManufacturerName = i_AirPressure;
+				float wheelAirPressure;
+				if (!float.TryParse(i_AirPressure, out wheelAirPressure))
+				{
+					throw new FormatException("Air Pressure must be a float");
+				}
+
+                this.m_Wheels[i].CurrentAirPressure = wheelAirPressure;
             }
         }
 
