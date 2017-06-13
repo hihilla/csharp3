@@ -48,7 +48,7 @@
 				throw new FormatException("No Number of doors");
 			}
 
-            if (!(numberOfDoors > 2 && numberOfDoors < 5)) {
+            if (!(numberOfDoors >= 2 && numberOfDoors <= 5)) {
                 string exceptionMsg = string.Format("Number of doors should be minimun {0} and maximum {1}", 
                                                     sr_MinNumOfDoors, sr_MaxNumOfDoors);
                 throw new ArgumentException(exceptionMsg);
