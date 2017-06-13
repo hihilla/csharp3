@@ -11,8 +11,8 @@
         private eColor m_carColor;
         private int m_numberOfDoors; // {2, 3, 4, 5}   
 
-        private static readonly string sr_CarColorKey = "Car Color";
-        private static readonly string sr_NumberOfDoorsKey = "Number of doors";
+        private static readonly string sr_CarColorKey = "Car Color <White, Black, Yellow, Blue>";
+        private static readonly string sr_NumberOfDoorsKey = "Number of doors <2-5>";
 
         public Car(
             eEnergyType i_EnergyType,

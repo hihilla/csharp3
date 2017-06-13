@@ -84,19 +84,24 @@ namespace Ex03.ConsoleUI
             switch (chosenVehiclel)
             {
                 case 1:
-                    newMotorcycle(true);
+                    GarageLogic.Motorcycle electriMotorcyle = newMotorcycle(true);
+                    i_Garage.InsertNewVehicleToGarage(electriMotorcyle);
                     break;
                 case 2:
-                    newMotorcycle(false);
+                    GarageLogic.Motorcycle fueledMotorcycle = newMotorcycle(false);
+                    i_Garage.InsertNewVehicleToGarage(fueledMotorcycle);
                     break;
                 case 3:
-                    newCar(true);
+                    GarageLogic.Car electricCar = newCar(true);
+                    i_Garage.InsertNewVehicleToGarage(electricCar);
                     break;
                 case 4:
-                    newCar(false);
+                    GarageLogic.Car fueledCar = newCar(false);
+                    i_Garage.InsertNewVehicleToGarage(fueledCar);
                     break;
                 case 5:
-                    newTruck();
+                    GarageLogic.Truck truck = newTruck();
+                    i_Garage.InsertNewVehicleToGarage(truck);
                     break;
             }
         }
