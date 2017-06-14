@@ -30,7 +30,7 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Do you want to exit garage? <Y/N>");
             string userAnswer = Console.ReadLine().ToUpper();
 
-            while (userAnswer != "Y" || userAnswer != "N")
+            while (userAnswer != "Y" && userAnswer != "N")
             {
                 Console.WriteLine("I don't understand...");
                 Console.WriteLine("Do you want to exit garage? <Y/N>");
