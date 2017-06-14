@@ -108,8 +108,7 @@ namespace Ex03.GarageLogic
                 throw new FormatException("No Owner Name");
             }
 
-            if (!i_VehicleInput.TryGetValue(sr_OwnerPhoneNumberKey, out ownerPhoneNumber) ||
-               (!validPhoneNumber(ownerPhoneNumber)))
+            if (!i_VehicleInput.TryGetValue(sr_OwnerPhoneNumberKey, out ownerPhoneNumber))
             {
                 throw new FormatException("No Owner Phone Number");
             }
@@ -131,15 +130,6 @@ namespace Ex03.GarageLogic
             this.m_OwnerPhoneNumber = ownerPhoneNumber;
             parseWheelAirPressure(airPressures);
             parseWheelManufacturers(wheelsManufacturers);
-        }
-
-        private bool validPhoneNumber(string i_PhoneNumber)
-        {
-            bool validPhone = true;
-            foreach (char digit in i_PhoneNumber) {
-                validPhone = validPhone && (char.IsDigit(digit) || digit == '-');
-            }
-            return validPhone;
         }
 
         private void parseWheelAirPressure(string i_AirPressures)
@@ -167,7 +157,7 @@ namespace Ex03.GarageLogic
                     throw new FormatException("Air Pressure must be a float");
                 }
 
-                this.m_Wheels[i].CurrentAirPressure = wheelAirPressure;
+                this.m_Wheels[i].CurrentAirPressure = (wheelAirPressure > m_Wheels[i].MaxAirPressure) ? m_Wheels[i].MaxAirPressure : wheelAirPressure;
             }
         }
 
@@ -319,10 +309,10 @@ namespace Ex03.GarageLogic
             {
                 throw new ArgumentException("Wrong Energy Type!");
             }
-           /* if (i_FuelType != this.FuelType)
-            {
-                throw new ArgumentException("Wrong Fuel Type!");
-            }*/
+            /* if (i_FuelType != this.FuelType)
+             {
+                 throw new ArgumentException("Wrong Fuel Type!");
+             }*/
             float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
             if (i_EnergyType == eEnergyType.Electric)
             {
