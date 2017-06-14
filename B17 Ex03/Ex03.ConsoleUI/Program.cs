@@ -14,13 +14,30 @@ namespace Ex03.ConsoleUI
         private static void manageGarage()
         {
             GarageLogic.Garage garage = new GarageLogic.Garage();
+            bool finishRun;
             do
             {
                 askUserForInstructions(garage);
-                Console.WriteLine("Do you want to exit garage? <Y/N>");
+                finishRun = exitGerege();
             }
-            while (Console.ReadLine().ToUpper() != "Y");
+            while (!finishRun);
+
             Console.ReadLine();
+        }
+
+        private static bool exitGerege() {
+            Console.WriteLine("Do you want to exit garage? <Y/N>");
+            string userAnswer = Console.ReadLine().ToUpper();
+
+            while (userAnswer != "Y" || userAnswer != "Y") {
+                Console.WriteLine("I don't understand...");
+                Console.WriteLine("Do you want to exit garage? <Y/N>");
+                userAnswer = Console.ReadLine().ToUpper();
+            }
+
+            bool decideToExit = userAnswer == "Y";
+
+            return decideToExit;
         }
 
         private static void askUserForInstructions(GarageLogic.Garage i_Garage)
@@ -33,12 +50,11 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Enter 5 to fill gas in fuel based vehicle.");
             Console.WriteLine("Enter 6 to charge electric based vehicle.");
             Console.WriteLine("Enter 7 to display full details of a vehicle.");
-            string userAnswer = Console.ReadLine();
             int chosenAction;
-            while (!int.TryParse(userAnswer, out chosenAction) || !(chosenAction >= 1 && chosenAction <= 7))
+
+            while (!int.TryParse(Console.ReadLine(), out chosenAction) || !(chosenAction >= 1 && chosenAction <= 7))
             {
                 Console.WriteLine("Invalid action. please choose valid action.");
-                userAnswer = Console.ReadLine();
             }
 
             switch (chosenAction)
