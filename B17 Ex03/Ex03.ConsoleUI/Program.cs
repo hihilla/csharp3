@@ -21,15 +21,15 @@ namespace Ex03.ConsoleUI
                 finishRun = exitGerege();
             }
             while (!finishRun);
-
-            Console.ReadLine();
         }
 
-        private static bool exitGerege() {
+        private static bool exitGerege()
+        {
             Console.WriteLine("Do you want to exit garage? <Y/N>");
             string userAnswer = Console.ReadLine().ToUpper();
 
-            while (userAnswer != "Y" || userAnswer != "Y") {
+            while (userAnswer != "Y" && userAnswer != "N")
+            {
                 Console.WriteLine("I don't understand...");
                 Console.WriteLine("Do you want to exit garage? <Y/N>");
                 userAnswer = Console.ReadLine().ToUpper();
@@ -95,7 +95,7 @@ namespace Ex03.ConsoleUI
             int chosenVehiclel;
             int.TryParse(managerInput, out chosenVehiclel);
 
-            while(chosenVehiclel < 1 || chosenVehiclel > 5)
+            while (chosenVehiclel < 1 || chosenVehiclel > 5)
             {
                 Console.WriteLine("Invalid input, please choose valid vehicle <1-5>");
             }
@@ -198,9 +198,9 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Do you want to print with filter?");
             Console.WriteLine("Press 0 for no filter, 1 for Repair In Progress, 2 for Repair Complete, 3 for Paid");
-            string userAnswer = Console.ReadLine();
             int chosenFilter;
-            while (!int.TryParse(userAnswer, out chosenFilter) || !(chosenFilter >= 0 && chosenFilter <= 3))
+
+            while (!int.TryParse(Console.ReadLine(), out chosenFilter) || !(chosenFilter >= 0 && chosenFilter <= 3))
             {
                 Console.WriteLine("Invalid filter. please choose valid filter.");
             }
