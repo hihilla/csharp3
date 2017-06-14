@@ -79,6 +79,11 @@ namespace Ex03.ConsoleUI
             int chosenVehiclel;
             int.TryParse(managerInput, out chosenVehiclel);
 
+            while(chosenVehiclel < 1 || chosenVehiclel > 5)
+            {
+                Console.WriteLine("Invalid input, please choose valid vehicle <1-5>");
+            }
+
             switch (chosenVehiclel)
             {
                 case 1:
