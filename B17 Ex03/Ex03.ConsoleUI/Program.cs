@@ -287,12 +287,14 @@ namespace Ex03.ConsoleUI
 
             Console.WriteLine("Please enter amount of fuel to fill in liters");
             float amountToFill;
+            bool isElectric = false;
+
             while (!float.TryParse(Console.ReadLine(), out amountToFill))
             {
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
 
-            i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill);
+            i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill, isElectric);
         }
 
         private static void fillElectricity(GarageLogic.Garage i_Garage)
@@ -300,13 +302,15 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Please enter the vehicle licence number");
             string licenceNumber = Console.ReadLine();
             Console.WriteLine("Please enter amount of energy to fill in minutes");
-            float amountToFill;
-            while (!float.TryParse(Console.ReadLine(), out amountToFill))
+			float amountToFill;
+			bool isElectric = true;
+
+			while (!float.TryParse(Console.ReadLine(), out amountToFill))
             {
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
 
-            i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill);
+            i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill, isElectric);
         }
 
         private static void displayVehicleDetails(GarageLogic.Garage i_Garage)
