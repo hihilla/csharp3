@@ -77,7 +77,7 @@ namespace Ex03.GarageLogic
                     this.m_IsCarryingHazardousMaterials = false;
 					break;
                 default:
-                    throw new ArgumentException("Invalid answer foe hazardous materials");
+                    throw new ArgumentException("Invalid answer for hazardous materials");
             }
 
             this.m_MaxCarryingWeight = maxCarryWeight;
