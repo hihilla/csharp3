@@ -128,7 +128,6 @@ namespace Ex03.GarageLogic
             this.m_LicenceNumber = licenceNumber;
             this.m_CurrentEnergyLevel = (curEnergyLevel > m_MaximalEnergyLevel) ? m_MaximalEnergyLevel : curEnergyLevel;
             this.m_OwnerName = ownerName;
-            Console.WriteLine(ownerPhoneNumber);
             this.m_OwnerPhoneNumber = ownerPhoneNumber;
             parseWheelAirPressure(airPressures);
             parseWheelManufacturers(wheelsManufacturers);
