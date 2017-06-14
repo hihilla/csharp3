@@ -1,4 +1,4 @@
-﻿﻿﻿﻿
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -54,21 +54,22 @@ namespace Ex03.GarageLogic
             return inputNeeded;
         }
 
-        public void ParseExsitcingVehicleInput(Dictionary<string, string> i_VehicleInput){
-			string tempStringBeforeParsing;
-			float curEnergyLevel;
+        public void ParseExsitcingVehicleInput(Dictionary<string, string> i_VehicleInput)
+        {
+            string tempStringBeforeParsing;
+            float curEnergyLevel;
             string airPressures;
 
-			if (!((i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing)) &&
-				  (float.TryParse(tempStringBeforeParsing, out curEnergyLevel))))
-			{
-				throw new FormatException("No Current Energy Level");
-			}
+            if (!((i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing)) &&
+                  (float.TryParse(tempStringBeforeParsing, out curEnergyLevel))))
+            {
+                throw new FormatException("No Current Energy Level");
+            }
 
-			if (!i_VehicleInput.TryGetValue(sr_WheelsAirPressureKey, out airPressures))
-			{
-				throw new FormatException("No Wheels air pressure");
-			}
+            if (!i_VehicleInput.TryGetValue(sr_WheelsAirPressureKey, out airPressures))
+            {
+                throw new FormatException("No Wheels air pressure");
+            }
 
             this.m_CurrentEnergyLevel = curEnergyLevel;
             parseWheelAirPressure(airPressures);
@@ -101,13 +102,14 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException("No Current Energy Level");
             }
-            
+
             if (!i_VehicleInput.TryGetValue(sr_OwnerNameKey, out ownerName))
             {
                 throw new FormatException("No Owner Name");
             }
 
-            if (!i_VehicleInput.TryGetValue(sr_OwnerPhoneNumberKey, out ownerPhoneNumber))
+            if (!i_VehicleInput.TryGetValue(sr_OwnerPhoneNumberKey, out ownerPhoneNumber) ||
+               (!validPhoneNumber(ownerPhoneNumber)))
             {
                 throw new FormatException("No Owner Phone Number");
             }
@@ -129,6 +131,15 @@ namespace Ex03.GarageLogic
             this.m_OwnerPhoneNumber = ownerPhoneNumber;
             parseWheelAirPressure(airPressures);
             parseWheelManufacturers(wheelsManufacturers);
+        }
+
+        private bool validPhoneNumber(string i_PhoneNumber)
+        {
+            bool validPhone = true;
+            foreach (char digit in i_PhoneNumber) {
+                validPhone = validPhone && (char.IsDigit(digit) || digit == '-');
+            }
+            return validPhone;
         }
 
         private void parseWheelAirPressure(string i_AirPressures)
@@ -195,11 +206,11 @@ namespace Ex03.GarageLogic
         {
             for (int i = 0; i < m_Wheels.Count; i++)
             {
-				float wheelAirPressure;
-				if (!float.TryParse(i_AirPressure, out wheelAirPressure))
-				{
-					throw new FormatException("Air Pressure must be a float");
-				}
+                float wheelAirPressure;
+                if (!float.TryParse(i_AirPressure, out wheelAirPressure))
+                {
+                    throw new FormatException("Air Pressure must be a float");
+                }
 
                 this.m_Wheels[i].CurrentAirPressure = wheelAirPressure;
             }
