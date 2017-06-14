@@ -240,7 +240,7 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Please enter the vehicle licence number");
             string licenceNumber = Console.ReadLine();
-            Console.WriteLine("Please enter 1 for Octan95, 2 for Octan96, 3 for Octan98, 4 for Soler.");
+            /*Console.WriteLine("Please enter 1 for Octan95, 2 for Octan96, 3 for Octan98, 4 for Soler.");
             int fuelType;
             while (!int.TryParse(Console.ReadLine(), out fuelType) || !(fuelType >= 1 && fuelType <= 4))
             {
@@ -262,7 +262,7 @@ namespace Ex03.ConsoleUI
                 case 4:
                     chosenFuel = GarageLogic.Vehicle.eFuelType.Soler;
                     break;
-            }
+            }*/
 
             Console.WriteLine("Please enter amount of fuel to fill in liters");
             float amountToFill;
@@ -271,7 +271,7 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
 
-            i_Garage.FillEnergyInVehicle(licenceNumber, chosenFuel, amountToFill);
+            i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill);
         }
 
         private static void fillElectricity(GarageLogic.Garage i_Garage)
@@ -285,7 +285,7 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
 
-            i_Garage.FillEnergyInVehicle(licenceNumber, null, amountToFill);
+            i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill);
         }
 
         private static void displayVehicleDetails(GarageLogic.Garage i_Garage)

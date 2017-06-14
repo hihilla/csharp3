@@ -81,12 +81,12 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void FillEnergyInVehicle(string i_VehicleLicence, Nullable<Vehicle.eFuelType> i_FuelType, float i_AmountToFill)
+        public void FillEnergyInVehicle(string i_VehicleLicence, float i_AmountToFill)
         {
             Vehicle vehicle;
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
-                vehicle.AddEnergy(i_AmountToFill, vehicle.EnergyType, i_FuelType);
+                vehicle.AddEnergy(i_AmountToFill, vehicle.EnergyType);
             }
             else
             {

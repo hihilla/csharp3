@@ -313,16 +313,16 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void AddEnergy(float i_EnergyToAdd, eEnergyType i_EnergyType, Nullable<eFuelType> i_FuelType = null)
+        public void AddEnergy(float i_EnergyToAdd, eEnergyType i_EnergyType)
         {
             if (i_EnergyType != this.m_EnergyType)
             {
                 throw new ArgumentException("Wrong Energy Type!");
             }
-            if (i_FuelType != this.FuelType)
+           /* if (i_FuelType != this.FuelType)
             {
                 throw new ArgumentException("Wrong Fuel Type!");
-            }
+            }*/
             float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
             if (i_EnergyType == eEnergyType.Electric)
             {
