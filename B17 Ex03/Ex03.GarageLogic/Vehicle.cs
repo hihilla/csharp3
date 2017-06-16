@@ -32,7 +32,7 @@ namespace Ex03.GarageLogic
             Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
 
             inputNeeded.Add(sr_ModelNameKey, null);
-            inputNeeded.Add(sr_LicenceNumberKey, null);
+            //inputNeeded.Add(sr_LicenceNumberKey, null);
             inputNeeded.Add(sr_CurrentEnergyLevelKey, null);
             inputNeeded.Add(sr_OwnerNameKey, null);
             inputNeeded.Add(sr_OwnerPhoneNumberKey, null);
@@ -79,7 +79,7 @@ namespace Ex03.GarageLogic
         public void ParseVehicleInput(Dictionary<string, string> i_VehicleInput)
         {
             string modelName;
-            string licenceNumber;
+            //string licenceNumber;
             string tempStringBeforeParsing;
             float curEnergyLevel;
             string ownerName;
@@ -92,10 +92,10 @@ namespace Ex03.GarageLogic
                 throw new FormatException("No Model Name");
             }
 
-            if (!i_VehicleInput.TryGetValue(sr_LicenceNumberKey, out licenceNumber))
-            {
-                throw new FormatException("No Licence Number");
-            }
+            //if (!i_VehicleInput.TryGetValue(sr_LicenceNumberKey, out licenceNumber))
+            //{
+            //    throw new FormatException("No Licence Number");
+            //}
 
             if (!((i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing)) &&
                   (float.TryParse(tempStringBeforeParsing, out curEnergyLevel))))
@@ -124,7 +124,6 @@ namespace Ex03.GarageLogic
             }
 
             this.m_ModelName = modelName;
-            this.m_LicenceNumber = licenceNumber;
             this.m_CurrentEnergyLevel = (curEnergyLevel > m_MaximalEnergyLevel) ? m_MaximalEnergyLevel : curEnergyLevel;
             this.m_OwnerName = ownerName;
             this.m_OwnerPhoneNumber = ownerPhoneNumber;
@@ -233,6 +232,10 @@ namespace Ex03.GarageLogic
             get
             {
                 return m_LicenceNumber;
+            }
+            set
+            {
+                m_LicenceNumber = value;
             }
         }
 
@@ -354,6 +357,7 @@ namespace Ex03.GarageLogic
 
             if (this.m_EnergyType == eEnergyType.Fuel)
             {
+                vehicleString.Append("Fuel Type: ");
                 vehicleString.Append(this.m_FuelType);
                 vehicleString.Append("\n");
             }

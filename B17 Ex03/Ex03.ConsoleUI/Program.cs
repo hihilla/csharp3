@@ -123,41 +123,30 @@ namespace Ex03.ConsoleUI
         private static GarageLogic.Car newCar(bool i_isElectric, GarageLogic.Garage i_Garage)
         {
             GarageLogic.Car car = GarageLogic.Creator.CreateNewCar(i_isElectric);
-
-            Dictionary<string, string> vehicleDictionary = car.VehicleInput();
-            Dictionary<string, string> carDictionary = car.NeededInputs();
-
-            fillDictionary(vehicleDictionary);
-            fillDictionary(carDictionary);
-
-            car.ParseVehicleInput(vehicleDictionary);
-            car.ParseNeededInput(carDictionary);
-
-            if (i_Garage.InsertNewVehicleToGarage(car))
-            {
-                car.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
-            }
+            setVehiclesMembers(i_Garage, car);
 
             return car;
+            //Dictionary<string, string> vehicleDictionary = car.VehicleInput();
+            //Dictionary<string, string> carDictionary = car.NeededInputs();
+
+            //fillDictionary(vehicleDictionary);
+            //fillDictionary(carDictionary);
+
+            //car.ParseVehicleInput(vehicleDictionary);
+            //car.ParseNeededInput(carDictionary);
+
+            //if (i_Garage.InsertNewVehicleToGarage(car))
+            //{
+            //    car.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
+            //}
+
+            //return car;
         }
 
         private static GarageLogic.Motorcycle newMotorcycle(bool i_isElectric, GarageLogic.Garage i_Garage)
         {
             GarageLogic.Motorcycle motorcycle = GarageLogic.Creator.CreateNewMotorcycle(i_isElectric);
-
-            Dictionary<string, string> vehicleDictionary = motorcycle.VehicleInput();
-            Dictionary<string, string> motorcycleDictionary = motorcycle.NeededInputs();
-
-            fillDictionary(vehicleDictionary);
-            fillDictionary(motorcycleDictionary);
-
-            motorcycle.ParseVehicleInput(vehicleDictionary);
-            motorcycle.ParseNeededInput(motorcycleDictionary);
-
-            if (i_Garage.InsertNewVehicleToGarage(motorcycle))
-            {
-                motorcycle.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
-            }
+            setVehiclesMembers(i_Garage, motorcycle);
 
             return motorcycle;
         }
@@ -166,22 +155,52 @@ namespace Ex03.ConsoleUI
         {
             GarageLogic.Truck truck = GarageLogic.Creator.CreateNewTruck();
 
-            Dictionary<string, string> vehicleDictionary = truck.VehicleInput();
-            Dictionary<string, string> truckDictionary = truck.NeededInputs();
+            //Dictionary<string, string> vehicleDictionary = truck.VehicleInput();
+            //Dictionary<string, string> truckDictionary = truck.NeededInputs();
 
-            fillDictionary(vehicleDictionary);
-            fillDictionary(truckDictionary);
+            //fillDictionary(vehicleDictionary);
+            //fillDictionary(truckDictionary);
 
-            truck.ParseVehicleInput(vehicleDictionary);
-            truck.ParseNeededInput(truckDictionary);
+            //truck.ParseVehicleInput(vehicleDictionary);
+            //truck.ParseNeededInput(truckDictionary);
 
-            if (i_Garage.InsertNewVehicleToGarage(truck))
-            {
-                truck.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
-            }
+            //if (i_Garage.InsertNewVehicleToGarage(truck))
+            //{
+            //    truck.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
+            //}
+            setVehiclesMembers(i_Garage, truck);
 
             return truck;
         }
+
+		private static void setVehiclesMembers(GarageLogic.Garage i_Garage, GarageLogic.Vehicle i_Vehicle)
+		{
+			Console.WriteLine("Please insert licence number");
+			string licenceNumber = Console.ReadLine();
+			i_Vehicle.LicenceNumber = licenceNumber;
+
+			if (i_Garage.InsertNewVehicleToGarage(i_Vehicle))
+			{
+				Dictionary<string, string> generalVehicleDictionary = i_Vehicle.VehicleInput();
+				Dictionary<string, string> typeVehicleDictionary = i_Vehicle.NeededInputs();
+
+				fillDictionary(generalVehicleDictionary);
+				fillDictionary(typeVehicleDictionary);
+
+				i_Vehicle.ParseVehicleInput(generalVehicleDictionary);
+				i_Vehicle.ParseNeededInput(typeVehicleDictionary);
+			}
+			else
+			{
+                Dictionary<string, string> excistingVehicleDictionary = i_Vehicle.InputForExistingVehicle();
+
+				fillDictionary(excistingVehicleDictionary);
+
+				i_Vehicle.ParseExsitcingVehicleInput(excistingVehicleDictionary);
+
+				i_Vehicle.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
+			}
+		}
 
         private static void fillDictionary(Dictionary<string, string> i_Dictionary)
         {
@@ -302,10 +321,10 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("Please enter the vehicle licence number");
             string licenceNumber = Console.ReadLine();
             Console.WriteLine("Please enter amount of energy to fill in minutes");
-			float amountToFill;
-			bool isElectric = true;
+            float amountToFill;
+            bool isElectric = true;
 
-			while (!float.TryParse(Console.ReadLine(), out amountToFill))
+            while (!float.TryParse(Console.ReadLine(), out amountToFill))
             {
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
