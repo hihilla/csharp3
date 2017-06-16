@@ -18,6 +18,7 @@ namespace Ex03.GarageLogic
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
         protected eVehicleState m_VehicleState = eVehicleState.RepairInProgress;
+        protected eVehicleType m_VehicleType;
 
         private static readonly string sr_ModelNameKey = "Model Name";
         private static readonly string sr_LicenceNumberKey = "Licence Number";
@@ -210,12 +211,14 @@ namespace Ex03.GarageLogic
         protected Vehicle(eEnergyType i_EnergyType,
                           Nullable<eFuelType> i_FuelType,
                             float i_MaximalEnergyLevel,
-                            float i_MaxAirPressure, int i_NumOfWheels)
+                            float i_MaxAirPressure, int i_NumOfWheels,
+                          eVehicleType i_VehicleType)
         {
             this.m_EnergyType = i_EnergyType;
             this.m_FuelType = i_FuelType;
             this.m_MaximalEnergyLevel = i_MaximalEnergyLevel;
             this.m_Wheels = Wheel.GenerateGeneralWheels(i_MaxAirPressure, i_NumOfWheels);
+            this.m_VehicleType = i_VehicleType;
         }
 
         public List<Wheel> Weels
@@ -294,6 +297,15 @@ namespace Ex03.GarageLogic
             Paid
         };
 
+        public enum eVehicleType
+        {
+            ElectricMotorcycle,
+            FuelMotorcycle,
+            ElectricCar,
+            FuelCar,
+            Truck
+        };
+
         public eVehicleState VehicleState
         {
             get
@@ -303,6 +315,14 @@ namespace Ex03.GarageLogic
             set
             {
                 m_VehicleState = value;
+            }
+        }
+
+        public eVehicleType VehicleType
+        {
+            get
+            {
+                return m_VehicleType;
             }
         }
 

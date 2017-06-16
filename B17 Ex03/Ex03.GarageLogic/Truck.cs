@@ -13,8 +13,8 @@ namespace Ex03.GarageLogic
         private static readonly string sr_HazardMaterialKey = "Hazardous Materials <Y/N>";
         private static readonly string sr_MaxCarryWeightKey = "Maximum Carrying Weight";
 
-        public Truck(eEnergyType i_EnergyType, eFuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels) 
-            : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels)
+        public Truck(eEnergyType i_EnergyType, eFuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels, eVehicleType i_VehicleType) 
+            : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels, i_VehicleType)
         {
         }
 

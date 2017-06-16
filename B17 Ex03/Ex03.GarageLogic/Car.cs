@@ -17,9 +17,9 @@
         public Car(
             eEnergyType i_EnergyType,
             Nullable<eFuelType> i_FuelType,
-            float i_MaximalEnergyLevel,float i_MaxAirPressure, int i_NumOfWheels)
+            float i_MaximalEnergyLevel,float i_MaxAirPressure, int i_NumOfWheels, eVehicleType i_VehicleType)
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel,
-                    i_MaxAirPressure, i_NumOfWheels)
+                    i_MaxAirPressure, i_NumOfWheels, i_VehicleType)
         {
         }
 

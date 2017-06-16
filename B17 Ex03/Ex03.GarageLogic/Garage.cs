@@ -14,6 +14,14 @@ namespace Ex03.GarageLogic
             bool successfulInsertion = true;
             if (m_VehiclesInGarage.ContainsKey(i_Vehicle.LicenceNumber))
             {
+                Vehicle excistingVehicle;
+                m_VehiclesInGarage.TryGetValue(i_Vehicle.LicenceNumber, out excistingVehicle);
+                if (i_Vehicle.VehicleType != excistingVehicle.VehicleType) {
+                    string errorMessage = string.Format("Incompatible Vehicle Type! Type inserted: {0}, Vehicles type: {1}", 
+                                                    i_Vehicle.VehicleType, excistingVehicle.VehicleType);
+                    throw new ArgumentException(errorMessage);
+                }
+
                 successfulInsertion = false;
             }
             else
