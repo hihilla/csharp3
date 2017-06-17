@@ -126,21 +126,6 @@ namespace Ex03.ConsoleUI
             setVehiclesMembers(i_Garage, car);
 
             return car;
-            //Dictionary<string, string> vehicleDictionary = car.VehicleInput();
-            //Dictionary<string, string> carDictionary = car.NeededInputs();
-
-            //fillDictionary(vehicleDictionary);
-            //fillDictionary(carDictionary);
-
-            //car.ParseVehicleInput(vehicleDictionary);
-            //car.ParseNeededInput(carDictionary);
-
-            //if (i_Garage.InsertNewVehicleToGarage(car))
-            //{
-            //    car.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
-            //}
-
-            //return car;
         }
 
         private static GarageLogic.Motorcycle newMotorcycle(bool i_isElectric, GarageLogic.Garage i_Garage)
@@ -154,20 +139,6 @@ namespace Ex03.ConsoleUI
         private static GarageLogic.Truck newTruck(GarageLogic.Garage i_Garage)
         {
             GarageLogic.Truck truck = GarageLogic.Creator.CreateNewTruck();
-
-            //Dictionary<string, string> vehicleDictionary = truck.VehicleInput();
-            //Dictionary<string, string> truckDictionary = truck.NeededInputs();
-
-            //fillDictionary(vehicleDictionary);
-            //fillDictionary(truckDictionary);
-
-            //truck.ParseVehicleInput(vehicleDictionary);
-            //truck.ParseNeededInput(truckDictionary);
-
-            //if (i_Garage.InsertNewVehicleToGarage(truck))
-            //{
-            //    truck.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
-            //}
             setVehiclesMembers(i_Garage, truck);
 
             return truck;
@@ -193,11 +164,8 @@ namespace Ex03.ConsoleUI
 			else
 			{
                 Dictionary<string, string> excistingVehicleDictionary = i_Vehicle.InputForExistingVehicle();
-
 				fillDictionary(excistingVehicleDictionary);
-
 				i_Vehicle.ParseExsitcingVehicleInput(excistingVehicleDictionary);
-
 				i_Vehicle.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
 			}
 		}
@@ -247,12 +215,14 @@ namespace Ex03.ConsoleUI
             string licenceNumber = Console.ReadLine();
             Console.WriteLine("Please enter 1 for Repair In Progress, 2 for Repair Complete, 3 for Paid.");
             int chosenState;
-            while (!int.TryParse(Console.ReadLine(), out chosenState) || !(chosenState >= 1 && chosenState <= 3))
+            while (!int.TryParse(Console.ReadLine(), out chosenState) || 
+                   !(chosenState >= 1 && chosenState <= 3))
             {
                 Console.WriteLine("Invalid state. please choose valid state.");
             }
 
             GarageLogic.Vehicle.eVehicleState vehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
+
             switch (chosenState)
             {
                 case 1:
@@ -280,29 +250,6 @@ namespace Ex03.ConsoleUI
         {
             Console.WriteLine("Please enter the vehicle licence number");
             string licenceNumber = Console.ReadLine();
-            /*Console.WriteLine("Please enter 1 for Octan95, 2 for Octan96, 3 for Octan98, 4 for Soler.");
-            int fuelType;
-            while (!int.TryParse(Console.ReadLine(), out fuelType) || !(fuelType >= 1 && fuelType <= 4))
-            {
-                Console.WriteLine("Invalid fuel type. please choose valid fuel type.");
-            }
-
-            GarageLogic.Vehicle.eFuelType chosenFuel = GarageLogic.Vehicle.eFuelType.Octan95;
-            switch (fuelType)
-            {
-                case 1:
-                    chosenFuel = GarageLogic.Vehicle.eFuelType.Octan95;
-                    break;
-                case 2:
-                    chosenFuel = GarageLogic.Vehicle.eFuelType.Octan96;
-                    break;
-                case 3:
-                    chosenFuel = GarageLogic.Vehicle.eFuelType.Octan98;
-                    break;
-                case 4:
-                    chosenFuel = GarageLogic.Vehicle.eFuelType.Soler;
-                    break;
-            }*/
 
             Console.WriteLine("Please enter amount of fuel to fill in liters");
             float amountToFill;
