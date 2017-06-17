@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
         private string m_ManufacturerName;
         private float m_CurrentAirPressure;
         private float m_MaxAirPressure;
-        
+
         public string ManufacturerName
         {
             get
@@ -38,7 +38,7 @@ namespace Ex03.GarageLogic
             }
             set
             {
-                m_CurrentAirPressure = value;    
+                m_CurrentAirPressure = value;
             }
         }
 

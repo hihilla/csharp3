@@ -17,11 +17,16 @@ namespace Ex03.GarageLogic
                 fuelType = Vehicle.eFuelType.Octan95;
             }
             float tankSize = i_IsElectric ? 2.7F : 5.5F;
-            Vehicle.eVehicleType vehicleType = i_IsElectric ? Vehicle.eVehicleType.ElectricMotorcycle : Vehicle.eVehicleType.FuelMotorcycle;
+            Vehicle.eVehicleType vehicleType = i_IsElectric ?
+                Vehicle.eVehicleType.ElectricMotorcycle
+                : Vehicle.eVehicleType.FuelMotorcycle;
 
-            return new Motorcycle(energyType, fuelType,
-                          tankSize,
-                                  maxWheelAirPressure, numberOfWheels, vehicleType);
+            return new Motorcycle(energyType,
+                                  fuelType,
+                                  tankSize,
+                                  maxWheelAirPressure,
+                                  numberOfWheels,
+                                  vehicleType);
         }
 
         public static Car CreateNewCar(bool i_IsElectric)
@@ -36,11 +41,16 @@ namespace Ex03.GarageLogic
                 energyType = Vehicle.eEnergyType.Fuel;
             }
             float maxEnergyLevel = i_IsElectric ? 2.5F : 42F;
-            Vehicle.eVehicleType vehicleType = i_IsElectric ? Vehicle.eVehicleType.ElectricCar : Vehicle.eVehicleType.FuelCar;
+            Vehicle.eVehicleType vehicleType = i_IsElectric ?
+                Vehicle.eVehicleType.ElectricCar
+                : Vehicle.eVehicleType.FuelCar;
 
-            return new Car(energyType, fuelType,
-                    maxEnergyLevel,
-                           maxWheelAirPressure, numberOfWheels, vehicleType);
+            return new Car(energyType,
+                           fuelType,
+                           maxEnergyLevel,
+                           maxWheelAirPressure,
+                           numberOfWheels,
+                           vehicleType);
         }
 
         public static Truck CreateNewTruck()
@@ -52,9 +62,12 @@ namespace Ex03.GarageLogic
             float tankSize = 135F;
             Vehicle.eVehicleType vehicleType = Vehicle.eVehicleType.Truck;
 
-            return new Truck(energyType, fuelType,
-                  tankSize,
-                             maxWheelAirPressure, numberOfWheels, vehicleType);
+            return new Truck(energyType,
+                             fuelType,
+                             tankSize,
+                             maxWheelAirPressure,
+                             numberOfWheels,
+                             vehicleType);
         }
     }
 }
