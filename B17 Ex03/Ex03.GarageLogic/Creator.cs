@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace Ex03.GarageLogic
 {
@@ -11,12 +10,15 @@ namespace Ex03.GarageLogic
             float maxWheelAirPressure = 33;
             Vehicle.eEnergyType energyType = Vehicle.eEnergyType.Electric;
             Nullable<Vehicle.eFuelType> fuelType = null;
+
             if (!i_IsElectric)
             {
                 energyType = Vehicle.eEnergyType.Fuel;
                 fuelType = Vehicle.eFuelType.Octan95;
             }
+
             float tankSize = i_IsElectric ? 2.7F : 5.5F;
+
             Vehicle.eVehicleType vehicleType = i_IsElectric ?
                 Vehicle.eVehicleType.ElectricMotorcycle
                 : Vehicle.eVehicleType.FuelMotorcycle;
@@ -35,12 +37,15 @@ namespace Ex03.GarageLogic
             float maxWheelAirPressure = 30;
             Vehicle.eEnergyType energyType = Vehicle.eEnergyType.Electric;
             Nullable<Vehicle.eFuelType> fuelType = null;
+
             if (!i_IsElectric)
             {
                 fuelType = Vehicle.eFuelType.Octan98;
                 energyType = Vehicle.eEnergyType.Fuel;
             }
+
             float maxEnergyLevel = i_IsElectric ? 2.5F : 42F;
+
             Vehicle.eVehicleType vehicleType = i_IsElectric ?
                 Vehicle.eVehicleType.ElectricCar
                 : Vehicle.eVehicleType.FuelCar;

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +8,6 @@ namespace Ex03.GarageLogic
     {
         private bool m_IsCarryingHazardousMaterials;
         private float m_MaxCarryingWeight;
-
         private static readonly string sr_HazardMaterialKey = "Hazardous Materials <Y/N>";
         private static readonly string sr_MaxCarryWeightKey = "Maximum Carrying Weight";
 
@@ -26,6 +24,7 @@ namespace Ex03.GarageLogic
         public override Dictionary<string, string> NeededInputs()
         {
             Dictionary<string, string> neededInput = new Dictionary<string, string>();
+
             neededInput.Add(sr_HazardMaterialKey, null);
             neededInput.Add(sr_MaxCarryWeightKey, null);
 
@@ -72,6 +71,7 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             StringBuilder truckToString = new StringBuilder();
+
             truckToString.Append("Truck\n");
 
             if (m_IsCarryingHazardousMaterials)
