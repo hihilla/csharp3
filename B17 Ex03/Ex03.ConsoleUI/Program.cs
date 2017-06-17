@@ -91,14 +91,13 @@ namespace Ex03.ConsoleUI
             Console.WriteLine("To insert new fuel-based car, Enter 4");
             Console.WriteLine("To insert new truck, Enter 5");
 
-            string managerInput = Console.ReadLine();
             int chosenVehiclel;
-            int.TryParse(managerInput, out chosenVehiclel);
+            int.TryParse(Console.ReadLine(), out chosenVehiclel);
 
             while (chosenVehiclel < 1 || chosenVehiclel > 5)
             {
                 Console.WriteLine("Invalid input, please choose valid vehicle <1-5>");
-                int.TryParse(managerInput, out chosenVehiclel);
+                int.TryParse(Console.ReadLine(), out chosenVehiclel);
             }
 
             switch (chosenVehiclel)
