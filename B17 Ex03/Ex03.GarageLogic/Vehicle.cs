@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,7 +28,152 @@ namespace Ex03.GarageLogic
         private static readonly string sr_WheelsAirPressureKey = "Wheels current air pressure (seperated by comma)";
         private static readonly string sr_WheelsManufacturerKey = "Wheels Manufacturer (seperated by comma)";
 
-        public Dictionary<string, string> VehicleInput()
+		public List<Wheel> Weels
+		{
+			get
+			{
+				return m_Wheels;
+			}
+
+		}
+
+		public string LicenceNumber
+		{
+			get
+			{
+				return m_LicenceNumber;
+			}
+			set
+			{
+				m_LicenceNumber = value;
+			}
+		}
+
+		public eEnergyType EnergyType
+		{
+			get
+			{
+				return m_EnergyType;
+			}
+		}
+
+		public Nullable<eFuelType> FuelType
+		{
+			get
+			{
+				return m_FuelType;
+
+			}
+		}
+
+		public float MaximalEnergyLevel
+		{
+			get
+			{
+				return m_MaximalEnergyLevel;
+			}
+		}
+
+		public float CurrentEnergyLevel
+		{
+			get
+			{
+				return m_CurrentEnergyLevel;
+			}
+		}
+
+		public eVehicleState VehicleState
+		{
+			get
+			{
+				return m_VehicleState;
+			}
+			set
+			{
+				m_VehicleState = value;
+			}
+		}
+
+		public eVehicleType VehicleType
+		{
+			get
+			{
+				return m_VehicleType;
+			}
+		}
+
+		public enum eEnergyType
+		{
+			Electric,
+			Fuel
+		};
+
+		public enum eFuelType
+		{
+			Octan95,
+			Octan96,
+			Octan98,
+			Soler
+		};
+
+		public enum eVehicleState
+		{
+			RepairInProgress,
+			RepairComplete,
+			Paid
+		};
+
+		public enum eVehicleType
+		{
+			ElectricMotorcycle,
+			FuelMotorcycle,
+			ElectricCar,
+			FuelCar,
+			Truck
+		};
+
+		protected Vehicle(eEnergyType i_EnergyType,
+                          Nullable<eFuelType> i_FuelType,
+                          float i_MaximalEnergyLevel,
+                          float i_MaxAirPressure, 
+                          int i_NumOfWheels,
+                          eVehicleType i_VehicleType)
+		{
+			this.m_EnergyType = i_EnergyType;
+			this.m_FuelType = i_FuelType;
+			this.m_MaximalEnergyLevel = i_MaximalEnergyLevel;
+			this.m_Wheels = Wheel.GenerateGeneralWheels(i_MaxAirPressure, i_NumOfWheels);
+			this.m_VehicleType = i_VehicleType;
+		}
+
+        public abstract Dictionary<string, string> NeededInputs();
+
+        public abstract void ParseNeededInput(Dictionary<string, string> i_InputToParse);
+
+		public void AddEnergy(float i_EnergyToAdd, eEnergyType i_EnergyType)
+		{
+			if (i_EnergyType != this.m_EnergyType)
+			{
+				throw new ArgumentException("Wrong Energy Type!");
+			}
+
+			float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
+
+			if (i_EnergyType == eEnergyType.Electric)
+			{
+				newAmount = m_CurrentEnergyLevel + convertMinutesToHours(i_EnergyToAdd);
+			}
+
+			if ((i_EnergyToAdd < 0) || (newAmount > m_MaximalEnergyLevel))
+			{
+				float wrongValue = (i_EnergyToAdd < 0) ? i_EnergyToAdd : newAmount;
+				throw new ValueOutOfRangeException(0, m_MaximalEnergyLevel, wrongValue);
+			}
+
+			this.m_CurrentEnergyLevel = newAmount;
+		}
+
+		public Dictionary<string, string> VehicleInput()
         {
             Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
 
@@ -42,8 +187,6 @@ namespace Ex03.GarageLogic
 
             return inputNeeded;
         }
-
-        public abstract Dictionary<string, string> NeededInputs();
 
         public Dictionary<string, string> InputForExistingVehicle()
         {
@@ -92,11 +235,6 @@ namespace Ex03.GarageLogic
             {
                 throw new FormatException("No Model Name");
             }
-
-            //if (!i_VehicleInput.TryGetValue(sr_LicenceNumberKey, out licenceNumber))
-            //{
-            //    throw new FormatException("No Licence Number");
-            //}
 
             if (!((i_VehicleInput.TryGetValue(sr_CurrentEnergyLevelKey, out tempStringBeforeParsing)) &&
                   (float.TryParse(tempStringBeforeParsing, out curEnergyLevel))))
@@ -204,149 +342,6 @@ namespace Ex03.GarageLogic
 
                 this.m_Wheels[i].CurrentAirPressure = wheelAirPressure;
             }
-        }
-
-        public abstract void ParseNeededInput(Dictionary<string, string> i_InputToParse);
-
-        protected Vehicle(eEnergyType i_EnergyType,
-                          Nullable<eFuelType> i_FuelType,
-                            float i_MaximalEnergyLevel,
-                            float i_MaxAirPressure, int i_NumOfWheels,
-                          eVehicleType i_VehicleType)
-        {
-            this.m_EnergyType = i_EnergyType;
-            this.m_FuelType = i_FuelType;
-            this.m_MaximalEnergyLevel = i_MaximalEnergyLevel;
-            this.m_Wheels = Wheel.GenerateGeneralWheels(i_MaxAirPressure, i_NumOfWheels);
-            this.m_VehicleType = i_VehicleType;
-        }
-
-        public List<Wheel> Weels
-        {
-            get
-            {
-                return m_Wheels;
-            }
-
-        }
-
-        public string LicenceNumber
-        {
-            get
-            {
-                return m_LicenceNumber;
-            }
-            set
-            {
-                m_LicenceNumber = value;
-            }
-        }
-
-        public eEnergyType EnergyType
-        {
-            get
-            {
-                return m_EnergyType;
-            }
-        }
-
-        public Nullable<eFuelType> FuelType
-        {
-            get
-            {
-                return m_FuelType;
-
-            }
-        }
-
-        public float MaximalEnergyLevel
-        {
-            get
-            {
-                return m_MaximalEnergyLevel;
-            }
-        }
-
-        public float CurrentEnergyLevel
-        {
-            get
-            {
-                return m_CurrentEnergyLevel;
-            }
-        }
-
-
-        public enum eEnergyType
-        {
-            Electric,
-            Fuel
-        };
-
-        public enum eFuelType
-        {
-            Octan95,
-            Octan96,
-            Octan98,
-            Soler
-        };
-
-        public enum eVehicleState
-        {
-            RepairInProgress,
-            RepairComplete,
-            Paid
-        };
-
-        public enum eVehicleType
-        {
-            ElectricMotorcycle,
-            FuelMotorcycle,
-            ElectricCar,
-            FuelCar,
-            Truck
-        };
-
-        public eVehicleState VehicleState
-        {
-            get
-            {
-                return m_VehicleState;
-            }
-            set
-            {
-                m_VehicleState = value;
-            }
-        }
-
-        public eVehicleType VehicleType
-        {
-            get
-            {
-                return m_VehicleType;
-            }
-        }
-
-        public void AddEnergy(float i_EnergyToAdd, eEnergyType i_EnergyType)
-        {
-            if (i_EnergyType != this.m_EnergyType)
-            {
-                throw new ArgumentException("Wrong Energy Type!");
-            }
-
-            float newAmount = m_CurrentEnergyLevel + i_EnergyToAdd;
-
-            if (i_EnergyType == eEnergyType.Electric)
-            {
-                newAmount = m_CurrentEnergyLevel + convertMinutesToHours(i_EnergyToAdd);
-            }
-
-            if ((i_EnergyToAdd < 0) || (newAmount > m_MaximalEnergyLevel))
-            {
-                float wrongValue = (i_EnergyToAdd < 0) ? i_EnergyToAdd : newAmount;
-                throw new ValueOutOfRangeException(0, m_MaximalEnergyLevel, wrongValue);
-            }
-
-            this.m_CurrentEnergyLevel = newAmount;
         }
 
         public override string ToString()
