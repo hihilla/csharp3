@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,7 +32,6 @@ namespace Ex03.GarageLogic
             return successfulInsertion;
         }
 
-
         public string GetLicenceNumbers(Nullable<Vehicle.eVehicleState> i_StateFilter = null)
         {
             StringBuilder licenceNumbers = new StringBuilder();
@@ -42,6 +40,7 @@ namespace Ex03.GarageLogic
                 foreach (string licence in m_VehiclesInGarage.Keys)
                 {
                     Vehicle vehicle;
+
                     if (m_VehiclesInGarage.TryGetValue(licence, out vehicle))
                     {
                         if (vehicle.VehicleState == i_StateFilter)
@@ -67,6 +66,7 @@ namespace Ex03.GarageLogic
         public string DisplayVehicleDetails(string i_VehicleLicence)
         {
             Vehicle vehicle;
+
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
                 return vehicle.ToString();
@@ -80,6 +80,7 @@ namespace Ex03.GarageLogic
         public void ChangeVehicleState(string i_VehicleLicence, Vehicle.eVehicleState i_VehicleState)
         {
             Vehicle vehicle;
+
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
                 vehicle.VehicleState = i_VehicleState;
@@ -93,6 +94,7 @@ namespace Ex03.GarageLogic
         public void FillEnergyInVehicle(string i_VehicleLicence, float i_AmountToFill, bool i_IsElectric)
         {
             Vehicle vehicle;
+
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
                 if (!compatibaleEnergyType(vehicle, i_IsElectric))
@@ -101,6 +103,7 @@ namespace Ex03.GarageLogic
                     throw new ArgumentException(string.Format("Vehicle is {0} but trying to fill with {1}",
                                                               vehicle.EnergyType, energyType));
                 }
+
                 vehicle.AddEnergy(i_AmountToFill, vehicle.EnergyType);
             }
             else
@@ -119,14 +122,16 @@ namespace Ex03.GarageLogic
         public void FillAirInVehicle(string i_VehicleLicence)
         {
             Vehicle vehicle;
+
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
-                foreach (Wheel weel in vehicle.Wheels)
+                foreach (Wheel wheel in vehicle.Wheels)
                 {
-                    float airToFill = weel.MaxAirPressure - weel.CurrentAirPressure;
+                    float airToFill = wheel.MaxAirPressure - wheel.CurrentAirPressure;
+
                     if (airToFill > 0)
                     {
-                        weel.FillAir(airToFill);
+                        wheel.FillAir(airToFill);
                     }
                 }
             }
@@ -135,6 +140,5 @@ namespace Ex03.GarageLogic
                 throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
             }
         }
-
     }
 }
