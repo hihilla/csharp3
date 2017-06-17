@@ -121,7 +121,7 @@ namespace Ex03.GarageLogic
             Vehicle vehicle;
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
-                foreach (Wheel weel in vehicle.Weels)
+                foreach (Wheel weel in vehicle.Wheels)
                 {
                     float airToFill = weel.MaxAirPressure - weel.CurrentAirPressure;
                     if (airToFill > 0)

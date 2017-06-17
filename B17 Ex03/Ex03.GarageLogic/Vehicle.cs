@@ -9,10 +9,10 @@ namespace Ex03.GarageLogic
     {
         protected string m_ModelName;
         protected string m_LicenceNumber;
-        protected eEnergyType m_EnergyType;//
-        protected Nullable<eFuelType> m_FuelType;//
+        protected eEnergyType m_EnergyType;
+        protected Nullable<eFuelType> m_FuelType;
         protected float m_CurrentEnergyLevel;
-        protected float m_MaximalEnergyLevel;//
+        protected float m_MaximalEnergyLevel;
         protected List<Wheel> m_Wheels;// Max air pressure + num wheels
         // information for garage
         protected string m_OwnerName;
@@ -28,7 +28,7 @@ namespace Ex03.GarageLogic
         private static readonly string sr_WheelsAirPressureKey = "Wheels current air pressure (seperated by comma)";
         private static readonly string sr_WheelsManufacturerKey = "Wheels Manufacturer (seperated by comma)";
 
-		public List<Wheel> Weels
+		public List<Wheel> Wheels
 		{
 			get
 			{
@@ -106,7 +106,7 @@ namespace Ex03.GarageLogic
 		{
 			Electric,
 			Fuel
-		};
+		}
 
 		public enum eFuelType
 		{
@@ -114,14 +114,14 @@ namespace Ex03.GarageLogic
 			Octan96,
 			Octan98,
 			Soler
-		};
+		}
 
 		public enum eVehicleState
 		{
 			RepairInProgress,
 			RepairComplete,
 			Paid
-		};
+		}
 
 		public enum eVehicleType
 		{
@@ -130,7 +130,7 @@ namespace Ex03.GarageLogic
 			ElectricCar,
 			FuelCar,
 			Truck
-		};
+		}
 
 		protected Vehicle(eEnergyType i_EnergyType,
                           Nullable<eFuelType> i_FuelType,
@@ -178,7 +178,6 @@ namespace Ex03.GarageLogic
             Dictionary<string, string> inputNeeded = new Dictionary<string, string>();
 
             inputNeeded.Add(sr_ModelNameKey, null);
-            //inputNeeded.Add(sr_LicenceNumberKey, null);
             inputNeeded.Add(sr_CurrentEnergyLevelKey, null);
             inputNeeded.Add(sr_OwnerNameKey, null);
             inputNeeded.Add(sr_OwnerPhoneNumberKey, null);
@@ -223,7 +222,6 @@ namespace Ex03.GarageLogic
         public void ParseVehicleInput(Dictionary<string, string> i_VehicleInput)
         {
             string modelName;
-            //string licenceNumber;
             string tempStringBeforeParsing;
             float curEnergyLevel;
             string ownerName;
@@ -335,6 +333,7 @@ namespace Ex03.GarageLogic
             for (int i = 0; i < m_Wheels.Count; i++)
             {
                 float wheelAirPressure;
+
                 if (!float.TryParse(i_AirPressure, out wheelAirPressure))
                 {
                     throw new FormatException("Air Pressure must be a float");
