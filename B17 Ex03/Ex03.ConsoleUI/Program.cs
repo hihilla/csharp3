@@ -6,6 +6,8 @@ namespace Ex03.ConsoleUI
 {
     class Program
     {
+		private static readonly string sr_PressAntKey = "Press any key to continue...";
+		
         public static void Main()
         {
             manageGarage();
@@ -166,9 +168,8 @@ namespace Ex03.ConsoleUI
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
                     i_Garage.DeleteVehicleFromGerage(licenceNumber);
-                    askUserForInstructions(i_Garage);
+                    catchExceptionAndContinue(i_Garage, ex);
                 }
             }
             else
@@ -181,8 +182,7 @@ namespace Ex03.ConsoleUI
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    askUserForInstructions(i_Garage);
+					catchExceptionAndContinue(i_Garage, ex);
                 }
                 i_Vehicle.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
             }
@@ -260,8 +260,7 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                askUserForInstructions(i_Garage);
+                catchExceptionAndContinue(i_Garage, ex);
             }
         }
 
@@ -275,8 +274,7 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                askUserForInstructions(i_Garage);
+                catchExceptionAndContinue(i_Garage, ex);
             }
         }
 
@@ -300,8 +298,7 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                askUserForInstructions(i_Garage);
+                catchExceptionAndContinue(i_Garage, ex);
             }
         }
 
@@ -324,8 +321,7 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                askUserForInstructions(i_Garage);
+                catchExceptionAndContinue(i_Garage, ex);
             }
         }
 
@@ -339,9 +335,16 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                askUserForInstructions(i_Garage);
+                catchExceptionAndContinue(i_Garage, ex);
             }
+        }
+
+        private static void catchExceptionAndContinue(GarageLogic.Garage i_Garage, Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(sr_PressAntKey);
+            Console.ReadKey();
+            askUserForInstructions(i_Garage);
         }
     }
 }
