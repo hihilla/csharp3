@@ -12,7 +12,12 @@ namespace Ex03.GarageLogic
         private static readonly string sr_LicenceTypeKey = "Licence Type <A, AB, A2, B1>";
         private static readonly string sr_EngineCapacityKey = "Engine Capacity (CCM)";
 
-        public Motorcycle(eEnergyType i_EnergyType, eFuelType? i_FuelType, float i_MaximalEnergyLevel, float i_MaxAirPressure, int i_NumOfWheels, eVehicleType i_VehicleType) 
+        public Motorcycle(eEnergyType i_EnergyType, 
+                          Nullable<eFuelType> i_FuelType, 
+                          float i_MaximalEnergyLevel, 
+                          float i_MaxAirPressure, 
+                          int i_NumOfWheels, 
+                          eVehicleType i_VehicleType) 
             : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels, i_VehicleType)
         {
         }
