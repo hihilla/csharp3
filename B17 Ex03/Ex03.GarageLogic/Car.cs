@@ -14,12 +14,22 @@
         private static readonly string sr_CarColorKey = "Car Color <White, Black, Yellow, Blue>";
         private static readonly string sr_NumberOfDoorsKey = "Number of doors <2-5>";
 
+		public enum eColor
+		{
+			Yellow,
+			White,
+			Black,
+			Blue
+		}
+
         public Car(
             eEnergyType i_EnergyType,
             Nullable<eFuelType> i_FuelType,
-            float i_MaximalEnergyLevel,float i_MaxAirPressure, int i_NumOfWheels, eVehicleType i_VehicleType)
-            : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel,
-                    i_MaxAirPressure, i_NumOfWheels, i_VehicleType)
+            float i_MaximalEnergyLevel,
+            float i_MaxAirPressure, 
+            int i_NumOfWheels, 
+            eVehicleType i_VehicleType)
+            : base(i_EnergyType, i_FuelType, i_MaximalEnergyLevel, i_MaxAirPressure, i_NumOfWheels, i_VehicleType)
         {
         }
 
@@ -73,14 +83,6 @@
             }
 
             this.m_numberOfDoors = numberOfDoors;
-        }
-
-        public enum eColor
-        {
-            Yellow,
-            White,
-            Black,
-            Blue
         }
 
         public override string ToString()
