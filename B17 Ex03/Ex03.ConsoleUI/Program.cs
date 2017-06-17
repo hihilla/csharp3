@@ -42,6 +42,7 @@ namespace Ex03.ConsoleUI
 
         private static void askUserForInstructions(GarageLogic.Garage i_Garage)
         {
+            Console.Clear();
             Console.WriteLine("Hello Garage manager. What would you like to do?");
             Console.WriteLine("Enter 1 to insert new vehicle to garage.");
             Console.WriteLine("Enter 2 to see licence number of vehicles in garage.");
