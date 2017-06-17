@@ -16,8 +16,9 @@ namespace Ex03.GarageLogic
             {
                 Vehicle excistingVehicle;
                 m_VehiclesInGarage.TryGetValue(i_Vehicle.LicenceNumber, out excistingVehicle);
-                if (i_Vehicle.VehicleType != excistingVehicle.VehicleType) {
-                    string errorMessage = string.Format("Incompatible Vehicle Type! Type inserted: {0}, Vehicles type: {1}", 
+                if (i_Vehicle.VehicleType != excistingVehicle.VehicleType)
+                {
+                    string errorMessage = string.Format("Incompatible Vehicle Type! Type inserted: {0}, Vehicles type: {1}",
                                                     i_Vehicle.VehicleType, excistingVehicle.VehicleType);
                     throw new ArgumentException(errorMessage);
                 }
@@ -94,9 +95,10 @@ namespace Ex03.GarageLogic
             Vehicle vehicle;
             if (m_VehiclesInGarage.TryGetValue(i_VehicleLicence, out vehicle))
             {
-                if (!compatibaleEnergyType(vehicle, i_IsElectric)) {
+                if (!compatibaleEnergyType(vehicle, i_IsElectric))
+                {
                     string energyType = i_IsElectric ? "Electricity" : "Fuel";
-                    throw new ArgumentException(string.Format("Vehicle is {0} but trying to fill with {1}", 
+                    throw new ArgumentException(string.Format("Vehicle is {0} but trying to fill with {1}",
                                                               vehicle.EnergyType, energyType));
                 }
                 vehicle.AddEnergy(i_AmountToFill, vehicle.EnergyType);
@@ -107,7 +109,8 @@ namespace Ex03.GarageLogic
             }
         }
 
-        private bool compatibaleEnergyType(Vehicle i_Vehicle, bool i_IsElectric) {
+        private bool compatibaleEnergyType(Vehicle i_Vehicle, bool i_IsElectric)
+        {
             bool compatible = i_Vehicle.EnergyType == Vehicle.eEnergyType.Electric && i_IsElectric;
 
             return compatible;
@@ -132,6 +135,6 @@ namespace Ex03.GarageLogic
                 throw new ArgumentException(string.Format("Vehicle with licence number {0} does not exsist", i_VehicleLicence));
             }
         }
-        
+
     }
 }
