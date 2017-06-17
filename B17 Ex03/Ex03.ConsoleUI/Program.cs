@@ -144,37 +144,48 @@ namespace Ex03.ConsoleUI
             return truck;
         }
 
-		private static void setVehiclesMembers(GarageLogic.Garage i_Garage, GarageLogic.Vehicle i_Vehicle)
-		{
-			Console.WriteLine("Please insert licence number");
-			string licenceNumber = Console.ReadLine();
-			i_Vehicle.LicenceNumber = licenceNumber;
+        private static void setVehiclesMembers(GarageLogic.Garage i_Garage, GarageLogic.Vehicle i_Vehicle)
+        {
+            Console.WriteLine("Please insert licence number");
+            string licenceNumber = Console.ReadLine();
+            i_Vehicle.LicenceNumber = licenceNumber;
 
-			try
+            if (i_Garage.InsertNewVehicleToGarage(i_Vehicle))
             {
-                if (i_Garage.InsertNewVehicleToGarage(i_Vehicle))
+                Dictionary<string, string> generalVehicleDictionary = i_Vehicle.VehicleInput();
+                Dictionary<string, string> typeVehicleDictionary = i_Vehicle.NeededInputs();
+
+                fillDictionary(generalVehicleDictionary);
+                fillDictionary(typeVehicleDictionary);
+
+                try
                 {
-                    Dictionary<string, string> generalVehicleDictionary = i_Vehicle.VehicleInput();
-                    Dictionary<string, string> typeVehicleDictionary = i_Vehicle.NeededInputs();
-
-                    fillDictionary(generalVehicleDictionary);
-                    fillDictionary(typeVehicleDictionary);
-
                     i_Vehicle.ParseVehicleInput(generalVehicleDictionary);
                     i_Vehicle.ParseNeededInput(typeVehicleDictionary);
                 }
-                else
+                catch (Exception ex)
                 {
-                    Dictionary<string, string> excistingVehicleDictionary = i_Vehicle.InputForExistingVehicle();
-                    fillDictionary(excistingVehicleDictionary);
-                    i_Vehicle.ParseExsitcingVehicleInput(excistingVehicleDictionary);
-                    i_Vehicle.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
+                    Console.WriteLine(ex.Message);
+                    i_Garage.DeleteVehicleFromGerage(licenceNumber);
+                    askUserForInstructions(i_Garage);
                 }
-			} catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                askUserForInstructions(i_Garage);
-			}
-		}
+            }
+            else
+            {
+                Dictionary<string, string> excistingVehicleDictionary = i_Vehicle.InputForExistingVehicle();
+                fillDictionary(excistingVehicleDictionary);
+                try
+                {
+                    i_Vehicle.ParseExsitcingVehicleInput(excistingVehicleDictionary);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    askUserForInstructions(i_Garage);
+                }
+                i_Vehicle.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
+            }
+        }
 
         private static void fillDictionary(Dictionary<string, string> i_Dictionary)
         {
@@ -221,7 +232,7 @@ namespace Ex03.ConsoleUI
             string licenceNumber = Console.ReadLine();
             Console.WriteLine("Please enter 1 for Repair In Progress, 2 for Repair Complete, 3 for Paid.");
             int chosenState;
-            while (!int.TryParse(Console.ReadLine(), out chosenState) || 
+            while (!int.TryParse(Console.ReadLine(), out chosenState) ||
                    !(chosenState >= 1 && chosenState <= 3))
             {
                 Console.WriteLine("Invalid state. please choose valid state.");
@@ -248,8 +259,8 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-				Console.WriteLine(ex.Message);
-				askUserForInstructions(i_Garage);
+                Console.WriteLine(ex.Message);
+                askUserForInstructions(i_Garage);
             }
         }
 
@@ -263,8 +274,8 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-				Console.WriteLine(ex.Message);
-				askUserForInstructions(i_Garage);
+                Console.WriteLine(ex.Message);
+                askUserForInstructions(i_Garage);
             }
         }
 
@@ -288,8 +299,8 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-				Console.WriteLine(ex.Message);
-				askUserForInstructions(i_Garage);
+                Console.WriteLine(ex.Message);
+                askUserForInstructions(i_Garage);
             }
         }
 
@@ -312,8 +323,8 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-				Console.WriteLine(ex.Message);
-				askUserForInstructions(i_Garage);
+                Console.WriteLine(ex.Message);
+                askUserForInstructions(i_Garage);
             }
         }
 
@@ -327,8 +338,8 @@ namespace Ex03.ConsoleUI
             }
             catch (Exception ex)
             {
-				Console.WriteLine(ex.Message);
-				askUserForInstructions(i_Garage);
+                Console.WriteLine(ex.Message);
+                askUserForInstructions(i_Garage);
             }
         }
     }

@@ -32,6 +32,14 @@ namespace Ex03.GarageLogic
             return successfulInsertion;
         }
 
+        public void DeleteVehicleFromGerage(string i_LicenceNumber)
+        {
+            if (m_VehiclesInGarage.ContainsKey(i_LicenceNumber))
+            {
+                m_VehiclesInGarage.Remove(i_LicenceNumber);
+            }
+        }
+
         public string GetLicenceNumbers(Nullable<Vehicle.eVehicleState> i_StateFilter = null)
         {
             StringBuilder licenceNumbers = new StringBuilder();
