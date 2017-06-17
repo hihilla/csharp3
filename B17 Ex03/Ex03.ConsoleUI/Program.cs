@@ -150,23 +150,29 @@ namespace Ex03.ConsoleUI
 			string licenceNumber = Console.ReadLine();
 			i_Vehicle.LicenceNumber = licenceNumber;
 
-			if (i_Garage.InsertNewVehicleToGarage(i_Vehicle))
-			{
-				Dictionary<string, string> generalVehicleDictionary = i_Vehicle.VehicleInput();
-				Dictionary<string, string> typeVehicleDictionary = i_Vehicle.NeededInputs();
+			try
+            {
+                if (i_Garage.InsertNewVehicleToGarage(i_Vehicle))
+                {
+                    Dictionary<string, string> generalVehicleDictionary = i_Vehicle.VehicleInput();
+                    Dictionary<string, string> typeVehicleDictionary = i_Vehicle.NeededInputs();
 
-				fillDictionary(generalVehicleDictionary);
-				fillDictionary(typeVehicleDictionary);
+                    fillDictionary(generalVehicleDictionary);
+                    fillDictionary(typeVehicleDictionary);
 
-				i_Vehicle.ParseVehicleInput(generalVehicleDictionary);
-				i_Vehicle.ParseNeededInput(typeVehicleDictionary);
-			}
-			else
-			{
-                Dictionary<string, string> excistingVehicleDictionary = i_Vehicle.InputForExistingVehicle();
-				fillDictionary(excistingVehicleDictionary);
-				i_Vehicle.ParseExsitcingVehicleInput(excistingVehicleDictionary);
-				i_Vehicle.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
+                    i_Vehicle.ParseVehicleInput(generalVehicleDictionary);
+                    i_Vehicle.ParseNeededInput(typeVehicleDictionary);
+                }
+                else
+                {
+                    Dictionary<string, string> excistingVehicleDictionary = i_Vehicle.InputForExistingVehicle();
+                    fillDictionary(excistingVehicleDictionary);
+                    i_Vehicle.ParseExsitcingVehicleInput(excistingVehicleDictionary);
+                    i_Vehicle.VehicleState = GarageLogic.Vehicle.eVehicleState.RepairInProgress;
+                }
+			} catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                askUserForInstructions(i_Garage);
 			}
 		}
 
@@ -236,14 +242,30 @@ namespace Ex03.ConsoleUI
                     break;
             }
 
-            i_Garage.ChangeVehicleState(licenceNumber, vehicleState);
+            try
+            {
+                i_Garage.ChangeVehicleState(licenceNumber, vehicleState);
+            }
+            catch (Exception ex)
+            {
+				Console.WriteLine(ex.Message);
+				askUserForInstructions(i_Garage);
+            }
         }
 
         private static void fillAirInVehicle(GarageLogic.Garage i_Garage)
         {
             Console.WriteLine("Please enter the vehicle licence number");
             string licenceNumber = Console.ReadLine();
-            i_Garage.FillAirInVehicle(licenceNumber);
+            try
+            {
+                i_Garage.FillAirInVehicle(licenceNumber);
+            }
+            catch (Exception ex)
+            {
+				Console.WriteLine(ex.Message);
+				askUserForInstructions(i_Garage);
+            }
         }
 
         private static void fillFuel(GarageLogic.Garage i_Garage)
@@ -260,7 +282,15 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
 
-            i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill, isElectric);
+            try
+            {
+                i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill, isElectric);
+            }
+            catch (Exception ex)
+            {
+				Console.WriteLine(ex.Message);
+				askUserForInstructions(i_Garage);
+            }
         }
 
         private static void fillElectricity(GarageLogic.Garage i_Garage)
@@ -276,14 +306,30 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("Invalid amount. please insert valid amount.");
             }
 
-            i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill, isElectric);
+            try
+            {
+                i_Garage.FillEnergyInVehicle(licenceNumber, amountToFill, isElectric);
+            }
+            catch (Exception ex)
+            {
+				Console.WriteLine(ex.Message);
+				askUserForInstructions(i_Garage);
+            }
         }
 
         private static void displayVehicleDetails(GarageLogic.Garage i_Garage)
         {
             Console.WriteLine("Please enter the vehicle licence number");
             string licenceNumber = Console.ReadLine();
-            Console.WriteLine(i_Garage.DisplayVehicleDetails(licenceNumber));
+            try
+            {
+                Console.WriteLine(i_Garage.DisplayVehicleDetails(licenceNumber));
+            }
+            catch (Exception ex)
+            {
+				Console.WriteLine(ex.Message);
+				askUserForInstructions(i_Garage);
+            }
         }
     }
 }
