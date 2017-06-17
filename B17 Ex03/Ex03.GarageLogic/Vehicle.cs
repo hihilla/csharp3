@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
         protected Nullable<eFuelType> m_FuelType;
         protected float m_CurrentEnergyLevel;
         protected float m_MaximalEnergyLevel;
-        protected List<Wheel> m_Wheels;// Max air pressure + num wheels
+        protected List<Wheel> m_Wheels;
         // information for garage
         protected string m_OwnerName;
         protected string m_OwnerPhoneNumber;
@@ -21,7 +21,6 @@ namespace Ex03.GarageLogic
         protected eVehicleType m_VehicleType;
 
         private static readonly string sr_ModelNameKey = "Model Name";
-        private static readonly string sr_LicenceNumberKey = "Licence Number";
         private static readonly string sr_CurrentEnergyLevelKey = "Current Energy Level";
         private static readonly string sr_OwnerNameKey = "Owner Name";
         private static readonly string sr_OwnerPhoneNumberKey = "Owners Phone Number";
@@ -339,7 +338,7 @@ namespace Ex03.GarageLogic
                     throw new FormatException("Air Pressure must be a float");
                 }
 
-                this.m_Wheels[i].CurrentAirPressure = wheelAirPressure;
+                this.m_Wheels[i].CurrentAirPressure = (wheelAirPressure > m_Wheels[i].MaxAirPressure) ? m_Wheels[i].MaxAirPressure : wheelAirPressure;
             }
         }
 
